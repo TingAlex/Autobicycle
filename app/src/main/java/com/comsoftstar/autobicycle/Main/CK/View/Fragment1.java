@@ -84,10 +84,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.openlock:
-                //initBle();\
-               // share();
 
-             //   Toast.makeText(getContext(), "open", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.closelock:
                 Toast.makeText(getContext(), "close", Toast.LENGTH_SHORT).show();
