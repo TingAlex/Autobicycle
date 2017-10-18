@@ -87,7 +87,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
                 //initBle();\
                // share();
                 Intent intent3=new Intent(Intent.ACTION_SEND);
-                intent3.setType("*/*");
+                intent3.setType("* /*");
                 intent3.putExtra(Intent.EXTRA_SUBJECT, "Share");
                 intent3.putExtra(Intent.EXTRA_TEXT, "I have successfully share my message through my app");
                 intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
