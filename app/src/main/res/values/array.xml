@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="title">
+        <item >车况</item>
+        <item >服务</item>
+        <item >我的</item>   <!-- 特殊字符要转义-->
+    </string-array>
+
+    <integer-array name="image_array">
+        <item>@drawable/raw_1504180220</item>
+        <item>@drawable/raw_1504180593</item>
+        <item>@drawable/raw_1504180709</item>
+    </integer-array>
+    <integer-array name="select_image_array">
+        <item>@drawable/raw_1504181718</item>
+        <item>@drawable/raw_1504181692</item>
+        <item>@drawable/raw_1504182550</item>
+    </integer-array>
+</resources>

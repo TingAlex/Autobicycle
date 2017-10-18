@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SjieInputEditText">
+        <attr name="startclickicon" format="reference"/>
+        <attr name="startunclickicon" format="reference"/>
+        <attr name="enddeleteicon" format="reference"/>
+        <attr name="startwidth" format="integer"/>
+        <attr name="starthight" format="integer"/>
+        <attr name="endwidth" format="integer"/>
+        <attr name="endhight" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PathTextView">
+        <attr name="ptv_color" format="color"/>
+        <attr name="ptv_width" format="float"/>
+    </declare-styleable>
+</resources>

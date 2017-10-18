@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:chart="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:id="@+id/fragment3"
+    android:background="@drawable/kuang">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/raw_1504236898"/>
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="我的"
+                android:textSize="14dp"/>
+                <TextView
+                    android:id="@+id/myphone"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18068261236"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <lecho.lib.hellocharts.view.ColumnChartView
+            android:id="@+id/barchart"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+        <ListView
+            android:layout_marginTop="15dp"
+            android:layout_margin="5dp"
+            android:id="@+id/my_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+    </FrameLayout>

@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd-HH-mm", TimeZone.getTimeZone("Asia/Shanghai"))
+}
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.comsoftstar.autobicycle"
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            //minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+// 不显示Log
+            buildConfigField("boolean", "YLog", "true");
+        }
+        release {
+            //  minifyEnabled true   //代码不混淆
+            shrinkResources true // 移除无用资源
+            zipAlignEnabled true // 开启压缩
+            //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明，后一个文件是自己的定义混淆文件
+           // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+// 输出apk名称  自定义+v版本号+时间.apk
+            android.applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        File outputDirectory = new File(outputFile.parent);
+                        def fileName
+                        if (variant.buildType.name == "release") {
+                            fileName = "AutoBike_V${defaultConfig.versionName}_${releaseTime()}.apk"
+                            output.outputFile = new File(outputDirectory, fileName)
+                        } //else {
+//                            fileName = "AutoBike_V${defaultConfig.versionName}_${releaseTime()}_debug.apk"
+//                        }
+
+                    }
+                }
+            }
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+
+    }
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
+        }
+    }
+    dependencies {
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        compile 'com.android.support:appcompat-v7:26.+'
+        compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+        compile 'com.android.support:design:26.0.0-alpha1'
+        compile 'com.yinglan.alphatabs:library:1.0.8'
+        compile 'de.hdodenhof:circleimageview:2.1.0'
+        compile 'com.squareup.okhttp3:okhttp:3.6.0'
+        compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+        compile 'org.xutils:xutils:3.3.36'
+        compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+        compile 'com.wang.avi:library:1.0.0'
+        compile 'com.nineoldandroids:library:2.4.0'
+        compile 'cn.com.superLei:blelibrary:1.0.1'
+        compile 'com.android.support:cardview-v7:26.0.0-alpha1'
+        compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+        compile 'com.squareup.retrofit2:retrofit:2.1.0'
+        compile 'com.squareup.retrofit2:converter-scalars:2.0.0'
+        //compile 'com.jakewharton:butterknife:8.5.1'
+        compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+        testCompile 'junit:junit:4.12'
+        compile 'com.android.support:support-v13:26.0.0-alpha1'
+        compile project(':MyControls')
+        compile 'org.zackratos:ultimatebar:1.0.3'
+        compile 'org.jetbrains.anko:anko-common:0.10.0'
+    }
+}
