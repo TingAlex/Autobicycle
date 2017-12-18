@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
 def releaseTime() {
     return new Date().format("yyyy-MM-dd-HH-mm", TimeZone.getTimeZone("Asia/Shanghai"))
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MergeTextView">
+        <attr name="leftTxt" format="string"/>
+        <attr name="leftTxtSize" format="dimension"/>
+        <attr name="leftTxtColor" format="color"/>
+
+        <attr name="rightTxt" format="string"/>
+        <attr name="rightTxtSize" format="dimension"/>
+        <attr name="rightTxtColor" format="color"/>
+
+        <attr name="space4LAndR" format="dimension"/>
+        <attr name="gravity" format="integer">
+            <enum name="center" value="0"/>
+            <enum name="right" value="2"/>
+            <enum name="left" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

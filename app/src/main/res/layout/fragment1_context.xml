@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <import type="com.comsoftstar.autobicycle.Main.CK.ViewModel.Fragment1_Item"/>
+        <import type="com.comsoftstar.autobicycle.View.Main.CK.ViewModel.Fragment1_Item"/>
         <variable
             name="fragment1item"
             type="Fragment1_Item"/>
@@ -50,23 +50,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center">
-                    <TextView
-                        android:layout_marginLeft="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{fragment1item.length}"
+                    <com.comsoftstar.autobicycle.Control.MergeText.MergeTextView
+                        android:id="@+id/meeee"
                         android:layout_gravity="center"
-                        android:maxLines="1"
-                        android:textSize="75dp"
-                        android:textColor="#ffffff"/>
-                    <TextView
-                        android:text="Km"
-                        android:layout_width="wrap_content"
-                        android:textSize="24dp"
-                        android:layout_height="match_parent"
-                        android:gravity="bottom"
-                        android:layout_marginBottom="12dp"
-                        android:textColor="#ffffff"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:leftTxtColor="@color/white"
+                        app:rightTxtColor="@color/white"
+                        app:leftTxtSize="75dp"
+                        app:rightTxtSize="24dp"
+                        app:leftTxt="@{fragment1item.length}"
+                        app:rightTxt="Km"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_weight="0.9"

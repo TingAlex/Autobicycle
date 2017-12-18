@@ -7,7 +7,7 @@
 
                 <variable
                     name="fragment1item"
-                    type="com.comsoftstar.autobicycle.Main.CK.ViewModel.Fragment1_Item"/>
+                    type="com.comsoftstar.autobicycle.View.Main.CK.ViewModel.Fragment1_Item"/>
                 <variable
                     name="onclicklisten"
                     type="android.view.View.OnClickListener"/>
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            tools:context=".Main.Main.MainActivity"
+            tools:context=".View.Main.Main.MainActivity"
             android:background="@color/blackgray"
             android:clickable="true"
           >

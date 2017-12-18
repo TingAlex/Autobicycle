@@ -6,7 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarNavigationButtonStyle">@style/toolbar_nav_button</item>
        
+    </style>
+
+    <style name="toolbar_nav_button" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">0dp</item>
     </style>
 
     <declare-styleable name="TabContainerViewStyle">
