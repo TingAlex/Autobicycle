@@ -16,4 +16,37 @@
             <enum name="left" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="SegmentedGroup">
+        <!--圆角半径-->
+        <attr name="sc_corner_radius" format="dimension" />
+        <!--边线宽度-->
+        <attr name="sc_border_width" format="dimension" />
+        <!--内部字体颜色及选中后的颜色-->
+        <attr name="sc_tint_color" format="color" />
+        <!--选中字体颜色-->
+        <attr name="sc_checked_text_color" format="color" />
+        <!--未选中背景颜色-->
+        <attr name="sc_unchecked_tint_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="AwesomeRadioButton">
+        <!--设置按钮文本，注意此文本在内部会进行转换的-->
+        <attr name="awesome_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="SjieInputEditText">
+        <attr name="startclickicon" format="reference"/>
+        <attr name="startunclickicon" format="reference"/>
+        <attr name="enddeleteicon" format="reference"/>
+        <attr name="startwidth" format="integer"/>
+        <attr name="starthight" format="integer"/>
+        <attr name="endwidth" format="integer"/>
+        <attr name="endhight" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PathTextView">
+        <attr name="ptv_color" format="color"/>
+        <attr name="ptv_width" format="float"/>
+    </declare-styleable>
 </resources>

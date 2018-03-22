@@ -9,15 +9,16 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
-import com.comsoftstar.autobicycle.Public.Util.RegexUtil;
-import com.comsoftstar.autobicycle.Public.Util.Tools;
+import com.comsoftstar.autobicycle.Control.SjieInputEditText;
+import com.comsoftstar.autobicycle.Util.RegexUtil;
+import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.View.Login.Presenter.LoginPresenter;
-import com.comsoftstar.autobicycle.View.Main.Main.MainActivity;
-import com.comsoftstar.autobicycle.databinding.ActivityLoginBinding;
-import com.comsoftstar.inputedittext.SjieInputEditText;
+import com.comsoftstar.autobicycle.View.Main.Activity.MainActivity;
+import com.comsoftstar.autobicycle.databinding.ActivityLogin2Binding;
+
 import com.wang.avi.AVLoadingIndicatorView;
-public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements View.OnClickListener,Login_inteface{
+public class LoginActivity extends BaseActivity<ActivityLogin2Binding> implements View.OnClickListener,Login_inteface{
 public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private TextView register;
     private Button login;
@@ -28,17 +29,15 @@ public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
 
     @Override
     public int setLayoutId() {
-        return R.layout.activity_login;
+        return R.layout.activity_login2;
     }
 
     @Override
-    public void initView(ActivityLoginBinding binding) {
+    public void initView(ActivityLogin2Binding binding) {
         loginPresenter=new LoginPresenter(this);
-
         // 初始化
         initUI();
     }
-
     private void initUI(){
         textInputEditTextaccount=(SjieInputEditText)findViewById(R.id.login_account);
         textInputEditTextpassword=(SjieInputEditText)findViewById(R.id.login_password);
@@ -55,7 +54,6 @@ public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
             }
         });
         loginPresenter.readtoPreferences();
-
     }
 
     @Override
@@ -72,7 +70,7 @@ public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
                 getSupportFragmentManager().beginTransaction()
                         .addToBackStack(null)
                         .setCustomAnimations(R.anim.in_from_left,R.anim.in_from_right,R.anim.out_from_left,R.anim.out_from_right)
-                        .replace(R.id.login_login,new RegisterFragment())
+                        .replace(R.id.login_login,new RegisterFragment2())
                         .commit();
                 break;
         }

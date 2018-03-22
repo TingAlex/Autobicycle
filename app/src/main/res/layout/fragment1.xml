@@ -3,39 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-        <data>
 
-                <variable
-                    name="fragment1item"
-                    type="com.comsoftstar.autobicycle.View.Main.CK.ViewModel.Fragment1_Item"/>
-                <variable
-                    name="onclicklisten"
-                    type="android.view.View.OnClickListener"/>
-        </data>
-        <FrameLayout
+    <data>
 
+        <variable
+            name="fragment1item"
+            type="com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item"/>
+
+        <variable
+            name="onclicklisten"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blackgray"
+        android:clickable="true"
+        tools:context=".View.Main.Activity.MainActivity">
+
+        <LinearLayout
+            android:id="@+id/largeLabel1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical">
 
-            tools:context=".View.Main.Main.MainActivity"
-            android:background="@color/blackgray"
-            android:clickable="true"
-          >
-                <LinearLayout
-                    android:id="@+id/largeLabel1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginTop="1dp">
-                        <include layout="@layout/fragment1_toolbar"></include>
-                        <include android:id="@+id/fragment1context"
-                                 layout="@layout/fragment1_context"
-                           app:onclicklisten="@{onclicklisten}"
-                           app:fragment1item="@{fragment1item}"/>
+            <include
+                android:id="@+id/frag1_toolbar"
+                layout="@layout/fragment1_toolbar"
+                app:onclicklisten="@{onclicklisten}"/>
 
-                </LinearLayout>
 
-        >
+            <include
+                android:id="@+id/fragment1context"
+                layout="@layout/fragment1_context"
+                app:onclicklisten="@{onclicklisten}"
+                app:fragment1item="@{fragment1item}"/>
 
-        </FrameLayout>
-    </layout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+</layout>

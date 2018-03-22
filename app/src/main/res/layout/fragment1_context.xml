@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
+
     <data>
-        <import type="com.comsoftstar.autobicycle.View.Main.CK.ViewModel.Fragment1_Item"/>
+
+        <import type="com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item"/>
+
         <variable
             name="fragment1item"
             type="Fragment1_Item"/>
+
         <variable
             name="onclicklisten"
             type="android.view.View.OnClickListener"/>
     </data>
+
     <LinearLayout
-        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:background="@drawable/kuang"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/kuang">
+
         <TableLayout
             android:layout_width="match_parent"
-            android:background="@color/blackgray"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@color/blackgray"
             android:stretchColumns="4">
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_marginTop="15dp">
@@ -30,176 +37,189 @@
                     android:id="@+id/textView2"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="预估里程"
+                    android:textSize="18dp"
                     android:textColor="#f0ffffff"
-                    android:textSize="18dp" />
+                    android:text="预估里程"/>
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="剩余电量"
-                    android:textColor="#f0ffffff"
-                    android:textSize="18dp" />
-            </TableRow>
-            <TableRow
-                android:layout_marginTop="12dp"
-                android:layout_width="match_parent">
-                <LinearLayout
-                    android:layout_weight="1.2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <com.comsoftstar.autobicycle.Control.MergeText.MergeTextView
-                        android:id="@+id/meeee"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:leftTxtColor="@color/white"
-                        app:rightTxtColor="@color/white"
-                        app:leftTxtSize="75dp"
-                        app:rightTxtSize="24dp"
-                        app:leftTxt="@{fragment1item.length}"
-                        app:rightTxt="Km"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="0.9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <TextView
-                        android:maxLines="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{fragment1item.electric}"
-                        android:textSize="75dp"
-                        android:textColor="#ffffff"/>
-                    <TextView
-                        android:text="%"
-                        android:layout_width="wrap_content"
-                        android:textSize="24dp"
-                        android:layout_gravity="center"
-                        android:layout_height="match_parent"
-                        android:gravity="bottom"
-                        android:layout_marginBottom="13dp"
-                        android:textColor="#ffffff"/>
-                </LinearLayout>
-            </TableRow>
-            <TableRow
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent">
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:gravity="center">
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/openlock"
-                        android:onClick="@{onclicklisten}"
-                        app:elevation="0dp"
-                        android:layout_height="70dp"
-                        android:layout_width="70dp"
-                        app:backgroundTint="@color/ltgray"
-                        android:src="@drawable/raw_1504229769"
-                        app:fabSize="normal"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:gravity="center">
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/closelock"
-                        app:elevation="0dp"
-                        android:layout_height="70dp"
-                        android:layout_width="70dp"
-                        app:backgroundTint="@color/ltgray"
-                        android:onClick="@{onclicklisten}"
-                        android:src="@drawable/raw_1504230057"
-                        app:fabSize="normal"
-                        />
-                </LinearLayout>
-            </TableRow>
-            <TableRow
-                android:layout_marginTop="18dp"
-                android:layout_width="match_parent">
-
-                <TextView android:text="@string/openlock"
                     android:textSize="18dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textColor="#ffffff"/>
-
-                <TextView
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/closelock"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp" />
+                    android:textColor="#f0ffffff"
+                    android:text="剩余电量"/>
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+
+                >
+
+                <com.comsoftstar.autobicycle.Control.MergeText.MergeTextView
+                    android:id="@+id/mergeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:padding="0dp"
+                    app:leftTxtColor="@color/white"
+                    app:rightTxtColor="@color/white"
+                    app:leftTxt="100"
+                    app:leftTxtSize="75dp"
+                    app:rightTxt="Km"
+                    app:space4LAndR="5dp"
+                    app:rightTxtSize="24dp"
+                    app:gravity="center"
+                    />
+
+                <com.comsoftstar.autobicycle.Control.MergeText.MergeTextView
+                    android:id="@+id/mergeTxt2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:padding="0dp"
+                    app:leftTxtColor="@color/white"
+                    app:rightTxtColor="@color/white"
+                    app:leftTxt="100"
+                    app:leftTxtSize="75dp"
+                    app:rightTxt="%"
+                    app:space4LAndR="5dp"
+                    app:rightTxtSize="24dp"
+                    app:gravity="center"
+                    />
+            </TableRow>
+            <!--<TableRow-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_width="match_parent">-->
+            <!--<LinearLayout-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:gravity="center">-->
+            <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/openlock"-->
+            <!--android:onClick="@{onclicklisten}"-->
+            <!--app:elevation="0dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_width="70dp"-->
+            <!--app:backgroundTint="@color/ltgray"-->
+            <!--android:src="@drawable/raw_1504229769"-->
+            <!--app:fabSize="normal"-->
+            <!--/>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:gravity="center">-->
+            <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/closelock"-->
+            <!--app:elevation="0dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_width="70dp"-->
+            <!--app:backgroundTint="@color/ltgray"-->
+            <!--android:onClick="@{onclicklisten}"-->
+            <!--android:src="@drawable/raw_1504230057"-->
+            <!--app:fabSize="normal"-->
+            <!--/>-->
+            <!--</LinearLayout>-->
+            <!--</TableRow>-->
+            <!--<TableRow-->
+            <!--android:layout_marginTop="18dp"-->
+            <!--android:layout_width="match_parent">-->
+
+            <!--<TextView android:text="@string/openlock"-->
+            <!--android:textSize="18dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="#ffffff"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/closelock"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="18dp"/>-->
+            <!--</TableRow>-->
         </TableLayout>
+
         <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/drivitingconut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/main_item_kuang">
+            android:background="@drawable/main_item_kuang"
+            android:onClick="@{onclicklisten}">
+
             <TextView
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/lightred"
-                android:text="@{fragment1item.module}"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
                 android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="@color/lightred"
+                android:text="@{fragment1item.module}"/>
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="95dp"
                 android:src="@drawable/raw_1504232360"/>
+
             <TextView
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="50dp"
+                android:textSize="16dp"
                 android:textColor="@color/white"
-                android:text="骑行统计"
-                android:textSize="16dp"/>
+                android:text="骑行统计"/>
         </FrameLayout>
+
         <FrameLayout
             android:id="@+id/drivitinghistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-          >
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="@{onclicklisten}"
+            >
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="95dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/raw_1504232985"/>
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/lightred"
+                android:text="@{fragment1item.speed}"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/lightred"
-                android:text="@{fragment1item.speed}"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <TextView
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+                android:textSize="16dp"
                 android:textColor="@color/white"
-                android:text="行车历史"
-                android:textSize="16dp"/>
+                android:text="行车历史"/>
         </FrameLayout>
-
-
     </LinearLayout>
 </layout>

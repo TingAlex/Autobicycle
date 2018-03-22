@@ -1,5 +1,6 @@
 package com.comsoftstar.autobicycle.Control;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
@@ -16,13 +17,22 @@ import com.comsoftstar.autobicycle.R;
 
 public class MyToolBar {
     private Toolbar toolbar;
-    private BaseActivity activity;
-    public MyToolBar(@NonNull BaseActivity activity){
-        this.activity=activity;
+    private MyToolBar(){}
+    private static volatile MyToolBar myToolBar=null;
+
+    public static MyToolBar newInstance(){
+        if (myToolBar==null){
+            synchronized (MyToolBar.class){
+                if (myToolBar==null){
+                    myToolBar=new MyToolBar();
+                }
+            }
+        }
+        return myToolBar;
     }
     //第一步
-    public MyToolBar init(){
-        this.toolbar=new Toolbar(activity);
+    public MyToolBar init(@NonNull Toolbar toolbar){
+        this.toolbar=toolbar;
         this.toolbar.setTitleTextColor(Color.WHITE);
         this.toolbar.setBackgroundResource(R.color.blackgray);
         return this;
@@ -31,8 +41,8 @@ public class MyToolBar {
         this.toolbar.setTitle(title);
         return this;
     }
-    public MyToolBar setOverflowIcon(){
-        this.toolbar.setOverflowIcon(activity.getResources().getDrawable(R.drawable.ic_more_vert_black_24dp));
+    public MyToolBar setOverflowIcon(Context context){
+        this.toolbar.setOverflowIcon(context.getApplicationContext().getResources().getDrawable(R.drawable.ic_more_vert_black_24dp));
         return this;
     }
     public MyToolBar addLogo(){
@@ -40,12 +50,10 @@ public class MyToolBar {
         this.toolbar.setContentInsetStartWithNavigation(0);
         return this;
     }
-    public MyToolBar setColor(@ColorRes int bgcolor,@ColorInt @ColorRes int titlecolor){
-
+    public MyToolBar setColor( int bgcolor,@ColorInt @ColorRes int titlecolor){
        toolbar.setTitleTextColor(titlecolor);
        toolbar.setBackgroundResource(bgcolor);
         return this;
-
     }
     public MyToolBar addMenu(int menu,Toolbar.OnMenuItemClickListener onMenuItemClickListener){
             toolbar.inflateMenu(menu);

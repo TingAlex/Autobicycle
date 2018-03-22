@@ -6,7 +6,8 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.Main.CK.View.drivinghistoryActivity"
+
+        tools:context=".View.Main.Activity.DrivingHistoryActivity"
         >
 
         <android.support.design.widget.AppBarLayout
@@ -17,9 +18,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:subtitleTextColor="@color/white"
                 android:background="@color/blackgray"
                 android:elevation="10dp"
+                android:subtitleTextColor="@color/white"
                 app:layout_scrollFlags="scroll|enterAlways|snap"/>
         </android.support.design.widget.AppBarLayout>
 
@@ -27,6 +28,7 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/blackgray"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

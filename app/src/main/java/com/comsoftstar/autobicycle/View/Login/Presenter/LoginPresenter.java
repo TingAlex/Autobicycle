@@ -3,10 +3,10 @@ package com.comsoftstar.autobicycle.View.Login.Presenter;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.comsoftstar.autobicycle.Interface.Value;
 import com.comsoftstar.autobicycle.View.Login.Module.LoginModule;
 import com.comsoftstar.autobicycle.View.Login.View.LoginActivity;
 import com.comsoftstar.autobicycle.View.Login.View.Login_inteface;
-import com.comsoftstar.autobicycle.Interface.Value;
 
 import static android.content.Context.MODE_PRIVATE;
 

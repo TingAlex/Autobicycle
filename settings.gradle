@@ -1,1 +1,1 @@
-include ':app', ':MyControls'
+include ':app'

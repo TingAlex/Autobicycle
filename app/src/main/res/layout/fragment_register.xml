@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="onclicklisten"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:background="#e0e0e0">
+        android:background="#e0e0e0"
+        android:clickable="true">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             >
 
             <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/blackgray"
-                android:id="@+id/toolbar">
+                android:background="@color/blackgray">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -29,220 +36,220 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center_vertical"
+                        android:onClick="@{onclicklisten}"
                         android:src="@drawable/ic_chevron_left_black_24dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="注册"
                         android:textSize="15dp"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:id="@+id/next_register"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical|right"
-                        android:text="下一步"
-                        android:textSize="15dp"
-                        android:enabled="false"
-                        android:layout_marginRight="10dp"
-                        android:textColor="@color/gray"/>
+                        android:textColor="@color/white"
+                        android:text="注册"/>
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:layout_width="match_parent">
 
                     <TextView
-                        android:layout_span="3"
-                        android:paddingLeft="20dp"
-                        android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
+                        android:paddingLeft="20dp"
+                        android:gravity="center_vertical"
+                        android:layout_span="3"
                         android:textColor="#5f000000"
                         android:text="请务必填写必要信息"/>
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/item_kuang"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_width="match_parent">
+                    android:background="@drawable/item_kuang">
 
                     <TextView
-                        android:layout_marginLeft="15dp"
                         android:layout_height="45dp"
+                        android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
 
+                        android:textColor="@color/black"
                         android:text="手机号"/>
 
                     <EditText
                         android:id="@+id/login_phone"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
                         android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
                         android:inputType="phone"
+                        android:textSize="15dp"
                         android:hint="常用手机号"/>
 
-                    <Button
-                        android:onClick="sendmessage"
-                        android:id="@+id/sendmessage"
-                        android:background="@color/blackgray"
-                        android:textColor="#9fffffff"
-                        android:layout_height="22dp"
-                        android:layout_width="65dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="10dp"
-                        android:text="发送验证码"/>
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/item_kuang"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_width="match_parent">
+                    android:background="@drawable/item_kuang">
 
                     <TextView
-                        android:layout_marginLeft="15dp"
                         android:layout_height="45dp"
+                        android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"
                         android:text="验证码"/>
 
                     <EditText
                         android:id="@+id/login_number"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
                         android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
                         android:inputType="phone"
+                        android:textSize="15dp"
                         android:hint="请输入验证码"/>
 
                 </TableRow>
 
                 <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/item_kuang"
-                    android:layout_height="45dp"
-                    android:layout_width="match_parent">
+                    android:background="@drawable/item_kuang">
 
                     <TextView
-                        android:layout_marginLeft="15dp"
                         android:layout_height="45dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="真实姓名"/>
-
-                    <EditText
-                        android:id="@+id/login_name"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="25dp"
-                        android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
-                        android:inputType="text"
-                        android:hint="售后服务用，请填写真实姓名"/>
-
-                </TableRow>
-
-                <TableRow
-                    android:background="@drawable/item_kuang"
-                    android:layout_height="45dp"
-                    android:layout_width="match_parent">
-
-                    <TextView
                         android:layout_marginLeft="15dp"
-                        android:layout_height="45dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="昵称"/>
-
-                    <EditText
-                        android:id="@+id/login_name2"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="25dp"
-                        android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
-                        android:inputType="text"
-                        android:hint="2~14个字符(可包含中文和下划线)"/>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/item_kuang"
-                    android:layout_height="45dp"
-                    android:layout_width="match_parent">
-
-                    <TextView
-                        android:layout_marginLeft="15dp"
-                        android:layout_height="45dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"
                         android:text="密码"/>
 
                     <EditText
                         android:id="@+id/login_password0"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
                         android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
                         android:inputType="textPassword"
+                        android:textSize="15dp"
                         android:hint="6~20位数字或字母(不能为纯数字)"/>
 
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/item_kuang"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_width="match_parent">
+                    android:background="@drawable/item_kuang">
 
                     <TextView
-                        android:layout_marginLeft="15dp"
                         android:layout_height="45dp"
+                        android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"
                         android:text="确认密码"/>
 
                     <EditText
                         android:id="@+id/login_password1"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
                         android:background="@null"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"
                         android:inputType="textPassword"
+                        android:textSize="15dp"
                         android:hint="请确保两次输入一致"/>
 
                 </TableRow>
 
                 <TableRow
-                    android:layout_marginTop="15dp"
-                    android:layout_width="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/item_kuang">
+
+                    <TextView
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:text="PacbID"/>
+
+                    <EditText
+                        android:id="@+id/login_name"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="25dp"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:textSize="15dp"
+                        android:hint="扫码"/>
+
+                    <Button
+                        android:id="@+id/scan1"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:onClick="@{onclicklisten}"
+                        android:textSize="13dp"
+                        android:backgroundTint="@color/blackgray"
+                        android:textColor="@color/white"
+                        android:text="扫 码"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/item_kuang">
+
+                    <TextView
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:text="采集ID"/>
+
+                    <EditText
+                        android:id="@+id/login_name2"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="25dp"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:textSize="15dp"
+                        android:hint="扫码"/>
+
+                    <Button
+                        android:id="@+id/scan2"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:onClick="@{onclicklisten}"
+                        android:textSize="13dp"
+                        android:backgroundTint="@color/blackgray"
+                        android:textColor="@color/white"
+                        android:text="扫 码"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp">
 
                     <LinearLayout
-                        android:layout_span="3"
+                        android:layout_height="30dp"
                         android:orientation="horizontal"
                         android:gravity="center"
-                        android:layout_height="30dp">
+                        android:layout_span="3">
 
                         <CheckBox
                             android:id="@+id/enter"
@@ -259,6 +266,19 @@
 
                 </TableRow>
             </TableLayout>
+
+            <Button
+                android:id="@+id/next_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:background="@drawable/red_kuang"
+                android:onClick="@{onclicklisten}"
+                android:textSize="15dp"
+                android:enabled="false"
+                android:textColor="@color/white"
+                android:text="确  认"/>
         </LinearLayout>
     </FrameLayout>
 </layout>

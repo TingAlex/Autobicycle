@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Autobicycle.iml" filepath="$PROJECT_DIR$/Autobicycle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyControls/MyControls.iml" filepath="$PROJECT_DIR$/MyControls/MyControls.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://F:\AppWorkSpace\Autobicycle\MyControls\inputedittext.iml" filepath="F:\AppWorkSpace\Autobicycle\MyControls\inputedittext.iml" />
     </modules>

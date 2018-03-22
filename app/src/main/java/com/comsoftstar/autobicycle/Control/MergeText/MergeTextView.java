@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.comsoftstar.autobicycle.R;
 
@@ -18,11 +17,10 @@ import com.comsoftstar.autobicycle.R;
  */
 
 public class MergeTextView extends View {
-    private DisplayUtils displayUtils;
+    private static final String TAG = "MergeTextView";
 
     private Paint leftTxtPaint;
-
-private String leftTxt = "100";
+    private String leftTxt = "100";
     private int leftTxtSize;
     private int leftTxtColor;
 
@@ -36,8 +34,8 @@ private String leftTxt = "100";
 
     public void setLeftTxt(String leftTxt) {
         this.leftTxt = leftTxt;
-        initPaint();
-        postInvalidate();
+        //initPaint();
+        commit();
     }
 
     public int getLeftTxtSize() {
@@ -46,8 +44,7 @@ private String leftTxt = "100";
 
     public void setLeftTxtSize(int leftTxtSize) {
         this.leftTxtSize = leftTxtSize;
-        initPaint();
-        postInvalidate();
+        commit();
     }
 
     public int getLeftTxtColor() {
@@ -56,8 +53,7 @@ private String leftTxt = "100";
 
     public void setLeftTxtColor(int leftTxtColor) {
         this.leftTxtColor = leftTxtColor;
-        initPaint();
-        postInvalidate();
+        commit();
     }
 
     public String getRightTxt() {
@@ -66,6 +62,7 @@ private String leftTxt = "100";
 
     public void setRightTxt(String rightTxt) {
         this.rightTxt = rightTxt;
+        commit();
     }
 
     public int getRightTxtSize() {
@@ -74,8 +71,7 @@ private String leftTxt = "100";
 
     public void setRightTxtSize(int rightTxtSize) {
         this.rightTxtSize = rightTxtSize;
-        initPaint();
-        postInvalidate();
+        commit();
     }
 
     public int getRightTxtColor() {
@@ -84,8 +80,7 @@ private String leftTxt = "100";
 
     public void setRightTxtColor(int rightTxtColor) {
         this.rightTxtColor = rightTxtColor;
-        initPaint();
-        postInvalidate();
+        commit();
     }
 
     public float getSpace4LAndR() {
@@ -94,7 +89,7 @@ private String leftTxt = "100";
 
     public void setSpace4LAndR(float space4LAndR) {
         this.space4LAndR = space4LAndR;
-        postInvalidate();
+        commit();
     }
 
     public int getGravity() {
@@ -103,7 +98,7 @@ private String leftTxt = "100";
 
     public void setGravity(int gravity) {
         this.gravity = gravity;
-        postInvalidate();
+        commit();
     }
 
     private int rightTxtColor;
@@ -120,7 +115,6 @@ private String leftTxt = "100";
     private final int CENTER = 0;
     private final int LEFT = 1;
     private final int RIGHT = 2;
-
     public MergeTextView(Context context) {
         this(context,null);
     }
@@ -136,95 +130,148 @@ private String leftTxt = "100";
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        if(displayUtils==null) displayUtils = new DisplayUtils();
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MergeTextView);
         leftTxt = ta.getString(R.styleable.MergeTextView_leftTxt);
         leftTxtColor = ta.getColor(R.styleable.MergeTextView_leftTxtColor, Color.BLACK);
-        leftTxtSize = ta.getDimensionPixelSize(R.styleable.MergeTextView_leftTxtSize,displayUtils.dip2px(20.0f,context));
-
+        leftTxtSize = ta.getDimensionPixelSize(R.styleable.MergeTextView_leftTxtSize,20);
         rightTxt = ta.getString(R.styleable.MergeTextView_rightTxt);
         rightTxtColor = ta.getColor(R.styleable.MergeTextView_rightTxtColor, Color.RED);
-        rightTxtSize = ta.getDimensionPixelSize(R.styleable.MergeTextView_rightTxtSize,displayUtils.dip2px(8.0f,context));
-
-        space4LAndR = ta.getDimensionPixelOffset(R.styleable.MergeTextView_space4LAndR,displayUtils.dip2px(2.0f,context));
-        gravity = ta.getInt(R.styleable.MergeTextView_gravity,CENTER);
+        rightTxtSize = ta.getDimensionPixelSize(R.styleable.MergeTextView_rightTxtSize,8);
+        space4LAndR = ta.getDimensionPixelOffset(R.styleable.MergeTextView_space4LAndR,0);
+                gravity = ta.getInt(R.styleable.MergeTextView_gravity,CENTER);
         ta.recycle();
     }
-
     private void initPaint() {
         //左边字
         if(leftTxtPaint==null) leftTxtPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            leftTxtPaint.setStyle(Paint.Style.FILL);
-            leftTxtPaint.setTextSize(leftTxtSize);
-            leftTxtPaint.setColor(leftTxtColor);
-            if (leftTxt!=null) {
-                measureLeftText = leftTxtPaint.measureText(leftTxt);
-            }
+        leftTxtPaint.setStyle(Paint.Style.FILL);
+        leftTxtPaint.setTextSize(leftTxtSize);
+        leftTxtPaint.setColor(leftTxtColor);
+        if(leftTxt!=null){
+            measureLeftText = leftTxtPaint.measureText(leftTxt);
 
-
+        }else {
+            measureLeftText = 0;
+        }
         //右边字
         if(rightTxtPaint==null) rightTxtPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            rightTxtPaint.setStyle(Paint.Style.FILL);
-            rightTxtPaint.setTextSize(rightTxtSize);
-            rightTxtPaint.setColor(rightTxtColor);
-        measureRightText = rightTxtPaint.measureText(rightTxt);
-    }
+        rightTxtPaint.setStyle(Paint.Style.FILL);
+        rightTxtPaint.setTextSize(rightTxtSize);
+        rightTxtPaint.setColor(rightTxtColor);
+        if(rightTxt!=null){
+            measureRightText = rightTxtPaint.measureText(rightTxt);
+        }else {
+            measureRightText = 0;
+        }
 
+    }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
         // 获取宽-测量规则的模式和大小
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+
+        widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        widthSize = MeasureSpec.getSize(widthMeasureSpec);
 
         // 获取高-测量规则的模式和大小
-        int heightMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
         measuredWidth = measureLeftText+space4LAndR+measureRightText+getPaddingRight()+getPaddingLeft();
         measuredHeight = leftTxtPaint.getTextSize()+getPaddingTop()+getPaddingBottom();
-
-        // 当布局参数设置为wrap_content时，设置默认值
-        if (getLayoutParams().width == ViewGroup.LayoutParams.WRAP_CONTENT && getLayoutParams().height == ViewGroup.LayoutParams.WRAP_CONTENT) {
-            setMeasuredDimension((int)measuredWidth,(int)measuredHeight);
-            // 宽 / 高任意一个布局参数为= wrap_content时，都设置默认值
-        } else if (getLayoutParams().width == ViewGroup.LayoutParams.WRAP_CONTENT) {
-            setMeasuredDimension((int)measuredWidth, heightSize);
-            measuredHeight = getMeasuredHeight();
-        } else if (getLayoutParams().height == ViewGroup.LayoutParams.WRAP_CONTENT) {
-            setMeasuredDimension(widthSize, (int)measuredHeight);
-            measuredWidth = getMeasuredWidth();
-        }else {
-            measuredHeight = getMeasuredHeight();
-            measuredWidth = getMeasuredWidth();
+//        setMeasuredDimension((int)measuredWidth, (int)measuredHeight);
+        // 当布局参数设置为wrap_content时//，设置默认值
+        switch (widthMode) {
+            case MeasureSpec.UNSPECIFIED:
+                widthSize=(int)measuredWidth ;
+                break;
+            case MeasureSpec.AT_MOST:
+                widthSize=(int)measuredWidth ;
+                break;
+            case MeasureSpec.EXACTLY:
+                break;
         }
-//        heightWithPadding = measuredHeight - getPaddingTop() - getPaddingBottom();
-//        widthWithPadding = measuredWidth - getPaddingLeft() - getPaddingRight();
+        switch (heightMode) {
+            case MeasureSpec.UNSPECIFIED:
+                heightSize=(int)measuredHeight;
+                break;
+            case MeasureSpec.AT_MOST:
+                heightSize=(int)measuredHeight;
+                break;
+            case MeasureSpec.EXACTLY:
+                break;
+        }
+        setMeasuredDimension((int)widthSize, (int)heightSize);
         if(gravity==LEFT){
             leftStartX = getPaddingLeft();
-            leftStartY = measuredHeight - getPaddingBottom()-leftTxtPaint.descent()-displayUtils.dip2px(2,getContext());
+            leftStartY = heightSize - getPaddingBottom()-leftTxtPaint.descent()-2;
             rightStartX = leftStartX+measureLeftText+space4LAndR;
             rightStartY = leftStartY;
         }else if(gravity==CENTER){
-            leftStartX = measuredWidth/2-(measureLeftText+space4LAndR+measureRightText)/2;
-            leftStartY = measuredHeight/2+leftTxtPaint.getTextSize()/2-displayUtils.dip2px(2,getContext());
-//                    + Math.abs(leftTxtPaint.ascent()-leftTxtPaint.descent())/2;
+            leftStartX = widthSize/2-(measureLeftText+space4LAndR+measureRightText)/2;
+            leftStartY = heightSize/2+leftTxtPaint.getTextSize()/2-2;
+
             rightStartX = leftStartX+measureLeftText+space4LAndR;
             rightStartY = leftStartY;
         }else if(gravity==RIGHT){
-            leftStartX = measuredWidth -getPaddingRight() - measureLeftText - measureRightText - space4LAndR;
-            leftStartY = measuredHeight-getPaddingBottom() - leftTxtPaint.descent()-displayUtils.dip2px(2,getContext());
+            leftStartX = widthSize -getPaddingRight() - measureLeftText - measureRightText - space4LAndR;
+            leftStartY = heightSize-getPaddingBottom() - leftTxtPaint.descent()-2;
             rightStartX = leftStartX + measureLeftText + space4LAndR;
             rightStartY = leftStartY;
         }
     }
-
+private int widthSize,heightSize,widthMode,heightMode;
+    private void getChangeSize() {
+        measuredWidth = measureLeftText+space4LAndR+measureRightText+getPaddingRight()+getPaddingLeft();
+        measuredHeight = leftTxtPaint.getTextSize()+getPaddingTop()+getPaddingBottom();
+        switch (widthMode) {
+            case MeasureSpec.UNSPECIFIED:
+                widthSize=(int)measuredWidth ;
+                break;
+            case MeasureSpec.AT_MOST:
+                widthSize=(int)measuredWidth ;
+                break;
+            case MeasureSpec.EXACTLY:
+                break;
+        }
+        switch (heightMode) {
+            case MeasureSpec.UNSPECIFIED:
+                heightSize=(int)measuredHeight;
+                break;
+            case MeasureSpec.AT_MOST:
+                heightSize=(int)measuredHeight;
+                break;
+            case MeasureSpec.EXACTLY:
+                break;
+        }
+    //    setMeasuredDimension((int)measuredWidth, (int)measuredHeight);
+        if(gravity==LEFT){
+            leftStartX = getPaddingLeft();
+            leftStartY = heightSize - getPaddingBottom()-leftTxtPaint.descent()-2;
+            rightStartX = leftStartX+measureLeftText+space4LAndR;
+            rightStartY = leftStartY;
+        }else if(gravity==CENTER){
+            leftStartX = widthSize/2-(measuredWidth)/2;
+            leftStartY = heightSize/2+3*leftTxtPaint.getTextSize()/8-2;
+            rightStartX = leftStartX+measureLeftText+space4LAndR;
+            rightStartY = leftStartY;
+        }else if(gravity==RIGHT){
+            leftStartX = widthSize -getPaddingRight() - measureLeftText - measureRightText - space4LAndR;
+            leftStartY = heightSize-getPaddingBottom() - leftTxtPaint.descent()-2;
+            rightStartX = leftStartX + measureLeftText + space4LAndR;
+            rightStartY = leftStartY;
+        }
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        getChangeSize();
         canvas.drawText(leftTxt,leftStartX,leftStartY,leftTxtPaint);
         canvas.drawText(rightTxt,rightStartX,rightStartY,rightTxtPaint);
         invalidate();
+    }
+    public void commit(){
+        initPaint();
+
     }
 }

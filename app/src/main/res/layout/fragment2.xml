@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/white">
+
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/kuang">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="服务"
             android:gravity="center"
+            android:textSize="18dp"
             android:textColor="@color/white"
-            android:textSize="18dp"/>
+            android:text="服务"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:background="@drawable/kuang">
+
         <ImageView
-            android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_margin="8dp"/>
+
         <GridView
             android:id="@+id/fuwu_gridview"
             android:layout_width="match_parent"

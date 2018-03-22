@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/drivercountlinearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/blackgray"
+        tools:context="com.comsoftstar.autobicycle.View.Main.Activity.DrivingCountActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/kuang"
+            >
+
+            <include layout="@layout/driving_count_1"/>
+
+            <lecho.lib.hellocharts.view.ColumnChartView
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <lecho.lib.hellocharts.view.ColumnChartView
+                android:id="@+id/barchart2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <include
+                layout="@layout/driving_count_3"/>
+
+            <info.hoang8f.android.segmented.SegmentedGroup
+                android:id="@+id/segmented2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                app:sc_border_width="1dp"
+                app:sc_corner_radius="10dp"
+                app:sc_tint_color="#FFEB3B"
+                app:sc_unchecked_tint_color="#ff0000"
+                app:sc_checked_text_color="#7C4DFF">
+
+                <RadioButton
+                    style="@style/RadioButton"
+                    android:id="@+id/rbutton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="天"/>
+
+                <RadioButton
+                    style="@style/RadioButton"
+                    android:id="@+id/rbutton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="周"/>
+
+                <RadioButton
+                    style="@style/RadioButton"
+                    android:id="@+id/rbutton3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="月"/>
+            </info.hoang8f.android.segmented.SegmentedGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
