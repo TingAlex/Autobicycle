@@ -9,7 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
-import com.comsoftstar.autobicycle.Control.SjieInputEditText;
+import com.comsoftstar.autobicycle.Control.SuperInputEditText;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
@@ -19,7 +19,7 @@ import com.comsoftstar.autobicycle.databinding.ActivityLogin2Binding;
 
 import com.wang.avi.AVLoadingIndicatorView;
 public class LoginActivity extends BaseActivity<ActivityLogin2Binding> implements View.OnClickListener,Login_inteface{
-public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
+public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private TextView register;
     private Button login;
     private LoginPresenter loginPresenter;
@@ -39,8 +39,8 @@ public SjieInputEditText textInputEditTextaccount,textInputEditTextpassword;
         initUI();
     }
     private void initUI(){
-        textInputEditTextaccount=(SjieInputEditText)findViewById(R.id.login_account);
-        textInputEditTextpassword=(SjieInputEditText)findViewById(R.id.login_password);
+        textInputEditTextaccount=(SuperInputEditText)findViewById(R.id.login_account);
+        textInputEditTextpassword=(SuperInputEditText)findViewById(R.id.login_password);
         loadingIndicatorView=(AVLoadingIndicatorView)findViewById(R.id.login_load);
         register=(TextView)findViewById(R.id.register);
         register.setOnClickListener(this);

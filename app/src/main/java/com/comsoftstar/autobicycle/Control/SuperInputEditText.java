@@ -16,38 +16,38 @@ import com.comsoftstar.autobicycle.R;
  * Created by Administrator on 2017/10/16.
  */
 
-public class SjieInputEditText extends AppCompatEditText {
+public class SuperInputEditText extends AppCompatEditText {
     private int startClick,startunClick,endDelete;
     private Drawable startClickIcon,startunClickIcon,endDeleteIcon;
     int startwidth,starthight,deletewidth,deletehight;
     boolean isclick;
     private GestureDetector gestureDetector;
-    public SjieInputEditText(Context context) {
+    public SuperInputEditText(Context context) {
         super(context);
     }
 
-    public SjieInputEditText(Context context, AttributeSet attrs) {
+    public SuperInputEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         gestureDetector=new GestureDetector(context,new EditTextListen());
         init(context,attrs);
     }
 
-    public SjieInputEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SuperInputEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context,attrs);
     }
     private void init(Context context,AttributeSet attrs){
-        TypedArray typedArray=context.obtainStyledAttributes(attrs, R.styleable.SjieInputEditText);
-        startClick=typedArray.getResourceId(R.styleable.SjieInputEditText_startclickicon, R.drawable.ic_person_blue_24dp);
+        TypedArray typedArray=context.obtainStyledAttributes(attrs, R.styleable.SuperInputEditText);
+        startClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startclickicon, R.drawable.ic_person_blue_24dp);
         startClickIcon=getResources().getDrawable(startClick);
-        startunClick=typedArray.getResourceId(R.styleable.SjieInputEditText_startunclickicon, R.drawable.ic_person_gray_24dp);
+        startunClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startunclickicon, R.drawable.ic_person_gray_24dp);
         startunClickIcon=getResources().getDrawable(startunClick);
-        endDelete=typedArray.getResourceId(R.styleable.SjieInputEditText_startclickicon, R.drawable.ic_clear_black_24dp);
+        endDelete=typedArray.getResourceId(R.styleable.SuperInputEditText_startclickicon, R.drawable.ic_clear_black_24dp);
         endDeleteIcon=getResources().getDrawable(endDelete);
-        startwidth=typedArray.getInteger(R.styleable.SjieInputEditText_startwidth,80);
-        starthight=typedArray.getInteger(R.styleable.SjieInputEditText_starthight,80);
-        deletewidth=typedArray.getInteger(R.styleable.SjieInputEditText_endwidth,80);
-        deletehight=typedArray.getInteger(R.styleable.SjieInputEditText_endhight,80);
+        startwidth=typedArray.getInteger(R.styleable.SuperInputEditText_startwidth,80);
+        starthight=typedArray.getInteger(R.styleable.SuperInputEditText_starthight,80);
+        deletewidth=typedArray.getInteger(R.styleable.SuperInputEditText_endwidth,80);
+        deletehight=typedArray.getInteger(R.styleable.SuperInputEditText_endhight,80);
 
         startClickIcon.setBounds(0,0,startwidth,starthight);
         startunClickIcon.setBounds(0,0,startwidth,starthight);

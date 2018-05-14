@@ -33,7 +33,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         baseContext= App.context;
         binding = DataBindingUtil.inflate(inflater, setLayoutId(), container, false);
         initView(binding);
-        Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
         return binding.getRoot();
     }
     public abstract int setLayoutId();

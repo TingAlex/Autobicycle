@@ -21,7 +21,7 @@
                 android:hint="请输入您的手机号码"
                 >
 
-                <com.comsoftstar.autobicycle.Control.SjieInputEditText
+                <com.comsoftstar.autobicycle.Control.SuperInputEditText
                     android:id="@+id/login_account"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_height="50dp"
                 android:hint="请输入6~20位密码">
 
-                <com.comsoftstar.autobicycle.Control.SjieInputEditText
+                <com.comsoftstar.autobicycle.Control.SuperInputEditText
                     android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

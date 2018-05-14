@@ -35,7 +35,7 @@
         <attr name="awesome_text" format="string"/>
     </declare-styleable>
 
-    <declare-styleable name="SjieInputEditText">
+    <declare-styleable name="SuperInputEditText">
         <attr name="startclickicon" format="reference"/>
         <attr name="startunclickicon" format="reference"/>
         <attr name="enddeleteicon" format="reference"/>
