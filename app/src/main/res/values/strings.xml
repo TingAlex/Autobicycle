@@ -10,4 +10,8 @@
     <string name="openlock">解锁</string>
     <string name="closelock">锁车</string>
 
+    <string name="DrivingCount">骑行统计</string>
+    <string name="About">关于</string>
+    <string name="DrivingHistory">行车历史</string>
+    <string name="Setting">设置</string>
 </resources>
