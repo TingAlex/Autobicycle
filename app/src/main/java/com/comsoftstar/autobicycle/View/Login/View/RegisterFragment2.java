@@ -82,6 +82,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         mbinding.btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toast("已发送");
             }
         });
     }

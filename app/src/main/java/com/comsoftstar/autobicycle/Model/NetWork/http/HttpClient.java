@@ -93,7 +93,7 @@ public class HttpClient<T> {
                     .build();
 
         Retrofit sRetrofit = new Retrofit.Builder()
-                .baseUrl("http://58.214.250.250:5051/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(StringConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())  //json自动转换器
