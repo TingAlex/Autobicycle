@@ -19,6 +19,10 @@ public interface HttpService {
     @GET("AppHandler.ashx")
     Call<List<Fragment1_Item>>result(@Query("opType") String opType, @Query("loginName")String loginName, @Query("password")String password);
 
+    //短信接口
+
+
+    //region 模版
 //    @GET("/group/{id}/users")
 //    List<User> groupList(@Path("id") int groupId);
 //
@@ -50,4 +54,5 @@ public interface HttpService {
 //    @Headers({"Content-type:application/json,"Accept: application/json"})
 //     @POST("/api/v1/trade/HasAccount.json")
 //     Call<BaseResponse> createCommit(@Body RequestBody route);
+    //endregion
 }

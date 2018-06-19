@@ -42,6 +42,7 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
         }
         initUI();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -51,6 +52,7 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void initUI(){
         listt.clear();
         recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
@@ -68,7 +70,7 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
             }
         }));
         for (int i = 0; i < 10; i++) {
-            historyitem=new Historyitem("2017-09-30 星期六","17:08","江苏无锡宇野网络大厦B座1703","江苏无锡宇野网络大厦B座1704","5km");
+            historyitem=new Historyitem("2017-09-30 星期六","17:08","江苏无锡宇野网络大厦B座1703","无锡惠山万达北广场","5km");
             listt.add(historyitem);
         }
 

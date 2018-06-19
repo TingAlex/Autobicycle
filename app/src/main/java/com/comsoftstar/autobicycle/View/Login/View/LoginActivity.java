@@ -1,6 +1,9 @@
 package com.comsoftstar.autobicycle.View.Login.View;
 
 import android.content.Intent;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
 import com.comsoftstar.autobicycle.Control.SuperInputEditText;
+import com.comsoftstar.autobicycle.Model.UpData.UpdataDownLoad;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
@@ -54,8 +58,25 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
             }
         });
         loginPresenter.readtoPreferences();
+        //android8.0更新适配
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (getPackageManager().canRequestPackageInstalls()) {
+                //TODO：检查更新待处理
+                //UpdataDownLoad.getInstance(this).dowmload("","");
+            } else {
+                // 申请权限。
+                startInstallPermissionSettingActivity();
+            }
+        }else{
+           // UpdataDownLoad.getInstance(this).dowmload("","");
+        }
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void startInstallPermissionSettingActivity() {
+        //注意这个是8.0新API
+        Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+        startActivityForResult(intent, 10086);
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -102,6 +123,13 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
         textInputEditTextpassword.setText(password);
         ischeckbox.setChecked(ischeck);
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10086) {
+            //TODO:检查更新待处理
+            //UpdataDownLoad.getInstance(this).dowmload("","");
+        }
+    }
 
 }

@@ -14,11 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Base.BaseFragment;
+import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.databinding.FragmentRegisterBinding;
 
 import java.util.List;
+import java.util.Timer;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -32,6 +34,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
     private TextView nextstep;
     private CheckBox checkbox;
     private ImageView registerback;
+    private FragmentRegisterBinding mbinding;
 
     @Override
     public int setLayoutId() {
@@ -40,8 +43,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
 
     @Override
     public void initView(FragmentRegisterBinding binding) {
-        Log.e(TAG, "initView: 初始化");
-        Toast.makeText(getContext(), "12222", Toast.LENGTH_SHORT).show();
+        mbinding=binding;
         phone=binding.loginPhone;
         number=binding.loginNumber;
         name=binding.loginName;
@@ -63,7 +65,25 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
                 }
             }
         });
-
+//        //短信发送按钮
+//        mbinding.btnSend.setTimes(3000);
+//        mbinding.btnSend.setCountTimeMsgListener(new TimerTextView.CountTimeMsgListener() {
+//            @Override
+//            public void getCountDownTime(String time) {
+//                mbinding.btnSend.setText(String.format("请在%s后重试", time));
+//            }
+//
+//            @Override
+//            public void finish() {
+//                mbinding.btnSend.setClickable(true);
+//                mbinding.btnSend.setText("发送");
+//            }
+//        });
+        mbinding.btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override
@@ -77,19 +97,20 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.scan1:
-                Log.e(TAG, "onClick: 123");
+                Logs.d(TAG, "onClick: 123");
                 Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
                 Intent intent2=new Intent(getContext(), ScanActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.next_register:
-                Log.e(TAG, "onClick: next");
+                Logs.d(TAG, "onClick: next");
              //   tonextstep();
                 break;
             case R.id.back_register:
-                Log.e(TAG, "onClick: back");
+                Logs.d(TAG, "onClick: back");
                 getFragmentManager().popBackStack();
                 break;
+
 
         }
     }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.R;
+import com.comsoftstar.autobicycle.Util.Logs;
 
 import java.nio.ByteBuffer;
 
@@ -70,7 +71,7 @@ public class ScanActivity extends AppCompatActivity  implements QRCodeView.Deleg
 
     @Override
     public void onScanQRCodeOpenCameraError() {
-        Log.e(TAG, "打开相机出错");
+        Logs.d(TAG, "打开相机出错");
     }
 
     public void onClick(View v) {

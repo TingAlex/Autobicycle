@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.comsoftstar.autobicycle">
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -46,6 +49,23 @@
         </activity>
         <activity android:name=".View.Login.View.ScanActivity">
         </activity>
+        //用于版本更新控制
+        <provider
+            tools:replace="android:authorities"
+            android:name="android.support.v4.content.FileProvider"
+
+            android:authorities="com.comsoftstar.autobicycle.fileprovider"
+
+            android:grantUriPermissions="true"
+
+            android:exported="false">
+
+            <meta-data
+                tools:replace="android:resource"
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+
+        </provider>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.comsoftstar.autobicycle.App;
 import android.app.Application;
 import android.content.Context;
 
+import com.comsoftstar.autobicycle.Util.Logs;
 
 
 /**
@@ -16,6 +17,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Logs.init(true);
         context=getApplicationContext();
     }
 }

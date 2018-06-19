@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.comsoftstar.autobicycle.Util.HttpLogger;
+import com.comsoftstar.autobicycle.Util.Logs;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -71,7 +73,7 @@ public class HttpClient<T> {
             @Override
             public void onFailure(Call<T> call, Throwable t) {
                 responseHandler.onFailure(-1, new Error());
-                Log.e("1111111111111111111", "onFailure: "+t.getMessage());
+                Logs.d("1111111111111111111", "onFailure: "+t.getMessage());
                 Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
                 //MessagePop.ToastMessage(mContext, "网络异常");
             }
@@ -79,13 +81,12 @@ public class HttpClient<T> {
     }
 
     public HttpService service(String baseUrl){
-
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLogger());
+        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client ;
         client = new OkHttpClient.Builder()
                    // .addInterceptor(REWRITE_REQUEST_INTERCEPTOR)   //添加拦截器
-                    .addInterceptor(logging)
+                    .addInterceptor(logInterceptor)
                     .connectTimeout(SET_TIME, TimeUnit.SECONDS)    //连接超时设置
                     .writeTimeout(SET_TIME, TimeUnit.SECONDS)      //读写超时设置
                     .readTimeout(SET_TIME, TimeUnit.SECONDS)

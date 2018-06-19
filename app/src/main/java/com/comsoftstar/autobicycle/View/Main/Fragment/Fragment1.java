@@ -10,13 +10,13 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.Error;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
 import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
 import com.comsoftstar.autobicycle.R;
+import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.View.Main.Activity.DrivingCountActivity;
 import com.comsoftstar.autobicycle.View.Main.Activity.DrivingHistoryActivity;
 import com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item;
 import com.comsoftstar.autobicycle.View.Main.Activity.SettingActivity;
 import com.comsoftstar.autobicycle.databinding.Fragment1Binding;
 
-import cn.com.heaton.blelib.BleManager;
 import retrofit2.Call;
 
 /**
@@ -25,7 +25,6 @@ import retrofit2.Call;
 
 public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.OnClickListener{
     private static final String TAG = "bug";
-    private BleManager mManager;
     private Fragment1Binding mBinding;
     private Fragment1_Item config;
 
@@ -52,17 +51,17 @@ public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.On
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.main_setting:
-                Log.e(TAG, "onClick: 123");
+                Logs.d(TAG, "onClick: 123");
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
                 break;
             case R.id.drivitinghistory:
-                Log.e(TAG, "onClick: drivitinghistory");
+                Logs.d(TAG, "onClick: drivitinghistory");
                 Intent intent2 = new Intent(getActivity(), DrivingHistoryActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.drivitingconut:
-                Log.e(TAG, "onClick: drivitingconut" );
+                Logs.d(TAG, "onClick: drivitingconut" );
                 Intent intent3 = new Intent(getActivity(), DrivingCountActivity.class);
                 startActivity(intent3);
                 break;
