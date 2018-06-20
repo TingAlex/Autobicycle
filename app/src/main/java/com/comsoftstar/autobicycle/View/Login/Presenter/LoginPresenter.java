@@ -30,15 +30,13 @@ public class LoginPresenter {
         LoginModule.getInstance().login(loginName, Type, loginCode, new LoginModule.Login<List<LoginResult>>() {
             @Override
             public void result(List<LoginResult> s) {
-
                     //Todo:数据后期处理
                     login_inteface.loginsuccess();
-
             }
 
             @Override
             public void faile(MyError e) {
-                login_inteface.loginfaile(e);
+                login_inteface.loginfaile(e.getMessage());
             }
         });
     }

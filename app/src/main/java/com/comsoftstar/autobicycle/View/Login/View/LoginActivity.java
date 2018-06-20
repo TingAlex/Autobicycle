@@ -31,6 +31,8 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private CheckBox ischeckbox;            //记住密码
     private boolean ischeck;                //是否记住密码
     private AVLoadingIndicatorView loadingIndicatorView;  //加载动画
+    private ActivityLogin2Binding mbinding;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_login2;
@@ -38,6 +40,7 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     @Override
     public void initView(ActivityLogin2Binding binding) {
         loginPresenter=new LoginPresenter(this);
+        mbinding=binding;
         // 初始化
         initUI();
     }
@@ -50,10 +53,25 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
         login=(Button)findViewById(R.id.login);
         login.setOnClickListener(this);
         ischeckbox=(CheckBox)findViewById(R.id.login_ischeck);
+        //记住密码单选
         ischeckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     ischeck=b;
+            }
+        });
+        //验证码登录单选
+        mbinding.loginIsvercode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    mbinding.layoutVercode.setVisibility(View.VISIBLE);
+                    mbinding.layoutPassword.setVisibility(View.GONE);
+                }else{
+                    mbinding.layoutPassword.setVisibility(View.VISIBLE);
+                    mbinding.layoutVercode.setVisibility(View.GONE);
+                }
+
             }
         });
         loginPresenter.readtoPreferences();
@@ -112,6 +130,7 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     }
 
     //region Login_inteface接口实现
+
     //登录成功
     @Override
     public void loginsuccess(){
@@ -131,9 +150,9 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     }
     //登录失败
     @Override
-    public void loginfaile(MyError result) {
+    public void loginfaile(String result) {
         loadingIndicatorView.setVisibility(View.GONE);
-        toast(result.getMessage());
+        toast(result);
     }
     //endregion
 

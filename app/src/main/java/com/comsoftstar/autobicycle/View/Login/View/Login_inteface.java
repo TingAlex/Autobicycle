@@ -9,5 +9,5 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 public interface Login_inteface {
     void loginsuccess();
     void autoaccount(String account,String password,boolean ischeck);
-    void loginfaile(MyError result);
+    void loginfaile(String result);
 }

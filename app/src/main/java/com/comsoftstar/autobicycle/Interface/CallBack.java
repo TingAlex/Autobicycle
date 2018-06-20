@@ -1,5 +1,7 @@
 package com.comsoftstar.autobicycle.Interface;
 
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
+
 /**
  * Created by SJ on 2018/6/20.
  */

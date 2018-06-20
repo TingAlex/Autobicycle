@@ -77,19 +77,21 @@ public class NetUtil {
     }
 
     //营业网点
-    public  void SalePoint(String getSalePoint, final CallBack<SalePoint> callBack){
+    public  void SalePoint( final CallBack<SalePoint> callBack){
         String opType="getSalePoint";
         Call<SalePoint> call=httpClient.service(API.XYService).SalePoint(opType);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
                 Logs.d(tag,((SalePoint)o).getText());
+                callBack.success((SalePoint)o);
                 // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure( MyError e) {
                 Logs.e(tag,e.getMessage());
+                callBack.faile(e.getMessage());
             }
 
         });
