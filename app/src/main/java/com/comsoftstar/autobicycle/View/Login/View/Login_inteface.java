@@ -7,4 +7,5 @@ package com.comsoftstar.autobicycle.View.Login.View;
 public interface Login_inteface {
     void loginsuccess();
     void autoaccount(String account,String password,boolean ischeck);
+    void loginfaile(String result);
 }

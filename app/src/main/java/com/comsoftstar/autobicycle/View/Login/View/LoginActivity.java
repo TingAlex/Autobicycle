@@ -30,12 +30,10 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private CheckBox ischeckbox;            //记住密码
     private boolean ischeck;                //是否记住密码
     private AVLoadingIndicatorView loadingIndicatorView;  //加载动画
-
     @Override
     public int setLayoutId() {
         return R.layout.activity_login2;
     }
-
     @Override
     public void initView(ActivityLogin2Binding binding) {
         loginPresenter=new LoginPresenter(this);
@@ -83,9 +81,8 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
             case R.id.login:
                 if (login_check()) {
                     loadingIndicatorView.setVisibility(View.VISIBLE);
-                    loginPresenter.login();
+                    loginPresenter.login(textInputEditTextaccount.getText().toString(),"密码登录",textInputEditTextpassword.getText().toString());
                 }
-
             break;
             case R.id.register:
                 getSupportFragmentManager().beginTransaction()
@@ -96,6 +93,8 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
                 break;
         }
     }
+
+    //登录检查
     private boolean login_check(){
         if (Tools.checknetwork(this)) {
             if(TextUtils.isEmpty(textInputEditTextaccount.getText())){
@@ -110,19 +109,33 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
         }
         return false;
     }
+
+    //region Login_inteface接口实现
+    //登录成功
+    @Override
     public void loginsuccess(){
+        //账号密码记住
         loginPresenter.writetoPreferences(ischeck,textInputEditTextaccount.getText().toString(),textInputEditTextpassword.getText().toString());
         loadingIndicatorView.setVisibility(View.GONE);
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
-
         finish();
     }
+    //自动记住账号密码
+    @Override
     public void autoaccount(String account,String password,boolean ischeck){
         textInputEditTextaccount.setText(account);
         textInputEditTextpassword.setText(password);
         ischeckbox.setChecked(ischeck);
     }
+    //登录失败
+    @Override
+    public void loginfaile(String result) {
+        loadingIndicatorView.setVisibility(View.GONE);
+        toast(result);
+    }
+    //endregion
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

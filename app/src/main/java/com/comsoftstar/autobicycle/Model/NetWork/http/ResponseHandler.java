@@ -8,9 +8,10 @@ package com.comsoftstar.autobicycle.Model.NetWork.http;
 public interface ResponseHandler<T> {
 
     //成功回调方法
-    public void onSuccess(T t);
+     void onSuccess(T t);
 
     //失败回调方法
-    public void onFailure(int code, Error e);
+     void onFailure(int code, Error e);
+     void onFailure(int code, String e);
 
 }

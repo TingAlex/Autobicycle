@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.comsoftstar.autobicycle.Model.NetWork.NetGet.HttpService;
 import com.comsoftstar.autobicycle.Util.HttpLogger;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.google.gson.Gson;
@@ -31,7 +32,7 @@ public class HttpClient<T> {
 
     private static Context mContext;
     public final int SET_TIME = 60;
-
+    private String tag="HttpClient";
     public HttpClient(Context context) {
         mContext = context;
     }
@@ -42,7 +43,6 @@ public class HttpClient<T> {
      */
     public void request(Call<T> call, final ResponseHandler responseHandler) {
         call.enqueue(new Callback<T>() {
-
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
                 if (response.isSuccessful()) {
@@ -59,7 +59,8 @@ public class HttpClient<T> {
                         try {
                             error = new Gson().fromJson(errorString, Error.class);
                         } catch (JsonSyntaxException e) {
-                            Log.d("", "出现异常，无法将errorString转换成Error对象");
+                            Logs.d(tag, "出现异常，无法将errorString转换成Error对象");
+                            responseHandler.onFailure(response.code(), errorString);
                         }
                     }
                     if (error != null) {
@@ -69,11 +70,10 @@ public class HttpClient<T> {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<T> call, Throwable t) {
                 responseHandler.onFailure(-1, new Error());
-                Logs.d("1111111111111111111", "onFailure: "+t.getMessage());
+               // Logs.d(tag, "onFailure: "+t.ge());
                 Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
                 //MessagePop.ToastMessage(mContext, "网络异常");
             }

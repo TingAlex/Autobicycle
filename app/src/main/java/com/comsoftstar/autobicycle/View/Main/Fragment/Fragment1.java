@@ -67,22 +67,6 @@ public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.On
                 break;
         }
     }
-    private void forintent() {
-        HttpClient client = new HttpClient(getContext());
-        Call call = client.service("http://58.214.250.250:5051/").result("unifiedLogin", "admin", "123456");
-        client.request(call, new ResponseHandler() {
-            @Override
-            public void onSuccess(Object o) {
-              //  Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
-               // List<Fragment1_Item> fragment1Item = (List<Fragment1_Item>) o;
-               // Toast.makeText(getContext(), fragment1Item.get(0).getSystemName(), Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onFailure(int code, Error e) {
-                // Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,12 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Base.BaseFragment;
+import com.comsoftstar.autobicycle.Interface.CallBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.NetWork.NetGet.NetUtil;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.databinding.FragmentRegisterBinding;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -51,9 +56,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         password=binding.loginPassword0;
         password2=binding.loginPassword1;
         nextstep=binding.nextRegister;
-//        nextstep.setOnClickListener(this);
         registerback=binding.backRegister;
-//        registerback.setOnClickListener(this);
         checkbox=binding.enter;
         binding.setOnclicklisten(this);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -65,26 +68,26 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
                 }
             }
         });
-//        //短信发送按钮
-//        mbinding.btnSend.setTimes(3000);
-//        mbinding.btnSend.setCountTimeMsgListener(new TimerTextView.CountTimeMsgListener() {
-//            @Override
-//            public void getCountDownTime(String time) {
-//                mbinding.btnSend.setText(String.format("请在%s后重试", time));
-//            }
-//
-//            @Override
-//            public void finish() {
-//                mbinding.btnSend.setClickable(true);
-//                mbinding.btnSend.setText("发送");
-//            }
-//        });
+
+        //验证码发送
         mbinding.btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("已发送");
+                NetUtil.getInstance().VeriCode("18068261236", new CallBack<R_Result>() {
+                    @Override
+                    public void success(R_Result result) {
+                        Toast.makeText(getContext(), result.getResult(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void faile(String s) {
+
+                    }
+                });
+
             }
         });
+
     }
 
     @Override
@@ -104,6 +107,39 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
                 startActivity(intent2);
                 break;
             case R.id.next_register:
+
+                Map<String,String> paramter=new ArrayMap<>();
+                paramter.put("opType","Register");
+                paramter.put("loginName","18068261236");
+                paramter.put("Password","123456");
+                //验证码
+                paramter.put("Vericode",number.getText().toString());
+                //采集模块ID
+                paramter.put("ModuleID","31ffdc05335436331560045700000000");
+                //电池组ID
+                paramter.put("PackID","1");
+                //营业点编号
+                paramter.put("Pointno","1");
+                //电池数
+                paramter.put("CellNum","1");
+                //额定电压
+                paramter.put("StandardVol","1");
+                //额定电流
+                paramter.put("StandardCur","1");
+                //电容
+                paramter.put("Capacity","1");
+
+                NetUtil.getInstance().Register(paramter, new CallBack<R_Result>() {
+                    @Override
+                    public void success(R_Result result) {
+
+                    }
+
+                    @Override
+                    public void faile(String s) {
+
+                    }
+                });
                 Logs.d(TAG, "onClick: next");
              //   tonextstep();
                 break;

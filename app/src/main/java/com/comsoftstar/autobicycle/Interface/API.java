@@ -6,4 +6,7 @@ package com.comsoftstar.autobicycle.Interface;
 
 public interface API {
     String BaseUrl="http://lvmakeji.com/";
+
+    String XYService=BaseUrl+"XYService/";
+
 }
