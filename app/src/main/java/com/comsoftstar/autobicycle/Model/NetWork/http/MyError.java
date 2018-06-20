@@ -3,7 +3,7 @@ package com.comsoftstar.autobicycle.Model.NetWork.http;
 /**
  * Created by apple on 16/8/20.
  */
-public class Error {
+public class MyError {
 
     /**
      * code : un_caught_error
@@ -12,47 +12,54 @@ public class Error {
      * param :
      */
 
-    private String code;
+    private int code;
     private String message;
     private String param;
     private Object data;
 
-    public String getCode() {
-        if(code==null)
-            return "";
+    public int getCode() {
         return code;
     }
-    public Error()
+    public MyError()
     {
-        code = "404";
-        message ="网络异常";
+        code =400;
+        message ="未知异常";
+    }
+    public MyError(String message){
+        code =400;
+        this.message=message;
     }
 
-    public void setCode(String code) {
+    public MyError setCode(int code) {
+
         this.code = code;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public MyError setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public String getParam() {
         return param;
     }
 
-    public void setParam(String param) {
+    public MyError setParam(String param) {
         this.param = param;
+        return this;
     }
 
     public Object getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public MyError setData(Object data) {
         this.data = data;
+        return this;
     }
 }

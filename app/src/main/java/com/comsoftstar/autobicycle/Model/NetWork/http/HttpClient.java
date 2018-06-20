@@ -3,9 +3,8 @@ package com.comsoftstar.autobicycle.Model.NetWork.http;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.util.Log;
-import android.widget.Toast;
 
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
 import com.comsoftstar.autobicycle.Model.NetWork.NetGet.HttpService;
 import com.comsoftstar.autobicycle.Util.HttpLogger;
 import com.comsoftstar.autobicycle.Util.Logs;
@@ -23,7 +22,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by apple on 16/8/20.
@@ -48,7 +46,7 @@ public class HttpClient<T> {
                 if (response.isSuccessful()) {
                     responseHandler.onSuccess(response.body());
                 } else {
-                    Error error = null;
+                    MyError error = null;
                     String errorString = null;
                     try {
                         errorString = response.errorBody().string();
@@ -57,25 +55,28 @@ public class HttpClient<T> {
                     }
                     if(errorString != null) {
                         try {
-                            error = new Gson().fromJson(errorString, Error.class);
+                            error = new Gson().fromJson(errorString, MyError.class);
                         } catch (JsonSyntaxException e) {
                             Logs.d(tag, "出现异常，无法将errorString转换成Error对象");
-                            responseHandler.onFailure(response.code(), errorString);
+                            responseHandler.onFailure(new MyError(errorString));
                         }
                     }
                     if (error != null) {
-                            responseHandler.onFailure(response.code(), error);
+                            responseHandler.onFailure(error.setCode(response.code()));
                     } else {
-                            responseHandler.onFailure(response.code(), new Error());
+                            responseHandler.onFailure(new MyError().setCode(response.code()));
                     }
                 }
             }
             @Override
             public void onFailure(Call<T> call, Throwable t) {
-                responseHandler.onFailure(-1, new Error());
-               // Logs.d(tag, "onFailure: "+t.ge());
-                Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
-                //MessagePop.ToastMessage(mContext, "网络异常");
+                if (t instanceof R_Result){
+                    MyError error=new MyError().setCode(0).setMessage(((R_Result) t).getResult());
+                    responseHandler.onFailure(error);
+                }else {
+                    responseHandler.onFailure( new MyError());
+                }
+
             }
         });
     }
@@ -96,7 +97,7 @@ public class HttpClient<T> {
                 .baseUrl(baseUrl)
                 .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(StringConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())  //json自动转换器
+                .addConverterFactory(MyGsonConverterFactory.create())  //json自动转换器
                // .client(client)
                 .build();
         return sRetrofit.create(HttpService.class);

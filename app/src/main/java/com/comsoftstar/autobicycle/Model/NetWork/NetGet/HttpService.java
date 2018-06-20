@@ -37,7 +37,7 @@ public interface HttpService {
 
     //region 登录模块
     @GET("AppHandler.ashx")//opType=login
-    Call<String>Login(@Query("opType") String opType, @Query("loginName")String loginName, @Query("loginType")String loginType, @Query("loginCode")String loginCode);
+    Call<List<LoginResult>>Login(@Query("opType") String opType, @Query("loginName")String loginName, @Query("loginType")String loginType, @Query("loginCode")String loginCode);
     //endregion
 
 

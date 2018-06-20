@@ -5,6 +5,7 @@ package com.comsoftstar.autobicycle.Model.Bean.CallBack.Login;
  */
 
 public class LoginResult {
+
     /**
      * Guid : EABFB06A-8125-40E5-BAFA-F0AE852CF904
      * LoginName : 18068261236

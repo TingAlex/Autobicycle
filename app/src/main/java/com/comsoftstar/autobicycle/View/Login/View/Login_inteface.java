@@ -1,5 +1,7 @@
 package com.comsoftstar.autobicycle.View.Login.View;
 
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
+
 /**
  * Created by Administrator on 2017/9/28.
  */
@@ -7,5 +9,5 @@ package com.comsoftstar.autobicycle.View.Login.View;
 public interface Login_inteface {
     void loginsuccess();
     void autoaccount(String account,String password,boolean ischeck);
-    void loginfaile(String result);
+    void loginfaile(MyError result);
 }

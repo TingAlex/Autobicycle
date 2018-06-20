@@ -5,12 +5,10 @@ import android.text.TextUtils;
 
 import com.comsoftstar.autobicycle.Interface.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.View.Login.Module.LoginModule;
 import com.comsoftstar.autobicycle.View.Login.View.LoginActivity;
 import com.comsoftstar.autobicycle.View.Login.View.Login_inteface;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
@@ -29,22 +27,18 @@ public class LoginPresenter {
     }
     //登录
     public  void login(String loginName,String Type,String loginCode){
-        LoginModule.getInstance().login(loginName, Type, loginCode, new LoginModule.Login<String>() {
+        LoginModule.getInstance().login(loginName, Type, loginCode, new LoginModule.Login<List<LoginResult>>() {
             @Override
-            public void result(String s) {
-                Gson gson=new Gson();
-                try{
-                    List<LoginResult> loginResults = gson.fromJson(s, new TypeToken<List<LoginResult>>(){}.getType());
+            public void result(List<LoginResult> s) {
+
                     //Todo:数据后期处理
                     login_inteface.loginsuccess();
-                }catch (Exception e){
-                    try{
-                        R_Result result = gson.fromJson(s, R_Result.class);
-                        login_inteface.loginfaile(result.getResult());
-                    }catch (Exception e2){
-                        login_inteface.loginfaile(e2.getMessage());
-                    }
-                }
+
+            }
+
+            @Override
+            public void faile(MyError e) {
+                login_inteface.loginfaile(e);
             }
         });
     }

@@ -1,16 +1,12 @@
 package com.comsoftstar.autobicycle.Model.NetWork.NetGet;
 
 
-import android.content.Context;
-import android.widget.Toast;
-
-import com.comsoftstar.autobicycle.App.App;
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
-import com.comsoftstar.autobicycle.Model.NetWork.http.Error;
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
 import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
 import com.comsoftstar.autobicycle.Util.Logs;
@@ -55,12 +51,7 @@ public class NetUtil {
             }
 
             @Override
-            public void onFailure(int code, Error e) {
-
-            }
-
-            @Override
-            public void onFailure(int code, String e) {
+            public void onFailure(MyError e) {
 
             }
         });
@@ -78,14 +69,10 @@ public class NetUtil {
             }
 
             @Override
-            public void onFailure(int code, Error e) {
+            public void onFailure(MyError e) {
                 Logs.e(tag,e.getMessage());
             }
 
-            @Override
-            public void onFailure(int code, String e) {
-
-            }
         });
     }
 
@@ -101,13 +88,10 @@ public class NetUtil {
             }
 
             @Override
-            public void onFailure(int code, Error e) {
+            public void onFailure( MyError e) {
                 Logs.e(tag,e.getMessage());
             }
 
-            @Override
-            public void onFailure(int code, String e) {
-            }
         });
     }
 

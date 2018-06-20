@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
 import com.comsoftstar.autobicycle.Control.SuperInputEditText;
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.UpData.UpdataDownLoad;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
@@ -130,9 +131,9 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     }
     //登录失败
     @Override
-    public void loginfaile(String result) {
+    public void loginfaile(MyError result) {
         loadingIndicatorView.setVisibility(View.GONE);
-        toast(result);
+        toast(result.getMessage());
     }
     //endregion
 

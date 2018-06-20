@@ -1,14 +1,9 @@
 package com.comsoftstar.autobicycle.View.Main.Fragment;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.comsoftstar.autobicycle.Base.BaseFragment;
-import com.comsoftstar.autobicycle.Model.NetWork.http.Error;
-import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
-import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.View.Main.Activity.DrivingCountActivity;
@@ -16,8 +11,6 @@ import com.comsoftstar.autobicycle.View.Main.Activity.DrivingHistoryActivity;
 import com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item;
 import com.comsoftstar.autobicycle.View.Main.Activity.SettingActivity;
 import com.comsoftstar.autobicycle.databinding.Fragment1Binding;
-
-import retrofit2.Call;
 
 /**
  * Created by Administrator on 2017/9/25.

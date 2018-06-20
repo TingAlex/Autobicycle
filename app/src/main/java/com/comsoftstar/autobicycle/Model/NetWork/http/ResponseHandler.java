@@ -11,7 +11,6 @@ public interface ResponseHandler<T> {
      void onSuccess(T t);
 
     //失败回调方法
-     void onFailure(int code, Error e);
-     void onFailure(int code, String e);
+     void onFailure( MyError e);
 
 }
