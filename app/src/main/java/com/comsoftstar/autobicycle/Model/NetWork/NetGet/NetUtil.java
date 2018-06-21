@@ -37,12 +37,11 @@ public class NetUtil {
     }
     //endregion
 
-    //region 注册模块
+
 
     //验证码
-    public  void VeriCode( String loginName, final CallBack<R_Result> callBack){
+    public  void VeriCode( String loginName,String veriType, final CallBack<R_Result> callBack){
         String opType="getVeriCode";
-        String veriType="注册";
         Call<R_Result> call=httpClient.service(API.XYService).VeriCode(opType,loginName,veriType);
         httpClient.request(call, new ResponseHandler() {
             @Override
@@ -97,7 +96,7 @@ public class NetUtil {
         });
     }
 
-    //endregion
+
 
 
 }

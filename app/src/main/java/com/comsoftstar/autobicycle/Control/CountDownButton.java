@@ -12,8 +12,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.comsoftstar.autobicycle.R;
+import com.comsoftstar.autobicycle.Util.RegexUtil;
 
 import java.util.Locale;
 import java.util.Timer;
@@ -61,7 +63,16 @@ public class CountDownButton extends AppCompatButton {
      * 点击事件监听器
      */
     private OnClickListener onClickListener;
+    private ICountDownButton iCountDownButton;
+    //手机号码验证
+    private EditText editText;
+    public interface ICountDownButton {
+        void message(String msg);
+    }
 
+    public void setinterface(ICountDownButton iCountDownButton){
+        this.iCountDownButton=iCountDownButton;
+    }
     /**
      * 倒计时
      */
@@ -117,14 +128,19 @@ public class CountDownButton extends AppCompatButton {
     }
 
 
-    @Override
-    public void setOnClickListener(OnClickListener onClickListener) {
-        super.setOnClickListener(onClickListener);
+
+    public void setOnClickListener(EditText editText,OnClickListener onClickListener) {
+        //super.setOnClickListener(onClickListener);
+        this.editText=editText;
         this.onClickListener = onClickListener;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!RegexUtil.checkmobilephone(editText.getText().toString())){
+            iCountDownButton.message("手机号码格式不正确！");
+            return  super.onTouchEvent(event);
+        }
         switch (event.getAction()) {
             case MotionEvent.ACTION_UP:
                 Rect rect = new Rect();

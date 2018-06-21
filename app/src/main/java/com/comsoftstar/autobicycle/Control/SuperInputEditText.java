@@ -38,7 +38,7 @@ public class SuperInputEditText extends AppCompatEditText {
     }
     private void init(Context context,AttributeSet attrs){
         TypedArray typedArray=context.obtainStyledAttributes(attrs, R.styleable.SuperInputEditText);
-        startClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startclickicon, R.drawable.ic_person_blue_24dp);
+        startClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startclickicon, R.drawable.ic_person_white_24dp);
         startClickIcon=getResources().getDrawable(startClick);
         startunClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startunclickicon, R.drawable.ic_person_gray_24dp);
         startunClickIcon=getResources().getDrawable(startunClick);
@@ -65,7 +65,7 @@ public class SuperInputEditText extends AppCompatEditText {
     private void setEndDeletevisable(boolean b,boolean b2){
 
             setCompoundDrawables(b2?startClickIcon:startunClickIcon,null,b?endDeleteIcon:null,null);
-            setTextColor(b2? Color.parseColor("#ff0000ff"):Color.parseColor("#ff888888"));
+            setTextColor(b2? Color.parseColor("#ffffffff"):Color.parseColor("#ff888888"));
         invalidate();
     }
 

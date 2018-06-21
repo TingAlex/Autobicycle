@@ -1,5 +1,7 @@
 package com.comsoftstar.autobicycle.Model.NetWork.http;
 
+import android.text.TextUtils;
+
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
@@ -28,6 +30,12 @@ public class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody,T>
     @Override public T convert(ResponseBody value) throws IOException {
         //注意：ResponseBody只能读取一次
         final String str=value.string();
+        if (str==null||str.equals("")){
+            String msg="服务器返回结果为空";
+            R_Result person = new R_Result();
+            person.setResult(msg);
+            throw person;
+        }
         JsonReader jsonReader = gson.newJsonReader(new StringReader(str));
         try {
            T result= adapter.read(jsonReader);

@@ -133,7 +133,7 @@
                             android:background="@color/black"
                             android:layout_height="match_parent"
                             app:countDown="3000"
-                            app:countDownFormat="%ds秒后重试"
+                            app:countDownFormat="%ds后重试"
                             app:countDownInterval="1000"
                             app:enableCountDown="true"
                             app:cdFinishText="重新获取"

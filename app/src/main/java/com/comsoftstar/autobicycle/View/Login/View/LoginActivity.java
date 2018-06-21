@@ -12,18 +12,19 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
+import com.comsoftstar.autobicycle.Control.CountDownButton;
 import com.comsoftstar.autobicycle.Control.SuperInputEditText;
-import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
-import com.comsoftstar.autobicycle.Model.UpData.UpdataDownLoad;
+import com.comsoftstar.autobicycle.Interface.Value;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
+import com.comsoftstar.autobicycle.View.Login.Interface.Login_inteface;
 import com.comsoftstar.autobicycle.View.Login.Presenter.LoginPresenter;
 import com.comsoftstar.autobicycle.View.Main.Activity.MainActivity;
 import com.comsoftstar.autobicycle.databinding.ActivityLogin2Binding;
 
 import com.wang.avi.AVLoadingIndicatorView;
-public class LoginActivity extends BaseActivity<ActivityLogin2Binding> implements View.OnClickListener,Login_inteface{
+public class LoginActivity extends BaseActivity<ActivityLogin2Binding> implements View.OnClickListener,Login_inteface {
 public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private TextView register;
     private Button login;
@@ -32,6 +33,7 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     private boolean ischeck;                //是否记住密码
     private AVLoadingIndicatorView loadingIndicatorView;  //加载动画
     private ActivityLogin2Binding mbinding;
+    private String loginType=Value.Login.PASSWORD.getValue();
 
     @Override
     public int setLayoutId() {
@@ -53,6 +55,19 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
         login=(Button)findViewById(R.id.login);
         login.setOnClickListener(this);
         ischeckbox=(CheckBox)findViewById(R.id.login_ischeck);
+        mbinding.loginBtnSend.setinterface(new CountDownButton.ICountDownButton() {
+            @Override
+            public void message(String msg) {
+                toast(msg);
+            }
+        });
+        //验证码发送
+        mbinding.loginBtnSend.setOnClickListener(mbinding.loginAccount, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.sendVerCode(mbinding.loginAccount.getText().toString());
+            }
+        });
         //记住密码单选
         ischeckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -67,11 +82,12 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
                 if (b){
                     mbinding.layoutVercode.setVisibility(View.VISIBLE);
                     mbinding.layoutPassword.setVisibility(View.GONE);
+                    loginType=Value.Login.VERCODE.getValue();
                 }else{
                     mbinding.layoutPassword.setVisibility(View.VISIBLE);
                     mbinding.layoutVercode.setVisibility(View.GONE);
+                    loginType=Value.Login.PASSWORD.getValue();
                 }
-
             }
         });
         loginPresenter.readtoPreferences();
@@ -97,12 +113,27 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //登陆
             case R.id.login:
-                if (login_check()) {
-                    loadingIndicatorView.setVisibility(View.VISIBLE);
-                    loginPresenter.login(textInputEditTextaccount.getText().toString(),"密码登录",textInputEditTextpassword.getText().toString());
+                String code = "";
+                if (loginType.equals(Value.Login.PASSWORD.getValue())){
+
+                    if (login_check(true)) {
+
+                        loadingIndicatorView.setVisibility(View.VISIBLE);
+                        code=textInputEditTextpassword.getText().toString();
+                        loginPresenter.login(textInputEditTextaccount.getText().toString(), loginType,code);
+                    }
+                }else if (loginType.equals(Value.Login.VERCODE.getValue())){
+                    if (login_check(false)){
+                        loadingIndicatorView.setVisibility(View.VISIBLE);
+                        code=mbinding.editVercode.getText().toString();
+                        loginPresenter.login(textInputEditTextaccount.getText().toString(), loginType,code);
+                    }
                 }
-            break;
+
+                break;
+            //注册
             case R.id.register:
                 getSupportFragmentManager().beginTransaction()
                         .addToBackStack(null)
@@ -110,16 +141,20 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
                         .replace(R.id.login_login,new RegisterFragment2())
                         .commit();
                 break;
+
+
         }
     }
 
     //登录检查
-    private boolean login_check(){
+    private boolean login_check(boolean b){
         if (Tools.checknetwork(this)) {
             if(TextUtils.isEmpty(textInputEditTextaccount.getText())){
                 textInputEditTextaccount.setError("请输入手机号码！");
-            }else if (TextUtils.isEmpty(textInputEditTextpassword.getText())){
+            }else if (TextUtils.isEmpty(textInputEditTextpassword.getText()) && b){
                 textInputEditTextpassword.setError("请输入密码！");
+            }else if (TextUtils.isEmpty(mbinding.editVercode.getText()) && !b){
+                toast("请输入验证码！");
             }else if (!RegexUtil.checkmobilephone(textInputEditTextaccount.getText().toString())){
                 textInputEditTextaccount.setError( "手机号码格式不正确！");
             }else{
@@ -153,6 +188,11 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     public void loginfaile(String result) {
         loadingIndicatorView.setVisibility(View.GONE);
         toast(result);
+    }
+    //验证码发送回调
+    @Override
+    public void getVerCodeMsg(String msg) {
+        toast(msg);
     }
     //endregion
 

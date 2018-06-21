@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Base.BaseFragment;
+import com.comsoftstar.autobicycle.Control.CountDownButton;
 import com.comsoftstar.autobicycle.Interface.CallBack;
+import com.comsoftstar.autobicycle.Interface.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
 import com.comsoftstar.autobicycle.Model.NetWork.NetGet.NetUtil;
 import com.comsoftstar.autobicycle.Util.Logs;
@@ -70,15 +72,20 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         });
 
         //验证码发送
-        mbinding.btnSend.setOnClickListener(new View.OnClickListener() {
+        mbinding.btnSend.setinterface(new CountDownButton.ICountDownButton() {
+            @Override
+            public void message(String msg) {
+                toast(msg);
+            }
+        });
+        mbinding.btnSend.setOnClickListener(mbinding.loginPhone,new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NetUtil.getInstance().VeriCode("18068261236", new CallBack<R_Result>() {
+                NetUtil.getInstance().VeriCode(mbinding.loginPhone.getText().toString(), Value.VerCode.REGISTER.getValue(), new CallBack<R_Result>() {
                     @Override
                     public void success(R_Result result) {
                         Toast.makeText(getContext(), result.getResult(), Toast.LENGTH_SHORT).show();
                     }
-
                     @Override
                     public void faile(String s) {
 

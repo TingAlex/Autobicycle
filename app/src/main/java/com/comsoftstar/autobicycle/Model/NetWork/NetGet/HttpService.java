@@ -19,7 +19,6 @@ import retrofit2.http.QueryMap;
  */
 public interface HttpService {
 
-    //region 注册模块
 
     //验证码
     @GET("AppHandler.ashx")//opType="getVeriCode"  veriType="注册"
@@ -33,12 +32,28 @@ public interface HttpService {
     @GET("AppHandler.ashx")//opType="Register"
     Call<R_Result>Register(@QueryMap Map<String, String> options);
 
-    //endregion
 
-    //region 登录模块
+    //登录
     @GET("AppHandler.ashx")//opType=login
     Call<List<LoginResult>>Login(@Query("opType") String opType, @Query("loginName")String loginName, @Query("loginType")String loginType, @Query("loginCode")String loginCode);
-    //endregion
+
+    //网上报修
+    @GET("AppHandler.ashx")// opType=RepairRecord
+    Call<List<LoginResult>>RepairRecord(@Query("opType") String opType, @Query("loginName")String loginName);
+
+    //报修保存
+    @GET("AppHandler.ashx")// opType=saveRecord
+    Call<List<LoginResult>>saveRecord(@QueryMap Map<String, String> options);
+
+    //用户反馈
+    @GET("AppHandler.ashx")// opType=FeedbackRecord
+    Call<List<LoginResult>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
+
+    //反馈保存
+    @GET("AppHandler.ashx")// opType=saveFeedback
+    Call<List<LoginResult>>saveFeedback(@QueryMap Map<String, String> params);
+
+
 
 
 
