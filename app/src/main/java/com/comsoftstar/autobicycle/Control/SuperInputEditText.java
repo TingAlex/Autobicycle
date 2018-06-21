@@ -42,12 +42,12 @@ public class SuperInputEditText extends AppCompatEditText {
         startClickIcon=getResources().getDrawable(startClick);
         startunClick=typedArray.getResourceId(R.styleable.SuperInputEditText_startunclickicon, R.drawable.ic_person_gray_24dp);
         startunClickIcon=getResources().getDrawable(startunClick);
-        endDelete=typedArray.getResourceId(R.styleable.SuperInputEditText_startclickicon, R.drawable.ic_clear_black_24dp);
+        endDelete=typedArray.getResourceId(R.styleable.SuperInputEditText_enddeleteicon, R.drawable.ic_clear_black_24dp);
         endDeleteIcon=getResources().getDrawable(endDelete);
         startwidth=typedArray.getInteger(R.styleable.SuperInputEditText_startwidth,80);
         starthight=typedArray.getInteger(R.styleable.SuperInputEditText_starthight,80);
-        deletewidth=typedArray.getInteger(R.styleable.SuperInputEditText_endwidth,80);
-        deletehight=typedArray.getInteger(R.styleable.SuperInputEditText_endhight,80);
+        deletewidth=typedArray.getInteger(R.styleable.SuperInputEditText_endwidth,60);
+        deletehight=typedArray.getInteger(R.styleable.SuperInputEditText_endhight,60);
 
         startClickIcon.setBounds(0,0,startwidth,starthight);
         startunClickIcon.setBounds(0,0,startwidth,starthight);

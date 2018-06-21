@@ -51,7 +51,7 @@
                 android:id="@+id/layout_vercode"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
-
+                android:visibility="gone"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
