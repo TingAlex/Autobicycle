@@ -20,41 +20,54 @@ import retrofit2.http.QueryMap;
 public interface HttpService {
 
 
-    //验证码
+    /**
+     * 验证码
+     */
     @GET("AppHandler.ashx")//opType="getVeriCode"  veriType="注册"
     Call<R_Result>VeriCode(@Query("opType") String opType,@Query("loginName") String loginName,@Query("veriType") String veriType);
 
-    //获取营业网点
+    /**
+     * 获取营业网点
+     */
     @GET("AppHandler.ashx")//opType="getSalePoint"
     Call<SalePoint>SalePoint(@Query("opType") String opType);
 
-    //注册
+    /**
+     * 注册
+     */
     @GET("AppHandler.ashx")//opType="Register"
     Call<R_Result>Register(@QueryMap Map<String, String> options);
 
 
-    //登录
+    /**
+     * 登录
+     */
     @GET("AppHandler.ashx")//opType=login
     Call<List<LoginResult>>Login(@Query("opType") String opType, @Query("loginName")String loginName, @Query("loginType")String loginType, @Query("loginCode")String loginCode);
 
-    //网上报修
+    /**
+     * 报修记录
+     */
     @GET("AppHandler.ashx")// opType=RepairRecord
     Call<List<LoginResult>>RepairRecord(@Query("opType") String opType, @Query("loginName")String loginName);
 
-    //报修保存
+    /**
+     * 报修保存
+     */
     @GET("AppHandler.ashx")// opType=saveRecord
     Call<List<LoginResult>>saveRecord(@QueryMap Map<String, String> options);
 
-    //用户反馈
+    /**
+     * 用户反馈
+     */
     @GET("AppHandler.ashx")// opType=FeedbackRecord
     Call<List<LoginResult>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
 
-    //反馈保存
+    /**
+     * 反馈保存
+     */
     @GET("AppHandler.ashx")// opType=saveFeedback
     Call<List<LoginResult>>saveFeedback(@QueryMap Map<String, String> params);
-
-
-
 
 
 

@@ -1,7 +1,5 @@
-package com.comsoftstar.autobicycle.View.Login.Module;
+package com.comsoftstar.autobicycle.View.Module;
 
-
-import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
@@ -25,17 +23,6 @@ import retrofit2.Call;
 public class LoginModule {
     HttpClient httpClient= Single.getInstance().httpClient;
     ILoginPresenter iLoginPresenter;
-//    //region 单例
-//    public LoginModule(){
-//    }
-//
-//    public static LoginModule getInstance() {
-//        return SingletonHolder.INSTANCE;
-//    }
-//    private static class SingletonHolder {
-//        private static final LoginModule INSTANCE = new LoginModule();
-//    }
-//    //endregion
     public LoginModule(ILoginPresenter iLoginPresenter){
         this.iLoginPresenter=iLoginPresenter;
     }

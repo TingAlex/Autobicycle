@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Login.Presenter;
+package com.comsoftstar.autobicycle.View.Presenter;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.comsoftstar.autobicycle.Interface.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
-import com.comsoftstar.autobicycle.View.Login.Module.LoginModule;
+import com.comsoftstar.autobicycle.View.Module.LoginModule;
 import com.comsoftstar.autobicycle.View.Login.View.LoginActivity;
 import com.comsoftstar.autobicycle.View.Login.Interface.Login_inteface;
 

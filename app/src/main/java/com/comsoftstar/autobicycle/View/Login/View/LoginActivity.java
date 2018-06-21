@@ -19,7 +19,7 @@ import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.View.Login.Interface.Login_inteface;
-import com.comsoftstar.autobicycle.View.Login.Presenter.LoginPresenter;
+import com.comsoftstar.autobicycle.View.Presenter.LoginPresenter;
 import com.comsoftstar.autobicycle.View.Main.Activity.MainActivity;
 import com.comsoftstar.autobicycle.databinding.ActivityLogin2Binding;
 

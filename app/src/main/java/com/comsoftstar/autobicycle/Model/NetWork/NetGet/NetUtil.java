@@ -37,11 +37,12 @@ public class NetUtil {
     }
     //endregion
 
-
-
-    //验证码
+    /**
+     * 验证码
+     */
     public  void VeriCode( String loginName,String veriType, final CallBack<R_Result> callBack){
         String opType="getVeriCode";
+
         Call<R_Result> call=httpClient.service(API.XYService).VeriCode(opType,loginName,veriType);
         httpClient.request(call, new ResponseHandler() {
             @Override
@@ -56,26 +57,34 @@ public class NetUtil {
         });
     }
 
-    //注册
-    public  void Register( Map<String,String> parameter, final CallBack<R_Result> callBack){
-
-        Call<R_Result> call=httpClient.service(API.XYService).Register(parameter);
+    /**
+     * 注册
+     * @param params
+     * @param callBack
+     */
+    public  void Register( Map<String,String> params, final CallBack<R_Result> callBack){
+        params.put("opType","Register");
+        Call<R_Result> call=httpClient.service(API.XYService).Register(params);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-                Logs.d(tag,((R_Result)o).getResult());
                // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
+                callBack.success(((R_Result)o));
             }
 
             @Override
             public void onFailure(MyError e) {
-                Logs.e(tag,e.getMessage());
+                callBack.faile(e.getMessage());
+
             }
 
         });
     }
 
-    //营业网点
+    /**
+     * 营业网点
+     * @param callBack
+     */
     public  void SalePoint( final CallBack<SalePoint> callBack){
         String opType="getSalePoint";
         Call<SalePoint> call=httpClient.service(API.XYService).SalePoint(opType);

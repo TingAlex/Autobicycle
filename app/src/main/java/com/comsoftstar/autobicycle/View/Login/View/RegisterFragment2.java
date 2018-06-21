@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> implements View.OnClickListener, EasyPermissions.PermissionCallbacks  {
     private static final String TAG = "bug";
     private EditText phone,number,name,name2,password,password2;
-    private TextView nextstep;
+    private Button nextstep;
     private CheckBox checkbox;
     private ImageView registerback;
     private FragmentRegisterBinding mbinding;
@@ -53,20 +54,22 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         mbinding=binding;
         phone=binding.loginPhone;
         number=binding.loginNumber;
-        name=binding.loginName;
-        name2=binding.loginName2;
         password=binding.loginPassword0;
         password2=binding.loginPassword1;
         nextstep=binding.nextRegister;
         registerback=binding.backRegister;
         checkbox=binding.enter;
         binding.setOnclicklisten(this);
+        nextstep.setEnabled(false);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
                     nextstep.setTextColor(Color.WHITE);
                     nextstep.setEnabled(true);
+                }else{
+                    nextstep.setTextColor(Color.GRAY);
+                    nextstep.setEnabled(false);
                 }
             }
         });
@@ -113,42 +116,43 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
                 Intent intent2=new Intent(getContext(), ScanActivity.class);
                 startActivity(intent2);
                 break;
+            //注册
             case R.id.next_register:
-
-                Map<String,String> paramter=new ArrayMap<>();
-                paramter.put("opType","Register");
-                paramter.put("loginName","18068261236");
-                paramter.put("Password","123456");
+                if (!checkRegister()){
+                    return;
+                }
+                //todo:注册检验
+                Map<String,String> params=new ArrayMap<>();
+                params.put("loginName",phone.getText().toString());
+                params.put("Password",password.getText().toString());
                 //验证码
-                paramter.put("Vericode",number.getText().toString());
+                params.put("Vericode",number.getText().toString());
                 //采集模块ID
-                paramter.put("ModuleID","31ffdc05335436331560045700000000");
+                params.put("ModuleID","31ffdc05335436331560045700000000");
                 //电池组ID
-                paramter.put("PackID","1");
+                params.put("PackID","1");
                 //营业点编号
-                paramter.put("Pointno","1");
+                params.put("Pointno","1");
                 //电池数
-                paramter.put("CellNum","1");
+                params.put("CellNum","1");
                 //额定电压
-                paramter.put("StandardVol","1");
+                params.put("StandardVol","1");
                 //额定电流
-                paramter.put("StandardCur","1");
+                params.put("StandardCur","1");
                 //电容
-                paramter.put("Capacity","1");
+                params.put("Capacity","1");
 
-                NetUtil.getInstance().Register(paramter, new CallBack<R_Result>() {
+                NetUtil.getInstance().Register(params, new CallBack<R_Result>() {
                     @Override
                     public void success(R_Result result) {
-
+                        toast(result.getResult());
                     }
-
                     @Override
                     public void faile(String s) {
-
+                        toast(s);
                     }
                 });
-                Logs.d(TAG, "onClick: next");
-             //   tonextstep();
+
                 break;
             case R.id.back_register:
                 Logs.d(TAG, "onClick: back");
@@ -179,33 +183,34 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         }
     }
     //下一步
-    public void tonextstep(){
+    public boolean checkRegister(){
 
         if (!RegexUtil.checkMobile(phone.getText().toString())){
-            Toast.makeText(getContext(), "手机号有误", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(getContext(), "手机号有误！", Toast.LENGTH_SHORT).show();
+            return false;
         }
         if (TextUtils.isEmpty(number.getText())){
-            Toast.makeText(getContext(), "验证码不能为空", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(getContext(), "验证码不能为空！", Toast.LENGTH_SHORT).show();
+            return false;
         }
-        if (!RegexUtil.checkname(name.getText().toString())){
-            Toast.makeText(getContext(), "姓名不符合要求！", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (!(RegexUtil.checkInputchart(name2.getText().toString()) && name2.length()>2 && name2.length()<14)){
-            Toast.makeText(getContext(), "昵称不符合要求！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (!RegexUtil.checkname(name.getText().toString())){
+//            Toast.makeText(getContext(), "姓名不符合要求！", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        if (!(RegexUtil.checkInputchart(name2.getText().toString()) && name2.length()>2 && name2.length()<14)){
+//            Toast.makeText(getContext(), "昵称不符合要求！", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
         if (!password.getText().toString().equals(password2.getText().toString())){
             Toast.makeText(getContext(), "两次密码输入不一致！", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         if (!RegexUtil.checkpassword6_20(password.getText().toString())){
-            Toast.makeText(getContext(), "密码不符合要求！！", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(getContext(), "密码不符合要求！", Toast.LENGTH_SHORT).show();
+            return false;
         }
-        Toast.makeText(getContext(), "下一步", Toast.LENGTH_SHORT).show();
+        return true;
+
 
     }
 }

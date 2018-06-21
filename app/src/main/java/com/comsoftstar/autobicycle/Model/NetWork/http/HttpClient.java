@@ -131,6 +131,11 @@ public class HttpClient<T> {
         }
     };
 
+    /**
+     * 获得app版本名字
+     * @param context
+     * @return
+     */
     public static String getAppVersionName(Context context) {
         String versionName = null;
         try {
