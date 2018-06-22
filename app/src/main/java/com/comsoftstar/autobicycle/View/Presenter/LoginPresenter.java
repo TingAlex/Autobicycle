@@ -28,12 +28,20 @@ public class LoginPresenter implements LoginModule.ILoginPresenter {
     }
 
     //region 功能实现
-    //登录
+
+
+    /**
+     * 登录
+     */
     public  void login(String loginName,String Type,String loginCode){
         loginModule.login(loginName, Type, loginCode);
     }
 
-    //发送验证码
+
+    /**
+     * 发送验证码
+     * @param loginName
+     */
     public void sendVerCode(String loginName){
             loginModule.getVerCode(loginName);
 
@@ -41,7 +49,9 @@ public class LoginPresenter implements LoginModule.ILoginPresenter {
 
     //endregion
 
-    //配置写入
+    /**
+     * 配置写入
+     */
     public void writetoPreferences(boolean b,String account ,String password){
         SharedPreferences.Editor editor =activity.getSharedPreferences(Value.PATH, MODE_PRIVATE).edit();
         if (b){
@@ -56,7 +66,10 @@ public class LoginPresenter implements LoginModule.ILoginPresenter {
             editor.commit();
         }
     }
-    //配置读取
+
+    /**
+     * 配置读取
+     */
     public void readtoPreferences(){
         SharedPreferences pref =activity.getSharedPreferences(Value.PATH, MODE_PRIVATE);
         String account = pref.getString("accound", "");
@@ -69,7 +82,11 @@ public class LoginPresenter implements LoginModule.ILoginPresenter {
 
     //region LoginModule.ILoginPresenter 接口实现
 
-    //验证码发送信息返回
+
+    /**
+     * 验证码发送信息返回
+     * @param value
+     */
     @Override
     public void verCodeMsg(String value) {
         login_inteface.getVerCodeMsg(value);

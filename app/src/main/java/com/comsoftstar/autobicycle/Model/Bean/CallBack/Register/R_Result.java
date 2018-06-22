@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by SJ on 2018/6/20.
  */
 
-public class R_Result extends IOException {
+public class R_Result extends IOException{
 
 
     /**

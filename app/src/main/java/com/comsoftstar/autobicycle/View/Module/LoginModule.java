@@ -38,7 +38,10 @@ public class LoginModule {
         void result(T s);
         void faile(MyError e);
     }
-    //登录
+
+    /**
+     * 登录
+     */
     public  void login(String loginName,String loginType,String loginCode){
             String opType="login";
             Call<List<LoginResult>> call=httpClient.service(API.XYService).Login(opType,loginName,loginType,loginCode);
@@ -58,7 +61,11 @@ public class LoginModule {
             });
        // login.result("qwe");
     }
-    //验证码
+
+    /**
+     * 验证码
+     * @param phone
+     */
     public void getVerCode(String phone){
         NetUtil.getInstance().VeriCode(phone, Value.VerCode.LOGIN.getValue(), new CallBack<R_Result>() {
             @Override

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
@@ -89,8 +90,13 @@ public class Fragment3 extends Fragment {
         listt.add(my_listitem);
         listAdapter=new ListAdapter(getContext(),R.layout.my_item,listt);
         listView.setAdapter(listAdapter);
+        listView.setOnItemClickListener(itemClickListener);
 
     }
+
+    /**
+     * 初始化柱状图
+     */
     private void initbarchart(){
         columnChart.setInteractive(true);
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
@@ -136,11 +142,10 @@ public class Fragment3 extends Fragment {
         v.right= 16;//X轴显示的位置0-5 显示5个
         columnChart.setCurrentViewport(v);
     }
+
+
     /**
      * 柱状图监听器
-     *
-     * @author 1017
-     *
      */
     private class ValueTouchListener implements ColumnChartOnValueSelectListener {
 
@@ -157,4 +162,23 @@ public class Fragment3 extends Fragment {
 
         }
     }
+
+    /**
+     * listview子项监听事件
+     */
+    AdapterView.OnItemClickListener itemClickListener=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            if (position==1) {
+                getFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .setCustomAnimations(R.anim.in_from_left,R.anim.in_from_right,R.anim.out_from_left,R.anim.out_from_right)
+                        .add(R.id.container,new FeedBackFragment())
+                        .commit();
+            }
+
+
+        }
+    };
 }

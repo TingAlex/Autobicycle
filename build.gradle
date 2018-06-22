@@ -31,6 +31,7 @@ allprojects {
 //            url 'https://maven.google.com'
 //        }
        jcenter()
+        maven { url 'https://jitpack.io' }
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 //        maven {
 //            url 'https://maven.google.com/'

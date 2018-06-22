@@ -134,4 +134,5 @@ dependencies {
     compile 'pub.devrel:easypermissions:1.1.0'
     //功能大全
     compile 'com.blankj:utilcode:1.12.5'
+
 }
