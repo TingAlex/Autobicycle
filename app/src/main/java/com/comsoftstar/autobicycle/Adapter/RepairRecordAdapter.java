@@ -44,7 +44,7 @@ public class RepairRecordAdapter extends RecyclerView.Adapter<RepairRecordAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tv_feedback.setText(items.get(position).getPointName());
+        holder.tv_feedback.setText(items.get(position).getUserProblem());
     }
 
     @Override
