@@ -4,13 +4,14 @@ package com.comsoftstar.autobicycle.Model.NetWork.NetGet;
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
 import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
 import com.comsoftstar.autobicycle.Util.Logs;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -85,14 +86,14 @@ public class NetUtil {
      * 营业网点
      * @param callBack
      */
-    public  void SalePoint( final CallBack<SalePoint> callBack){
+    public  void SalePoint( final CallBack<List<SalePoint>> callBack){
         String opType="getSalePoint";
-        Call<SalePoint> call=httpClient.service(API.XYService).SalePoint(opType);
+        Call<List<SalePoint>> call=httpClient.service(API.XYService).SalePoint(opType);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
                 Logs.d(tag,((SalePoint)o).getText());
-                callBack.success((SalePoint)o);
+                callBack.success((List<SalePoint>)o);
                 // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
             }
 

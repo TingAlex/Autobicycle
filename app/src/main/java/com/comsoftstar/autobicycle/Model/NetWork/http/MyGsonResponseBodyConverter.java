@@ -1,15 +1,12 @@
 package com.comsoftstar.autobicycle.Model.NetWork.http;
 
-import android.text.TextUtils;
-
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.lang.reflect.Type;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;

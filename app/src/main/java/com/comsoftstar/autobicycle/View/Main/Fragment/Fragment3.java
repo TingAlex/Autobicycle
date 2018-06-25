@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.ListAdapter;
 import com.comsoftstar.autobicycle.Model.Bean.My_Listitem;
 import com.comsoftstar.autobicycle.View.Main.Activity.AboutActivity;
+import com.comsoftstar.autobicycle.View.Main.Activity.FeedBackActivity;
 import com.comsoftstar.autobicycle.View.Main.Activity.SettingActivity;
 
 import java.util.ArrayList;
@@ -58,21 +58,8 @@ public class Fragment3 extends Fragment {
         myphone=(TextView)rootview.findViewById(R.id.myphone);
         listView=(ListView)rootview.findViewById(R.id.my_listview);
         columnChart=(ColumnChartView)rootview.findViewById(R.id.barchart);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
-                    case 2:
-                        Intent intent=new Intent(getActivity(),SettingActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 3:
-                        Intent intent2=new Intent(getActivity(),AboutActivity.class);
-                        startActivity(intent2);
-                        break;
-                }
-            }
-        });
+
+        listView.setOnItemClickListener(itemClickListener);
         initUI();
         initbarchart();
         return rootview;
@@ -88,9 +75,9 @@ public class Fragment3 extends Fragment {
         listt.add(my_listitem);
         my_listitem=new My_Listitem(R.drawable.raw_1504239673,"关于");
         listt.add(my_listitem);
-        listAdapter=new ListAdapter(getContext(),R.layout.my_item,listt);
+        listAdapter=new ListAdapter(getContext(),R.layout.item_my,listt);
         listView.setAdapter(listAdapter);
-        listView.setOnItemClickListener(itemClickListener);
+
 
     }
 
@@ -169,15 +156,20 @@ public class Fragment3 extends Fragment {
     AdapterView.OnItemClickListener itemClickListener=new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            if (position==1) {
-                getFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .setCustomAnimations(R.anim.in_from_left,R.anim.in_from_right,R.anim.out_from_left,R.anim.out_from_right)
-                        .add(R.id.container,new FeedBackFragment())
-                        .commit();
+            switch (position){
+                case 1:
+                    Intent intent=new Intent(getActivity(),FeedBackActivity.class);
+                    startActivity(intent);
+                    break;
+                case 2:
+                    Intent intent2=new Intent(getActivity(),SettingActivity.class);
+                    startActivity(intent2);
+                    break;
+                case 3:
+                    Intent intent3=new Intent(getActivity(),AboutActivity.class);
+                    startActivity(intent3);
+                    break;
             }
-
 
         }
     };

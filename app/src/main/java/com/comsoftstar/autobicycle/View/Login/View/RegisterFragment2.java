@@ -5,21 +5,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.ArrayMap;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Base.BaseFragment;
 import com.comsoftstar.autobicycle.Control.CountDownButton;
 import com.comsoftstar.autobicycle.Interface.CallBack;
 import com.comsoftstar.autobicycle.Interface.Value;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.NetWork.NetGet.NetUtil;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
@@ -28,7 +26,6 @@ import com.comsoftstar.autobicycle.databinding.FragmentRegisterBinding;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;

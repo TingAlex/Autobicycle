@@ -4,13 +4,14 @@ package com.comsoftstar.autobicycle.Interface;
  * Created by Administrator on 2017/9/28.
  */
 
-public interface Value {
+public class Value {
     //登录配置文件名
-    String PATH="DDLOGIN";
+    public static final String PATH="DDLOGIN";
 
-
+    //全局用户名
+    public static String UserName="";
     //登录
-    enum Login{
+    public static enum Login{
         PASSWORD("密码登录"),VERCODE("验证码登录");
 
         Login(String value){
@@ -28,7 +29,7 @@ public interface Value {
     }
 
     //验证码
-    enum VerCode{
+    public static enum VerCode{
         LOGIN("登陆"),REGISTER("注册");
         VerCode(String value){
             this.value=value;

@@ -18,8 +18,12 @@ public final class StringConverterFactory extends Converter.Factory {
     final class StringResponseBodyConverter implements Converter<ResponseBody, String> {
         @Override
         public String convert(ResponseBody value) throws IOException {
+            if (value.contentLength()==-1){
+                throw new MyError().setMessage("返回结果为null");
+            }
             String s=new String(value.bytes());
-            return new String(value.bytes());
+
+            return s;
         }
     }
 

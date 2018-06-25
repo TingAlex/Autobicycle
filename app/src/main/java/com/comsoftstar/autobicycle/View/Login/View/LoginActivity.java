@@ -141,12 +141,14 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
                         .replace(R.id.login_login,new RegisterFragment2())
                         .commit();
                 break;
-
-
         }
     }
 
-    //登录检查
+    /**
+     * 登录检查
+     * @param b
+     * @return
+     */
     private boolean login_check(boolean b){
         if (Tools.checknetwork(this)) {
             if(TextUtils.isEmpty(textInputEditTextaccount.getText())){
@@ -170,6 +172,7 @@ public SuperInputEditText textInputEditTextaccount,textInputEditTextpassword;
     @Override
     public void loginsuccess(){
         //账号密码记住
+        Value.UserName=textInputEditTextaccount.getText().toString();
         loginPresenter.writetoPreferences(ischeck,textInputEditTextaccount.getText().toString(),textInputEditTextpassword.getText().toString());
         loadingIndicatorView.setVisibility(View.GONE);
         Intent intent=new Intent(this,MainActivity.class);

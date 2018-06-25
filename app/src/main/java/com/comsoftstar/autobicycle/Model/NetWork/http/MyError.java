@@ -1,9 +1,11 @@
 package com.comsoftstar.autobicycle.Model.NetWork.http;
 
+import java.io.IOException;
+
 /**
  * Created by apple on 16/8/20.
  */
-public class MyError {
+public class MyError extends IOException{
 
     /**
      * code : un_caught_error

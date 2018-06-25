@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.Model.Bean.CallBack.Register;
+package com.comsoftstar.autobicycle.Model.Bean.CallBack;
 
 import java.io.IOException;
 import java.io.Serializable;

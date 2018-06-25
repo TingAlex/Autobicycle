@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.NetWork.NetGet.HttpService;
 import com.comsoftstar.autobicycle.Util.HttpLogger;
 import com.comsoftstar.autobicycle.Util.Logs;
@@ -68,6 +68,7 @@ public class HttpClient<T> {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<T> call, Throwable t) {
                 if (t instanceof R_Result){

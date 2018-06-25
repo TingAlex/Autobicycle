@@ -47,7 +47,8 @@
 
         <activity android:name=".View.Main.Activity.DrivingCountActivity">
         </activity>
-        <activity android:name=".View.Login.View.ScanActivity">
+        <activity android:name=".View.Login.View.ScanActivity"/>
+        <activity android:name=".View.Main.Activity.FeedBackActivity">
         </activity>
         //用于版本更新控制
         <provider

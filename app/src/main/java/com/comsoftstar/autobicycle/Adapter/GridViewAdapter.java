@@ -48,7 +48,7 @@ public class GridViewAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null)
         {
-            view = inflater.inflate(R.layout.fuwu_item, null);
+            view = inflater.inflate(R.layout.item_fuwu, null);
             holder = new ViewHolder();
             holder.imageView = (ImageView) view.findViewById(R.id.item_image);
             holder.textView = (TextView) view.findViewById(R.id.item_text);

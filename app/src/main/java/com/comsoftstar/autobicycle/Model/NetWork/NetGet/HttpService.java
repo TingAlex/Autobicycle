@@ -2,9 +2,9 @@ package com.comsoftstar.autobicycle.Model.NetWork.NetGet;
 
 
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.R_Result;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
-import com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item;
 
 import java.util.List;
 import java.util.Map;
@@ -30,7 +30,7 @@ public interface HttpService {
      * 获取营业网点
      */
     @GET("AppHandler.ashx")//opType="getSalePoint"
-    Call<SalePoint>SalePoint(@Query("opType") String opType);
+    Call<List<SalePoint>>SalePoint(@Query("opType") String opType);
 
     /**
      * 注册
@@ -61,13 +61,13 @@ public interface HttpService {
      * 用户反馈
      */
     @GET("AppHandler.ashx")// opType=FeedbackRecord
-    Call<List<LoginResult>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
+    Call<List<FeedBack>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
 
     /**
      * 反馈保存
      */
     @GET("AppHandler.ashx")// opType=saveFeedback
-    Call<List<LoginResult>>saveFeedback(@QueryMap Map<String, String> params);
+    Call<R_Result>saveFeedback(@QueryMap Map<String, String> params);
 
 
 
