@@ -14,13 +14,13 @@ import android.widget.TextView;
 import com.comsoftstar.autobicycle.Base.BaseActivity;
 import com.comsoftstar.autobicycle.Control.CountDownButton;
 import com.comsoftstar.autobicycle.Control.SuperInputEditText;
-import com.comsoftstar.autobicycle.Interface.Value;
+import com.comsoftstar.autobicycle.App.Value;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.Util.Tools;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.View.Login.Interface.Login_inteface;
 import com.comsoftstar.autobicycle.View.Presenter.LoginPresenter;
-import com.comsoftstar.autobicycle.View.Main.Activity.MainActivity;
+import com.comsoftstar.autobicycle.View.Main.MainActivity;
 import com.comsoftstar.autobicycle.databinding.ActivityLogin2Binding;
 
 import com.wang.avi.AVLoadingIndicatorView;

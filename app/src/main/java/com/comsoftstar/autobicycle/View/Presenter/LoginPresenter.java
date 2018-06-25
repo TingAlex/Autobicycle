@@ -3,7 +3,7 @@ package com.comsoftstar.autobicycle.View.Presenter;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.comsoftstar.autobicycle.Interface.Value;
+import com.comsoftstar.autobicycle.App.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.View.Module.LoginModule;

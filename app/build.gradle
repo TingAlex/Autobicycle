@@ -62,7 +62,8 @@ android {
 //                            output.outputFile = new File(outputDirectory, fileName)
                             //替换的字符串
                             def replaceFile = "AutoBike_V${variant.versionName}_${variant.flavorName}_${variant.buildType.name}_${releaseTime()}.apk"
-                            outputFileName = replaceFile//output.outputFile.name.replace(sourceFile, replaceFile);
+                            outputFileName = replaceFile
+//output.outputFile.name.replace(sourceFile, replaceFile);
                         } //else {
 //                            fileName = "AutoBike_V${defaultConfig.versionName}_${releaseTime()}_debug.apk"
 //                        }
@@ -84,7 +85,7 @@ android {
         repositories {
             google()
             jcenter()
-            maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 
         }
     }
@@ -123,7 +124,6 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
 
     testCompile 'junit:junit:4.12'
-
 
     //沉浸式透明状态栏
     compile 'org.zackratos:ultimatebar:1.0.3'

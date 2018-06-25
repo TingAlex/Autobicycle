@@ -1,11 +1,13 @@
-package com.comsoftstar.autobicycle.View.Main.Fragment;
+package com.comsoftstar.autobicycle.View.Main.Service;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.comsoftstar.autobicycle.R;
@@ -25,6 +27,7 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.fragment2,container,false);
         gridView=(GridView)rootview.findViewById(R.id.fuwu_gridview);
+        gridView.setOnItemClickListener(itemClickListener);
         initUI();
         return rootview;
     }
@@ -44,4 +47,17 @@ public class Fragment2 extends Fragment {
         gridViewadapter = new GridViewAdapter(getContext(), name,image);
         gridView.setAdapter(gridViewadapter);
     }
+    //网格子项点击事件
+    private AdapterView.OnItemClickListener itemClickListener=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            switch (position){
+                //网上报修
+                case 0:
+                    Intent intent=new Intent(getActivity(), RepairRecordActivity.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    };
 }

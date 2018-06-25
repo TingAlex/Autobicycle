@@ -3,8 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.comsoftstar.autobicycle">
 
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -15,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true"/>
@@ -34,10 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".View.Main.Activity.MainActivity"/>
-        <activity android:name=".View.Main.Activity.AboutActivity"/>
-        <activity android:name=".View.Main.Activity.SettingActivity"/>
-        <activity android:name=".View.Main.Activity.DrivingHistoryActivity"/>
+        <activity android:name=".View.Main.MainActivity"/>
+        <activity android:name=".View.Main.Mine.AboutActivity"/>
+        <activity android:name=".View.Main.Mine.SettingActivity"/>
+        <activity android:name=".View.Main.CarSituation.DrivingHistoryActivity"/>
 
         <service
             android:name=".Service.NetService"
@@ -45,28 +45,26 @@
             android:exported="true">
         </service>
 
-        <activity android:name=".View.Main.Activity.DrivingCountActivity">
+        <activity android:name=".View.Main.CarSituation.DrivingCountActivity">
         </activity>
         <activity android:name=".View.Login.View.ScanActivity"/>
-        <activity android:name=".View.Main.Activity.FeedBackActivity">
+        <activity android:name=".View.Main.Mine.FeedBackActivity">
         </activity>
         //用于版本更新控制
         <provider
-            tools:replace="android:authorities"
             android:name="android.support.v4.content.FileProvider"
-
             android:authorities="com.comsoftstar.autobicycle.fileprovider"
-
+            android:exported="false"
             android:grantUriPermissions="true"
-
-            android:exported="false">
-
+            tools:replace="android:authorities">
             <meta-data
-                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
-
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource"/>
         </provider>
+
+        <activity android:name=".View.Main.Service.RepairRecordActivity">
+        </activity>
     </application>
 
 </manifest>

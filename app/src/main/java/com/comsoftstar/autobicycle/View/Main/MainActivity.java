@@ -1,10 +1,6 @@
-package com.comsoftstar.autobicycle.View.Main.Activity;
+package com.comsoftstar.autobicycle.View.Main;
 
 
-import android.content.Intent;
-import android.os.Build;
-import android.provider.Settings;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,17 +8,15 @@ import android.support.v4.view.ViewPager;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
 import com.comsoftstar.autobicycle.R;
-import com.comsoftstar.autobicycle.View.Main.Fragment.Fragment1;
-import com.comsoftstar.autobicycle.View.Main.Fragment.Fragment2;
+import com.comsoftstar.autobicycle.View.Main.CarSituation.Fragment1;
+import com.comsoftstar.autobicycle.View.Main.Service.Fragment2;
 import com.comsoftstar.autobicycle.Control.MyViewPager;
-import com.comsoftstar.autobicycle.View.Main.Fragment.Fragment3;
+import com.comsoftstar.autobicycle.View.Main.Mine.Fragment3;
 import com.comsoftstar.autobicycle.databinding.ActivityMainBinding;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.comsoftstar.autobicycle.App.App.context;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {

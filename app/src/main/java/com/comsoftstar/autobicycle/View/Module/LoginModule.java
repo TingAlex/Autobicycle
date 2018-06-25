@@ -4,10 +4,9 @@ package com.comsoftstar.autobicycle.View.Module;
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Interface.Value;
+import com.comsoftstar.autobicycle.App.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
-import com.comsoftstar.autobicycle.Model.NetWork.NetGet.NetUtil;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
 import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
@@ -67,7 +66,7 @@ public class LoginModule {
      * @param phone
      */
     public void getVerCode(String phone){
-        NetUtil.getInstance().VeriCode(phone, Value.VerCode.LOGIN.getValue(), new CallBack<R_Result>() {
+        RegisterModel.getInstance().VeriCode(phone, Value.VerCode.LOGIN.getValue(), new CallBack<R_Result>() {
             @Override
             public void success(R_Result result) {
                 iLoginPresenter.verCodeMsg(result.getResult());

@@ -1,7 +1,7 @@
 package com.comsoftstar.autobicycle.View.Presenter;
 
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.View.Module.FeedbackModel;
 
@@ -18,9 +18,9 @@ public class FeedBackPresenter {
    public interface IFeedBackView{
        /**
         * 获取用户反馈
-        * @param feedBacks
+        * @param feedBackBeans
         */
-        void feedback(List<FeedBack> feedBacks);
+        void feedback(List<FeedBackBean> feedBackBeans);
 
        /**
         * 提交反馈
@@ -43,9 +43,9 @@ public class FeedBackPresenter {
      * @param loginName
      */
     public void getFeedBack( String loginName){
-        feedbackModel.feedbackRecord(loginName, new CallBack<List<FeedBack>>() {
+        feedbackModel.feedbackRecord(loginName, new CallBack<List<FeedBackBean>>() {
             @Override
-            public void success(List<FeedBack> result) {
+            public void success(List<FeedBackBean> result) {
                 iFeedBackView.feedback(result);
             }
 

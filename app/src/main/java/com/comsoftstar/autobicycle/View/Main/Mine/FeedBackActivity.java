@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Main.Activity;
+package com.comsoftstar.autobicycle.View.Main.Mine;
 
 
 
@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.comsoftstar.autobicycle.Adapter.FeedBackAdapter;
 import com.comsoftstar.autobicycle.Base.BaseActivity;
 import com.comsoftstar.autobicycle.Control.MyToolBar;
-import com.comsoftstar.autobicycle.Interface.Value;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.App.Value;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.View.Presenter.FeedBackPresenter;
@@ -65,7 +65,7 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
      */
     public void initdata(){
         feedBackPresenter=new FeedBackPresenter(this);
-        adapter=new FeedBackAdapter(getApplicationContext(), new ArrayList<FeedBack>());
+        adapter=new FeedBackAdapter(getApplicationContext(), new ArrayList<FeedBackBean>());
         binding.recyFeedback.setAdapter(adapter);
         feedBackPresenter.getFeedBack(Value.UserName);
 
@@ -93,8 +93,8 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
 
     //region FeedBackPresenter.IFeedBackView接口实现
     @Override
-    public void feedback(List<FeedBack> feedBacks) {
-        adapter.setdata(feedBacks);
+    public void feedback(List<FeedBackBean> feedBackBeans) {
+        adapter.setdata(feedBackBeans);
     }
 
     @Override

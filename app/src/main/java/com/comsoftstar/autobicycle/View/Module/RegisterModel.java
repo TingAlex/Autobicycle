@@ -1,13 +1,12 @@
-package com.comsoftstar.autobicycle.Model.NetWork.NetGet;
-
+package com.comsoftstar.autobicycle.View.Module;
 
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
-import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
+import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.Model.NetWork.http.ResponseHandler;
 import com.comsoftstar.autobicycle.Util.Logs;
 
@@ -17,23 +16,23 @@ import java.util.Map;
 import retrofit2.Call;
 
 /**
- * Created by Administrator on 2017/10/16.
+ * Created by SJ on 2018/6/25.
  */
 
-public class NetUtil {
+public class RegisterModel {
     static String tag="NetUtil";
     static HttpClient httpClient= Single.getInstance().httpClient;
 
     //region 单例
-    public static NetUtil getInstance() {
+    public static RegisterModel getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {
-        private static final NetUtil INSTANCE = new NetUtil();
+        private static final RegisterModel INSTANCE = new RegisterModel();
     }
 
-    private NetUtil() {
+    private RegisterModel() {
 
     }
     //endregion
@@ -63,13 +62,13 @@ public class NetUtil {
      * @param params
      * @param callBack
      */
-    public  void Register( Map<String,String> params, final CallBack<R_Result> callBack){
+    public  void Register(Map<String,String> params, final CallBack<R_Result> callBack){
         params.put("opType","Register");
         Call<R_Result> call=httpClient.service(API.XYService).Register(params);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-               // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
                 callBack.success(((R_Result)o));
             }
 
@@ -81,31 +80,6 @@ public class NetUtil {
 
         });
     }
-
-    /**
-     * 营业网点
-     * @param callBack
-     */
-    public  void SalePoint( final CallBack<List<SalePoint>> callBack){
-        String opType="getSalePoint";
-        Call<List<SalePoint>> call=httpClient.service(API.XYService).SalePoint(opType);
-        httpClient.request(call, new ResponseHandler() {
-            @Override
-            public void onSuccess(Object o) {
-                Logs.d(tag,((SalePoint)o).getText());
-                callBack.success((List<SalePoint>)o);
-                // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure( MyError e) {
-                Logs.e(tag,e.getMessage());
-                callBack.faile(e.getMessage());
-            }
-
-        });
-    }
-
 
 
 

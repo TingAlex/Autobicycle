@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Main.Fragment;
+package com.comsoftstar.autobicycle.View.Main.Mine;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,9 +16,6 @@ import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.ListAdapter;
 import com.comsoftstar.autobicycle.Model.Bean.My_Listitem;
-import com.comsoftstar.autobicycle.View.Main.Activity.AboutActivity;
-import com.comsoftstar.autobicycle.View.Main.Activity.FeedBackActivity;
-import com.comsoftstar.autobicycle.View.Main.Activity.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;

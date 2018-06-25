@@ -1,21 +1,15 @@
 package com.comsoftstar.autobicycle.View.Module;
 
-import android.util.ArrayMap;
-
-import com.comsoftstar.autobicycle.BuildConfig;
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by SJ on 2018/6/25.
@@ -27,9 +21,9 @@ public class FeedbackModelTest{
     public void feedbackRecord() throws Exception {
         final CountDownLatch signal = new CountDownLatch(1);
         FeedbackModel feedbackModel=new FeedbackModel();
-        feedbackModel.feedbackRecord("18068261236", new CallBack<List<FeedBack>>() {
+        feedbackModel.feedbackRecord("18068261236", new CallBack<List<FeedBackBean>>() {
             @Override
-            public void success(List<FeedBack> result) {
+            public void success(List<FeedBackBean> result) {
                 signal.countDown();
             }
 

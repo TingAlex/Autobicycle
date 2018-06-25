@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Main.Activity;
+package com.comsoftstar.autobicycle.View.Main.CarSituation;
 
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;

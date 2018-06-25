@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.comsoftstar.autobicycle.View.Main.Fragment.Fragment1;
-import com.comsoftstar.autobicycle.View.Main.Fragment.Fragment2;
+import com.comsoftstar.autobicycle.View.Main.CarSituation.Fragment1;
+import com.comsoftstar.autobicycle.View.Main.Service.Fragment2;
 
 /**
  * Created by Administrator on 2017/9/25.

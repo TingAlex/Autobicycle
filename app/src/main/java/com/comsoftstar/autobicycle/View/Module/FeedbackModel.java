@@ -2,12 +2,10 @@ package com.comsoftstar.autobicycle.View.Module;
 
 
 
-import android.util.ArrayMap;
-
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
@@ -33,14 +31,14 @@ public class FeedbackModel {
      * @param loginName
      * @param callBack
      */
-    public void feedbackRecord(String loginName, final CallBack<List<FeedBack>> callBack){
+    public void feedbackRecord(String loginName, final CallBack<List<FeedBackBean>> callBack){
         String opType="FeedbackRecord";
-        Call<List<FeedBack>> call=httpClient.service(API.XYService).FeedbackRecord(opType,loginName);
+        Call<List<FeedBackBean>> call=httpClient.service(API.XYService).FeedbackRecord(opType,loginName);
 
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-                callBack.success((List<FeedBack>)o);
+                callBack.success((List<FeedBackBean>)o);
             }
 
             @Override

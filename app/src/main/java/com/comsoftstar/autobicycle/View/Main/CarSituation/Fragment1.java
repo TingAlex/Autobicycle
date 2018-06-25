@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Main.Fragment;
+package com.comsoftstar.autobicycle.View.Main.CarSituation;
 
 import android.content.Intent;
 import android.view.View;
@@ -6,10 +6,8 @@ import android.view.View;
 import com.comsoftstar.autobicycle.Base.BaseFragment;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Util.Logs;
-import com.comsoftstar.autobicycle.View.Main.Activity.DrivingCountActivity;
-import com.comsoftstar.autobicycle.View.Main.Activity.DrivingHistoryActivity;
 import com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item;
-import com.comsoftstar.autobicycle.View.Main.Activity.SettingActivity;
+import com.comsoftstar.autobicycle.View.Main.Mine.SettingActivity;
 import com.comsoftstar.autobicycle.databinding.Fragment1Binding;
 
 /**

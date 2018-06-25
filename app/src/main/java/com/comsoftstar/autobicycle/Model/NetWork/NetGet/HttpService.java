@@ -2,7 +2,8 @@ package com.comsoftstar.autobicycle.Model.NetWork.NetGet;
 
 
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBack;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.RepairRecordBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
 
@@ -49,19 +50,19 @@ public interface HttpService {
      * 报修记录
      */
     @GET("AppHandler.ashx")// opType=RepairRecord
-    Call<List<LoginResult>>RepairRecord(@Query("opType") String opType, @Query("loginName")String loginName);
+    Call<List<RepairRecordBean>>RepairRecord(@Query("opType") String opType, @Query("loginName")String loginName);
 
     /**
      * 报修保存
      */
     @GET("AppHandler.ashx")// opType=saveRecord
-    Call<List<LoginResult>>saveRecord(@QueryMap Map<String, String> options);
+    Call<R_Result>saveRecord(@QueryMap Map<String, String> options);
 
     /**
      * 用户反馈
      */
     @GET("AppHandler.ashx")// opType=FeedbackRecord
-    Call<List<FeedBack>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
+    Call<List<FeedBackBean>>FeedbackRecord(@Query("opType") String opType, @Query("loginName")String loginName);
 
     /**
      * 反馈保存

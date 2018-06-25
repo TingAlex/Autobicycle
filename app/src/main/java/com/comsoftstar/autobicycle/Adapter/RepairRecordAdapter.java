@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.RepairRecordBean;
+import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
 import com.comsoftstar.autobicycle.R;
 
 import java.util.List;
@@ -16,14 +17,14 @@ import java.util.List;
  * Created by SJ on 2018/6/25.
  */
 
-public class FeedBackAdapter extends RecyclerView.Adapter<FeedBackAdapter.ViewHolder> {
+public class RepairRecordAdapter extends RecyclerView.Adapter<RepairRecordAdapter.ViewHolder> {
     private Context context;
-    private List<FeedBackBean> items;
-    public FeedBackAdapter(Context context, List<FeedBackBean> items){
+    private List<RepairRecordBean> items;
+    public RepairRecordAdapter(Context context, List<RepairRecordBean> items){
         this.context=context;
         this.items=items;
     }
-    public void setdata( List<FeedBackBean> items){
+    public void setdata( List<RepairRecordBean> items){
         this.items=items;
         notifyDataSetChanged();
     }
@@ -43,7 +44,7 @@ public class FeedBackAdapter extends RecyclerView.Adapter<FeedBackAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tv_feedback.setText(items.get(position).getSuggestion());
+        holder.tv_feedback.setText(items.get(position).getPointName());
     }
 
     @Override

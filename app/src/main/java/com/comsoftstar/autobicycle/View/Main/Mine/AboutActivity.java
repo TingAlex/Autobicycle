@@ -1,4 +1,4 @@
-package com.comsoftstar.autobicycle.View.Main.Activity;
+package com.comsoftstar.autobicycle.View.Main.Mine;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;

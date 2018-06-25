@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:background="@color/blackgray"
         android:clickable="true"
-        tools:context=".View.Main.Activity.MainActivity">
+        tools:context=".View.Main.MainActivity">
 
         <LinearLayout
             android:id="@+id/largeLabel1"

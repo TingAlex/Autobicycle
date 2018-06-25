@@ -16,12 +16,12 @@ import android.widget.Toast;
 import com.comsoftstar.autobicycle.Base.BaseFragment;
 import com.comsoftstar.autobicycle.Control.CountDownButton;
 import com.comsoftstar.autobicycle.Interface.CallBack;
-import com.comsoftstar.autobicycle.Interface.Value;
+import com.comsoftstar.autobicycle.App.Value;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
-import com.comsoftstar.autobicycle.Model.NetWork.NetGet.NetUtil;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
+import com.comsoftstar.autobicycle.View.Module.RegisterModel;
 import com.comsoftstar.autobicycle.databinding.FragmentRegisterBinding;
 
 import java.util.List;
@@ -81,7 +81,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
         mbinding.btnSend.setOnClickListener(mbinding.loginPhone,new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NetUtil.getInstance().VeriCode(mbinding.loginPhone.getText().toString(), Value.VerCode.REGISTER.getValue(), new CallBack<R_Result>() {
+                RegisterModel.getInstance().VeriCode(mbinding.loginPhone.getText().toString(), Value.VerCode.REGISTER.getValue(), new CallBack<R_Result>() {
                     @Override
                     public void success(R_Result result) {
                         Toast.makeText(getContext(), result.getResult(), Toast.LENGTH_SHORT).show();
@@ -139,7 +139,7 @@ public class RegisterFragment2 extends BaseFragment<FragmentRegisterBinding> imp
                 //电容
                 params.put("Capacity","1");
 
-                NetUtil.getInstance().Register(params, new CallBack<R_Result>() {
+                RegisterModel.getInstance().Register(params, new CallBack<R_Result>() {
                     @Override
                     public void success(R_Result result) {
                         toast(result.getResult());

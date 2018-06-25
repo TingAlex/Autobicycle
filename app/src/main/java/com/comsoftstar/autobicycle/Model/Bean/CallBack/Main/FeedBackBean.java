@@ -4,7 +4,7 @@ package com.comsoftstar.autobicycle.Model.Bean.CallBack.Main;
  * Created by SJ on 2018/6/25.
  */
 
-public class FeedBack {
+public class FeedBackBean {
 
     /**
      * Guid : 05CADFA6-C0EF-4817-921C-FD915D3E36B8
