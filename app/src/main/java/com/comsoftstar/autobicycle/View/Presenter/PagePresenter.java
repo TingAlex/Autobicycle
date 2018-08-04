@@ -11,7 +11,8 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.View.Interface.IPresenter.IPagePresenter;
 import com.comsoftstar.autobicycle.View.Interface.Iview.IBaseView;
 import com.comsoftstar.autobicycle.View.Interface.Iview.IDrivingHistory;
-import com.comsoftstar.autobicycle.View.Interface.Iview.IFragmentView;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IFragment1View;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IFragment3View;
 import com.comsoftstar.autobicycle.View.Interface.Iview.IWorkBy;
 import com.comsoftstar.autobicycle.View.Module.PageModal;
 
@@ -57,7 +58,7 @@ public class PagePresenter<T extends IBaseView> implements IPagePresenter{
 
     @Override
     public void BackHomePage(List<HomePage> homePages) {
-        ((IFragmentView)iView).setHomePage(homePages.get(0));
+        ((IFragment1View)iView).setHomePage(homePages.get(0));
     }
 
     @Override
@@ -77,7 +78,12 @@ public class PagePresenter<T extends IBaseView> implements IPagePresenter{
 
     @Override
     public void BackworkStatisticsByMonth(List<WorkStatisticsByMonth> workStatisticsByMonths) {
-        ((IWorkBy)iView).setWorkMonths(workStatisticsByMonths);
+        if (iView instanceof IWorkBy){
+            ((IWorkBy)iView).setWorkMonths(workStatisticsByMonths);
+        }else  if (iView instanceof IFragment3View){
+            ((IFragment3View)iView).setWorkMonths(workStatisticsByMonths);
+        }
+
     }
 
     @Override

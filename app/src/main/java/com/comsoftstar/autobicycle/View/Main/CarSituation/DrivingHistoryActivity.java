@@ -17,7 +17,6 @@ import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.HistoryAdapter;
 import com.comsoftstar.autobicycle.Model.Bean.Historyitem;
 import com.comsoftstar.autobicycle.View.Interface.Iview.IDrivingHistory;
-import com.comsoftstar.autobicycle.View.Interface.Iview.IFragmentView;
 import com.comsoftstar.autobicycle.View.Presenter.PagePresenter;
 import com.comsoftstar.autobicycle.databinding.ActivityDrivinghistoryBinding;
 

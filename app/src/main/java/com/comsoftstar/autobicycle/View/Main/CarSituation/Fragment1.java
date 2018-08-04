@@ -11,7 +11,7 @@ import com.comsoftstar.autobicycle.Model.Bean.HomePage;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Util.Logs;
 import com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item;
-import com.comsoftstar.autobicycle.View.Interface.Iview.IFragmentView;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IFragment1View;
 import com.comsoftstar.autobicycle.View.Main.Mine.SettingActivity;
 import com.comsoftstar.autobicycle.View.Presenter.PagePresenter;
 import com.comsoftstar.autobicycle.databinding.Fragment1Binding;
@@ -22,11 +22,11 @@ import java.util.Map;
  * Created by Administrator on 2017/9/25.
  */
 
-public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.OnClickListener,IFragmentView {
+public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.OnClickListener,IFragment1View {
     private static final String TAG = "bug";
     private Fragment1Binding mBinding;
     private Fragment1_Item config;
-    private PagePresenter<IFragmentView> pagePresenter;
+    private PagePresenter<IFragment1View> pagePresenter;
     private HomePage homePage;
     @Override
     public int setLayoutId() {
@@ -38,7 +38,7 @@ public class Fragment1 extends BaseFragment<Fragment1Binding> implements View.On
         config=new Fragment1_Item("0","0","0m/min", "型号");
         mBinding.setFragment1item(config);
         mBinding.setOnclicklisten(this);
-        pagePresenter =new PagePresenter<IFragmentView>(getActivity().getApplicationContext(),this);
+        pagePresenter =new PagePresenter<IFragment1View>(getActivity().getApplicationContext(),this);
         Map<String,String> params=new ArrayMap<>();
         params.put("loginName", StaticData.loginResults.get(0).getLoginName());
         params.put("cfgID", StaticData.loginResults.get(0).getCfgID());

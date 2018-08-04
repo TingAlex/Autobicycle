@@ -69,6 +69,7 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
         binding.setOnclicklisteren(this);
         String lc=getIntent().getStringExtra("lc");
         String pb=getIntent().getStringExtra("pb");
+        binding.grid.tvNumberlength.setText(lc);
         binding.drivingCount.tvNumberlength.setText(lc);
         binding.drivingCount.tvNumbertime.setText(pb);
     }

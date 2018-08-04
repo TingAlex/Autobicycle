@@ -11,11 +11,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.comsoftstar.autobicycle.Business.StaticData;
+import com.comsoftstar.autobicycle.Model.Bean.WorkStatisticsByMonth;
 import com.comsoftstar.autobicycle.Util.RegexUtil;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.ListAdapter;
 import com.comsoftstar.autobicycle.Model.Bean.My_Listitem;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IFragment3View;
+import com.comsoftstar.autobicycle.View.Presenter.PagePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +42,16 @@ import lecho.lib.hellocharts.view.ColumnChartView;
  * Created by Administrator on 2017/9/25.
  */
 
-public class Fragment3 extends Fragment {
+public class Fragment3 extends Fragment implements IFragment3View{
     private ListView listView;
     private ListAdapter listAdapter;
     private ArrayList<My_Listitem> listt=new ArrayList<>();
     private My_Listitem my_listitem;
     private TextView myphone;
-    public final static String[] months = new String[] { "Jan", "Feb", "Mar",
-            "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", };//X坐标标签
     private List<Float> num=new ArrayList<>();
     public ColumnChartView columnChart;
     public ColumnChartData columnData;
+    private PagePresenter<IFragment3View> pagePresenter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +62,9 @@ public class Fragment3 extends Fragment {
 
         listView.setOnItemClickListener(itemClickListener);
         initUI();
-        initbarchart();
+        pagePresenter=new PagePresenter<IFragment3View>(getActivity().getApplicationContext(),this);
+        pagePresenter.getWorkStatisticsBy(2, StaticData.loginResults.get(0).getCfgID());
+
         return rootview;
     }
     private void initUI(){
@@ -81,10 +87,10 @@ public class Fragment3 extends Fragment {
     /**
      * 初始化柱状图
      */
-    private void initbarchart(){
+    private void initbarchart(String xlabel,Float[] floats,String[] labels){
         columnChart.setInteractive(true);
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
-        int numColumns = months.length;
+        int numColumns = labels.length;
 
         List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<Column> columns = new ArrayList<Column>();
@@ -92,9 +98,9 @@ public class Fragment3 extends Fragment {
         Random random=new Random();
         for (int i = 0; i < numColumns; ++i) {
             values = new ArrayList<SubcolumnValue>();
-            values.add(new SubcolumnValue(random.nextInt(100), ChartUtils.pickColor()));
+            values.add(new SubcolumnValue(floats[i].floatValue(), ChartUtils.pickColor()));
 // 点击柱状图就展示数据量
-            axisValues.add(new AxisValue(i).setLabel(months[i]));//导入X标签列表
+            axisValues.add(new AxisValue(i).setLabel(labels[i]));//导入X标签列表
 
             columns.add(new Column(values).setHasLabelsOnlyForSelected(false)//点击显示数值
                     .setHasLabels(true));//常显示数值
@@ -104,11 +110,11 @@ public class Fragment3 extends Fragment {
 
         columnData.setAxisXBottom(new Axis(axisValues).setHasLines(true)
                 .setTextColor(Color.WHITE)//设置X轴标签颜色
-                .setName("date"));//设置X轴标题
+                .setName(xlabel));//设置X轴标题
         columnData.setAxisYLeft(new Axis().setHasLines(true)
                 .setTextColor(Color.WHITE)//设置Y轴标签颜色
                 .setMaxLabelChars(2)
-                .setName("date2"));//设置Y轴标题
+                .setName("里程"));//设置Y轴标题
 
         columnChart.setColumnChartData(columnData);//载入数据
 
@@ -125,6 +131,22 @@ public class Fragment3 extends Fragment {
         v.left = -1;
         v.right= 16;//X轴显示的位置0-5 显示5个
         columnChart.setCurrentViewport(v);
+    }
+
+    @Override
+    public void faileMsg(String msg) {
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setWorkMonths(List<WorkStatisticsByMonth> workStatisticsByMonths) {
+        List<String> list=new ArrayList<>();
+        List<Float> list2=new ArrayList<>();
+        for (int i = 0; i < workStatisticsByMonths.size(); i++) {
+            list.add(String.valueOf(workStatisticsByMonths.get(i).getMonthNo()));
+            list2.add(Float.valueOf(String.valueOf(workStatisticsByMonths.get(i).getWorkMile())));
+        }
+        initbarchart("月次",list2.toArray(new Float[list2.size()]),list.toArray(new String[list.size()]));
     }
 
 

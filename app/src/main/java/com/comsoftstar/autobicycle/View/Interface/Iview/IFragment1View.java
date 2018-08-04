@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Author       : SJ
  * Time         : 2018/8/4  12:26
- * Description  : IFragmentView
+ * Description  : IFragment1View
  */
 
-public interface IFragmentView extends IBaseView{
+public interface IFragment1View extends IBaseView{
     void setHomePage(HomePage homePage);
 }

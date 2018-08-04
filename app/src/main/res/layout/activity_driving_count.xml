@@ -39,6 +39,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <include
+                android:id="@+id/grid"
                 layout="@layout/driving_count_3"/>
 
             <info.hoang8f.android.segmented.SegmentedGroup
