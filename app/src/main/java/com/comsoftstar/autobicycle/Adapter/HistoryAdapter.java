@@ -28,6 +28,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView listtime;
         TextView liststart;
         TextView listend;
+        TextView length;
         public ViewHolder(View view) {
             super(view);
             //  listview=view;
@@ -36,6 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             listtime = (TextView) view.findViewById(R.id.time);
             liststart = (TextView) view.findViewById(R.id.start);
             listend= (TextView) view.findViewById(R.id.end);
+            length= (TextView) view.findViewById(R.id.tv_length);
         }
     }
 
@@ -59,6 +61,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.listtime.setText(historyitem.getTime());
         holder.liststart.setText(historyitem.getStart());
         holder.listend.setText(historyitem.getEnd());
+        holder.length.setText(historyitem.getTv_length()+"km");
 
     }
 

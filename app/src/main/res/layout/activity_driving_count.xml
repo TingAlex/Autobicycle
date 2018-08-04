@@ -4,7 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="onclicklisteren"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <LinearLayout
@@ -23,18 +25,13 @@
             android:background="@drawable/kuang"
             >
 
-            <include layout="@layout/driving_count_1"/>
+            <include
+                android:id="@+id/driving_count"
+                layout="@layout/driving_count_1"/>
 
             <lecho.lib.hellocharts.view.ColumnChartView
                 android:id="@+id/barchart"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
-
-            <lecho.lib.hellocharts.view.ColumnChartView
-                android:id="@+id/barchart2"
+                android:layout_margin="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -63,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
+                    android:onClick="@{onclicklisteren}"
                     android:text="天"/>
 
                 <RadioButton
@@ -71,6 +69,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="@{onclicklisteren}"
                     android:text="周"/>
 
                 <RadioButton
@@ -79,6 +78,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="@{onclicklisteren}"
                     android:text="月"/>
             </info.hoang8f.android.segmented.SegmentedGroup>
         </LinearLayout>

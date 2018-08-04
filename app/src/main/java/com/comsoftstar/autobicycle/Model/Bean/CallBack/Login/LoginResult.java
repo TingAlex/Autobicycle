@@ -7,11 +7,12 @@ package com.comsoftstar.autobicycle.Model.Bean.CallBack.Login;
 public class LoginResult {
 
     /**
-     * Guid : EABFB06A-8125-40E5-BAFA-F0AE852CF904
-     * LoginName : 18068261236
-     * Password : 123456
-     * PackID : 1
-     * ModuleID : 31ffdc05335436331560045700000000
+     * Guid : 33B69993-8C23-4015-90A7-CB5A79DCAE32
+     * LoginName : 13861883814
+     * Password : a123456
+     * cfgID : 490bbd0f-1ec2-4872-949e-68ea66ee0ed5
+     * ModuleID : 490bbd0f-1ec2-4872-949e-68ea66ee0ed5
+     * IMEI : 123456
      * PointNo : 1
      * CellNum : 1
      * StandardVol : 1
@@ -19,6 +20,7 @@ public class LoginResult {
      * Capacity : 1
      * State : 1
      * Remark :
+     * RegistTime : 2018/6/18 14:54:03
      * cDefine1 :
      * cDefine2 :
      * cDefine3 :
@@ -29,8 +31,9 @@ public class LoginResult {
     private String Guid;
     private String LoginName;
     private String Password;
-    private String PackID;
+    private String cfgID;
     private String ModuleID;
+    private String IMEI;
     private String PointNo;
     private int CellNum;
     private String StandardVol;
@@ -38,6 +41,7 @@ public class LoginResult {
     private String Capacity;
     private int State;
     private String Remark;
+    private String RegistTime;
     private String cDefine1;
     private String cDefine2;
     private String cDefine3;
@@ -68,12 +72,12 @@ public class LoginResult {
         this.Password = Password;
     }
 
-    public String getPackID() {
-        return PackID;
+    public String getCfgID() {
+        return cfgID;
     }
 
-    public void setPackID(String PackID) {
-        this.PackID = PackID;
+    public void setCfgID(String cfgID) {
+        this.cfgID = cfgID;
     }
 
     public String getModuleID() {
@@ -82,6 +86,14 @@ public class LoginResult {
 
     public void setModuleID(String ModuleID) {
         this.ModuleID = ModuleID;
+    }
+
+    public String getIMEI() {
+        return IMEI;
+    }
+
+    public void setIMEI(String IMEI) {
+        this.IMEI = IMEI;
     }
 
     public String getPointNo() {
@@ -138,6 +150,14 @@ public class LoginResult {
 
     public void setRemark(String Remark) {
         this.Remark = Remark;
+    }
+
+    public String getRegistTime() {
+        return RegistTime;
+    }
+
+    public void setRegistTime(String RegistTime) {
+        this.RegistTime = RegistTime;
     }
 
     public String getCDefine1() {

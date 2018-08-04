@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.comsoftstar.autobicycle.App.Value;
+import com.comsoftstar.autobicycle.Business.StaticData;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Login.LoginResult;
 import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 import com.comsoftstar.autobicycle.View.Module.LoginModule;
@@ -95,6 +96,7 @@ public class LoginPresenter implements LoginModule.ILoginPresenter {
     @Override
     public void LoginResult(List<LoginResult> result) {
         //Todo:数据后期处理
+        StaticData.loginResults=result;
         login_inteface.loginsuccess();
     }
     //登陆报错

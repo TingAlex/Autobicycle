@@ -6,6 +6,11 @@ import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.FeedBackBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Main.RepairRecordBean;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.R_Result;
 import com.comsoftstar.autobicycle.Model.Bean.CallBack.Register.SalePoint;
+import com.comsoftstar.autobicycle.Model.Bean.HomePage;
+import com.comsoftstar.autobicycle.Model.Bean.WorkRecords;
+import com.comsoftstar.autobicycle.Model.Bean.WorkStatisticsByDay;
+import com.comsoftstar.autobicycle.Model.Bean.WorkStatisticsByMonth;
+import com.comsoftstar.autobicycle.Model.Bean.WorkStatisticsByWeek;
 
 import java.util.List;
 import java.util.Map;
@@ -70,40 +75,37 @@ public interface HttpService {
     @GET("AppHandler.ashx")// opType=saveFeedback
     Call<R_Result>saveFeedback(@QueryMap Map<String, String> params);
 
+    /**
+     * 首页
+     */
+    @GET("AppHandler.ashx")// opType=HomePage
+    Call<List<HomePage>>homePage(@QueryMap Map<String, String> params);
+
+    /**
+     * 行车历史
+     */
+    @GET("AppHandler.ashx")// opType=WorkRecords
+    Call<List<WorkRecords>>workRecords(@Query("opType") String opType, @Query("cfgID")String cfgID);
+
+    /**
+     * 骑行统计按天
+     */
+    @GET("AppHandler.ashx")// opType=WorkStatisticsByDay
+    Call<List<WorkStatisticsByDay>>workStatisticsByDay(@Query("opType") String opType, @Query("cfgID")String cfgID);
 
 
-    //region 模版
-//    @GET("/group/{id}/users")
-//    List<User> groupList(@Path("id") int groupId);
-//
-//    @GET("/group/{id}/users")
-//    List<User> groupList(@Path("id") int groupId, @Query("sort") String sort);
-//
-//    @GET("/group/{id}/users")
-//    List<User> groupList(@Path("id") int groupId, @QueryMap Map<String, String> options);
-//
-//    @POST("/users/new")
-//    void createUser(@Body User user, Callback<User> cb);//Callback参数下面讲解
-//
-//    @Headers("Cache-Control: max-age=640000")
-//    @GET("/widget/list")
-//    List<Widget> widgetList();
-//
-//    @Multipart//多部分数组形式提交体
-//    @POST("Ashx/Snapshot.ashx")
-//    Call<R_Result> uploadPictures(@Part() MultipartBody.Part  part);
-//
-//    @Multipart//多部分列表形式提交体
-//    @POST("AppHandler_Test.ashx")
-//    Call<ResponseBody> modifyy(@PartMap Map<String, RequestBody> map, @Part List<MultipartBody.Part> parts);
-//
-//    @FormUrlEncoded//表单提交
-//    @POST("/user/edit")
-//    Call<ResponseBody> updateUser(@Field("first_name") String first, @Field("last_name") String last);
-//
-//    @Headers({"Content-type:application/json,"Accept: application/json"})
-//     @POST("/api/v1/trade/HasAccount.json")
-//     Call<BaseResponse> createCommit(@Body RequestBody route);
-    //endregion
+    /**
+     * 骑行统计按周
+     */
+    @GET("AppHandler.ashx")// opType=WorkStatisticsByWeek
+    Call<List<WorkStatisticsByWeek>>workStatisticsByWeek(@Query("opType") String opType, @Query("cfgID")String cfgID);
+
+
+    /**
+     * 骑行统计按月
+     */
+    @GET("AppHandler.ashx")// opType=WorkStatisticsByMonth
+    Call<List<WorkStatisticsByMonth>>workStatisticsByMonth(@Query("opType") String opType, @Query("cfgID")String cfgID);
+
 }
 

@@ -7,21 +7,29 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.comsoftstar.autobicycle.Base.BaseActivity;
+import com.comsoftstar.autobicycle.Business.StaticData;
 import com.comsoftstar.autobicycle.Interface.RecyclerItemClickListener;
+import com.comsoftstar.autobicycle.Model.Bean.WorkRecords;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.HistoryAdapter;
 import com.comsoftstar.autobicycle.Model.Bean.Historyitem;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IDrivingHistory;
+import com.comsoftstar.autobicycle.View.Interface.Iview.IFragmentView;
+import com.comsoftstar.autobicycle.View.Presenter.PagePresenter;
 import com.comsoftstar.autobicycle.databinding.ActivityDrivinghistoryBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryBinding> {
+public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryBinding> implements IDrivingHistory{
     private Historyitem historyitem;
     private HistoryAdapter historyAdapter;
     private ArrayList<Historyitem> listt=new ArrayList<>();
     private RecyclerView recyclerView;
+    private PagePresenter<IDrivingHistory> pagePresenter;
 
     @Override
     public int setLayoutId() {
@@ -41,6 +49,8 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
             actionBar.setHomeButtonEnabled(true);
         }
         initUI();
+        pagePresenter=new PagePresenter<IDrivingHistory>(getApplicationContext(),this);
+        pagePresenter.getWorkRecords(StaticData.loginResults.get(0).getCfgID());
     }
 
     @Override
@@ -69,8 +79,22 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
 
             }
         }));
-        for (int i = 0; i < 10; i++) {
-            historyitem=new Historyitem("2017-09-30 星期六","17:08","江苏无锡宇野网络大厦B座1703","无锡惠山万达北广场","5km");
+
+    }
+
+    @Override
+    public void faileMsg(String msg) {
+        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setWorkRecords(List<WorkRecords> workRecords) {
+        listt.clear();
+        for (int i = 0; i < workRecords.size(); i++) {
+            String[] arr=workRecords.get(i).getWorkDate().split(" ");
+            String date=arr[0];
+            String time=arr[1];
+            historyitem=new Historyitem(date,time,workRecords.get(i).getStartAddress(),workRecords.get(i).getEndAddress(),String.valueOf(workRecords.get(i).getWorkMiles()));
             listt.add(historyitem);
         }
 

@@ -75,7 +75,8 @@ public class HttpClient<T> {
                     MyError error=new MyError().setCode(0).setMessage(((R_Result) t).getResult());
                     responseHandler.onFailure(error);
                 }else {
-                    responseHandler.onFailure( new MyError());
+
+                    responseHandler.onFailure( new MyError().setMessage(t.getCause().toString()));
                 }
 
             }
