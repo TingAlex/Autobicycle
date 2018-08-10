@@ -21,8 +21,9 @@ type="android.view.View.OnClickListener"/>
 
         android:orientation="horizontal">
         <ImageView
+            android:layout_marginLeft="-20dp"
             android:id="@+id/main_title"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="centerCrop"
