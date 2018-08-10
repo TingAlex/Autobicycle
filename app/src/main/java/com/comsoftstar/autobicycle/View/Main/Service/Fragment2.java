@@ -9,11 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.comsoftstar.autobicycle.Control.GlideImageLoader;
 import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.Adapter.GridViewAdapter;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
+import com.youth.banner.Banner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import static com.comsoftstar.autobicycle.App.App.context;
 
 /**
  * Created by Administrator on 2017/9/25.
@@ -22,6 +31,7 @@ import java.util.ArrayList;
 public class Fragment2 extends Fragment {
     private GridView gridView;
     private GridViewAdapter gridViewadapter;
+    //private CarouselView carouselView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,8 +39,29 @@ public class Fragment2 extends Fragment {
         gridView=(GridView)rootview.findViewById(R.id.fuwu_gridview);
         gridView.setOnItemClickListener(itemClickListener);
         initUI();
+         //carouselView = (CarouselView) rootview.findViewById(R.id.carouselView);
+         Banner banner=(Banner) rootview.findViewById(R.id.banner);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        //资源文件
+        final String[] images={"http://lvmakeji.com/XYService/Images/1.jpg","http://lvmakeji.com/XYService/Images/2.jpg","http://lvmakeji.com/XYService/Images/3.jpg","http://lvmakeji.com/XYService/Images/4.jpg"};
+        banner.setImages(Arrays.asList(images) );
+        banner.start();
+       // carouselView.setPageCount(images.length);
+//        ImageListener imageListener = new ImageListener() {
+//            @Override
+//            public void setImageForPosition(int position, ImageView imageView) {
+//                //imageView.setImageResource(sampleImages[position]);
+//                Glide.with(context).load(images[position]).into(imageView);
+//            }
+//        };
+       // carouselView.setImageListener(imageListener);
+
+
         return rootview;
     }
+
     private void initUI(){
         ArrayList<String> name=new ArrayList<>();
         ArrayList<Integer> image=new ArrayList<>();
