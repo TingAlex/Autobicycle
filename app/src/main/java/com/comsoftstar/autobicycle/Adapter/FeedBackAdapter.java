@@ -19,25 +19,29 @@ import java.util.List;
 public class FeedBackAdapter extends RecyclerView.Adapter<FeedBackAdapter.ViewHolder> {
     private Context context;
     private List<FeedBackBean> items;
-    public FeedBackAdapter(Context context, List<FeedBackBean> items){
-        this.context=context;
-        this.items=items;
+
+    public FeedBackAdapter(Context context, List<FeedBackBean> items) {
+        this.context = context;
+        this.items = items;
     }
-    public void setdata( List<FeedBackBean> items){
-        this.items=items;
+
+    public void setdata(List<FeedBackBean> items) {
+        this.items = items;
         notifyDataSetChanged();
     }
-    class ViewHolder extends RecyclerView.ViewHolder{
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_feedback;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_feedback=(TextView)itemView.findViewById(R.id.tv_feedback);
+            tv_feedback = (TextView) itemView.findViewById(R.id.tv_feedback);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(context).inflate(R.layout.item_feedback,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_feedback, parent, false);
         return new ViewHolder(v);
     }
 

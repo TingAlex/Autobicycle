@@ -31,9 +31,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void initView(ActivityMainBinding binding) {
-        mviewPager=(MyViewPager)findViewById(R.id.viewpager);
+        mviewPager = (MyViewPager) findViewById(R.id.viewpager);
         mviewPager.setNoScroll(true);
-        alphaTabsIndicator=(AlphaTabsIndicator)findViewById(R.id.alphaIndicator);
+        alphaTabsIndicator = (AlphaTabsIndicator) findViewById(R.id.alphaIndicator);
 
         pagerAdapter = new MainAdapter(getSupportFragmentManager());
         mviewPager.setAdapter(pagerAdapter);
@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private class MainAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
 
         private List<Fragment> fragments = new ArrayList<>();
-      //  private String[] titles = {"微信", "通讯录", "发现"};
+        //  private String[] titles = {"微信", "通讯录", "发现"};
 
         public MainAdapter(FragmentManager fm) {
             super(fm);

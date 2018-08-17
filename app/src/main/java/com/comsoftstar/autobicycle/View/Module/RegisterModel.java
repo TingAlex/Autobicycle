@@ -20,8 +20,8 @@ import retrofit2.Call;
  */
 
 public class RegisterModel {
-    static String tag="NetUtil";
-    static HttpClient httpClient= Single.getInstance().httpClient;
+    static String tag = "NetUtil";
+    static HttpClient httpClient = Single.getInstance().httpClient;
 
     //region 单例
     public static RegisterModel getInstance() {
@@ -40,14 +40,14 @@ public class RegisterModel {
     /**
      * 验证码
      */
-    public  void VeriCode( String loginName,String veriType, final CallBack<R_Result> callBack){
-        String opType="getVeriCode";
+    public void VeriCode(String loginName, String veriType, final CallBack<R_Result> callBack) {
+        String opType = "getVeriCode";
 
-        Call<R_Result> call=httpClient.service(API.XYService).VeriCode(opType,loginName,veriType);
+        Call<R_Result> call = httpClient.service(API.XYService).VeriCode(opType, loginName, veriType);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-                callBack.success((R_Result)o);
+                callBack.success((R_Result) o);
             }
 
             @Override
@@ -59,17 +59,18 @@ public class RegisterModel {
 
     /**
      * 注册
+     *
      * @param params
      * @param callBack
      */
-    public  void Register(Map<String,String> params, final CallBack<R_Result> callBack){
-        params.put("opType","Register");
-        Call<R_Result> call=httpClient.service(API.XYService).Register(params);
+    public void Register(Map<String, String> params, final CallBack<R_Result> callBack) {
+        params.put("opType", "Register");
+        Call<R_Result> call = httpClient.service(API.XYService).Register(params);
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
                 // Toast.makeText(context, ((R_Result)o).getResult(), Toast.LENGTH_SHORT).show();
-                callBack.success(((R_Result)o));
+                callBack.success(((R_Result) o));
             }
 
             @Override
@@ -80,7 +81,6 @@ public class RegisterModel {
 
         });
     }
-
 
 
 }

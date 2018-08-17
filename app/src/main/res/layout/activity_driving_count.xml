@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="onclicklisteren"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
         android:id="@+id/drivercountlinearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/blackgray"
+        android:orientation="vertical"
         tools:context="com.comsoftstar.autobicycle.View.Main.CarSituation.DrivingCountActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:background="@drawable/kuang"
-            >
+            android:orientation="vertical">
 
             <include
                 android:id="@+id/driving_count"
-                layout="@layout/driving_count_1"/>
+                layout="@layout/driving_count_1" />
 
             <lecho.lib.hellocharts.view.ColumnChartView
                 android:id="@+id/barchart"
-                android:layout_margin="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_weight="1" />
 
             <include
                 android:id="@+id/grid"
-                layout="@layout/driving_count_3"/>
+                layout="@layout/driving_count_3" />
 
             <info.hoang8f.android.segmented.SegmentedGroup
                 android:id="@+id/segmented2"
@@ -49,38 +49,38 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 app:sc_border_width="1dp"
+                app:sc_checked_text_color="#7C4DFF"
                 app:sc_corner_radius="10dp"
                 app:sc_tint_color="#FFEB3B"
-                app:sc_unchecked_tint_color="#ff0000"
-                app:sc_checked_text_color="#7C4DFF">
+                app:sc_unchecked_tint_color="#ff0000">
 
                 <RadioButton
-                    style="@style/RadioButton"
                     android:id="@+id/rbutton1"
+                    style="@style/RadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
                     android:onClick="@{onclicklisteren}"
-                    android:text="天"/>
+                    android:text="天" />
 
                 <RadioButton
-                    style="@style/RadioButton"
                     android:id="@+id/rbutton2"
+                    style="@style/RadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="@{onclicklisteren}"
-                    android:text="周"/>
+                    android:text="周" />
 
                 <RadioButton
-                    style="@style/RadioButton"
                     android:id="@+id/rbutton3"
+                    style="@style/RadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="@{onclicklisteren}"
-                    android:text="月"/>
+                    android:text="月" />
             </info.hoang8f.android.segmented.SegmentedGroup>
         </LinearLayout>
 

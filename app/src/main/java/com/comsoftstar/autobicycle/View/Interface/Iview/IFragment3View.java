@@ -10,6 +10,6 @@ import java.util.List;
  * Description  : IFragment3View
  */
 
-public interface IFragment3View extends IBaseView{
+public interface IFragment3View extends IBaseView {
     void setWorkMonths(List<WorkStatisticsByMonth> workStatisticsByMonths);
 }

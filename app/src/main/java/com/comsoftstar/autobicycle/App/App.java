@@ -14,10 +14,11 @@ public class App extends Application {
 
 
     public static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
         Logs.init(true);
-        context=getApplicationContext();
+        context = getApplicationContext();
     }
 }

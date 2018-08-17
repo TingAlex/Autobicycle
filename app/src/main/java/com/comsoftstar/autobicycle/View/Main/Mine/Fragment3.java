@@ -42,43 +42,45 @@ import lecho.lib.hellocharts.view.ColumnChartView;
  * Created by Administrator on 2017/9/25.
  */
 
-public class Fragment3 extends Fragment implements IFragment3View{
+public class Fragment3 extends Fragment implements IFragment3View {
     private ListView listView;
     private ListAdapter listAdapter;
-    private ArrayList<My_Listitem> listt=new ArrayList<>();
+    private ArrayList<My_Listitem> listt = new ArrayList<>();
     private My_Listitem my_listitem;
     private TextView myphone;
-    private List<Float> num=new ArrayList<>();
+    private List<Float> num = new ArrayList<>();
     public ColumnChartView columnChart;
     public ColumnChartData columnData;
     private PagePresenter<IFragment3View> pagePresenter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootview=inflater.inflate(R.layout.fragment3,container,false);
-        myphone=(TextView)rootview.findViewById(R.id.myphone);
-        listView=(ListView)rootview.findViewById(R.id.my_listview);
-        columnChart=(ColumnChartView)rootview.findViewById(R.id.barchart);
+        View rootview = inflater.inflate(R.layout.fragment3, container, false);
+        myphone = (TextView) rootview.findViewById(R.id.myphone);
+        listView = (ListView) rootview.findViewById(R.id.my_listview);
+        columnChart = (ColumnChartView) rootview.findViewById(R.id.barchart);
 
         listView.setOnItemClickListener(itemClickListener);
         initUI();
-        pagePresenter=new PagePresenter<IFragment3View>(getActivity().getApplicationContext(),this);
+        pagePresenter = new PagePresenter<IFragment3View>(getActivity().getApplicationContext(), this);
         pagePresenter.getWorkStatisticsBy(2, StaticData.loginResults.get(0).getCfgID());
 
         return rootview;
     }
-    private void initUI(){
+
+    private void initUI() {
         myphone.setText(RegexUtil.phoneNoHide("18068261236"));
         listt.clear();
-        my_listitem=new My_Listitem(R.drawable.ic_directions_bike_black_24dp,"车辆信息");
+        my_listitem = new My_Listitem(R.drawable.ic_directions_bike_black_24dp, "车辆信息");
         listt.add(my_listitem);
-        my_listitem=new My_Listitem(R.drawable.raw_1504239659,"意见反馈");
+        my_listitem = new My_Listitem(R.drawable.raw_1504239659, "意见反馈");
         listt.add(my_listitem);
-        my_listitem=new My_Listitem(R.drawable.raw_1504239668,"设置");
+        my_listitem = new My_Listitem(R.drawable.raw_1504239668, "设置");
         listt.add(my_listitem);
-        my_listitem=new My_Listitem(R.drawable.raw_1504239673,"关于");
+        my_listitem = new My_Listitem(R.drawable.raw_1504239673, "关于");
         listt.add(my_listitem);
-        listAdapter=new ListAdapter(getContext(),R.layout.item_my,listt);
+        listAdapter = new ListAdapter(getContext(), R.layout.item_my, listt);
         listView.setAdapter(listAdapter);
 
 
@@ -87,7 +89,7 @@ public class Fragment3 extends Fragment implements IFragment3View{
     /**
      * 初始化柱状图
      */
-    private void initbarchart(String xlabel,Float[] floats,String[] labels){
+    private void initbarchart(String xlabel, Float[] floats, String[] labels) {
         columnChart.setInteractive(true);
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
         int numColumns = labels.length;
@@ -95,7 +97,7 @@ public class Fragment3 extends Fragment implements IFragment3View{
         List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<Column> columns = new ArrayList<Column>();
         List<SubcolumnValue> values;
-        Random random=new Random();
+        Random random = new Random();
         for (int i = 0; i < numColumns; ++i) {
             values = new ArrayList<SubcolumnValue>();
             values.add(new SubcolumnValue(floats[i].floatValue(), ChartUtils.pickColor()));
@@ -129,7 +131,7 @@ public class Fragment3 extends Fragment implements IFragment3View{
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
         Viewport v = new Viewport(columnChart.getMaximumViewport());
         v.left = -1;
-        v.right= 16;//X轴显示的位置0-5 显示5个
+        v.right = 16;//X轴显示的位置0-5 显示5个
         columnChart.setCurrentViewport(v);
     }
 
@@ -140,13 +142,13 @@ public class Fragment3 extends Fragment implements IFragment3View{
 
     @Override
     public void setWorkMonths(List<WorkStatisticsByMonth> workStatisticsByMonths) {
-        List<String> list=new ArrayList<>();
-        List<Float> list2=new ArrayList<>();
+        List<String> list = new ArrayList<>();
+        List<Float> list2 = new ArrayList<>();
         for (int i = 0; i < workStatisticsByMonths.size(); i++) {
             list.add(String.valueOf(workStatisticsByMonths.get(i).getMonthNo()));
             list2.add(Float.valueOf(String.valueOf(workStatisticsByMonths.get(i).getWorkMile())));
         }
-        initbarchart("月次",list2.toArray(new Float[list2.size()]),list.toArray(new String[list.size()]));
+        initbarchart("月次", list2.toArray(new Float[list2.size()]), list.toArray(new String[list.size()]));
     }
 
 
@@ -172,20 +174,20 @@ public class Fragment3 extends Fragment implements IFragment3View{
     /**
      * listview子项监听事件
      */
-    AdapterView.OnItemClickListener itemClickListener=new AdapterView.OnItemClickListener() {
+    AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            switch (position){
+            switch (position) {
                 case 1:
-                    Intent intent=new Intent(getActivity(),FeedBackActivity.class);
+                    Intent intent = new Intent(getActivity(), FeedBackActivity.class);
                     startActivity(intent);
                     break;
                 case 2:
-                    Intent intent2=new Intent(getActivity(),SettingActivity.class);
+                    Intent intent2 = new Intent(getActivity(), SettingActivity.class);
                     startActivity(intent2);
                     break;
                 case 3:
-                    Intent intent3=new Intent(getActivity(),AboutActivity.class);
+                    Intent intent3 = new Intent(getActivity(), AboutActivity.class);
                     startActivity(intent3);
                     break;
             }

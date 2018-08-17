@@ -29,6 +29,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView liststart;
         TextView listend;
         TextView length;
+
         public ViewHolder(View view) {
             super(view);
             //  listview=view;
@@ -36,8 +37,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             listdate = (TextView) view.findViewById(R.id.date);
             listtime = (TextView) view.findViewById(R.id.time);
             liststart = (TextView) view.findViewById(R.id.start);
-            listend= (TextView) view.findViewById(R.id.end);
-            length= (TextView) view.findViewById(R.id.tv_length);
+            listend = (TextView) view.findViewById(R.id.end);
+            length = (TextView) view.findViewById(R.id.tv_length);
         }
     }
 
@@ -48,20 +49,20 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mcontext == null) {
-            mcontext=parent.getContext();
+            mcontext = parent.getContext();
         }
-        View view= LayoutInflater.from(mcontext).inflate(R.layout.drivinghistory_item,parent,false);
+        View view = LayoutInflater.from(mcontext).inflate(R.layout.drivinghistory_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Historyitem historyitem=mlistt.get(position);
+        Historyitem historyitem = mlistt.get(position);
         holder.listdate.setText(historyitem.getDate());
         holder.listtime.setText(historyitem.getTime());
         holder.liststart.setText(historyitem.getStart());
         holder.listend.setText(historyitem.getEnd());
-        holder.length.setText(historyitem.getTv_length()+"km");
+        holder.length.setText(historyitem.getTv_length() + "km");
 
     }
 

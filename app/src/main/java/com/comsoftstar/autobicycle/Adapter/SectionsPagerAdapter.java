@@ -14,13 +14,15 @@ import com.comsoftstar.autobicycle.View.Main.Service.Fragment2;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private Context context2;
-    public SectionsPagerAdapter(Context context,FragmentManager fm) {
+
+    public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        context2=context;
+        context2 = context;
     }
+
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new Fragment1();//子类页面
             case 1:
@@ -28,6 +30,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }
         return new Fragment2();
     }
+
     @Override
     public int getCount() {
         // Show 3 total pages.

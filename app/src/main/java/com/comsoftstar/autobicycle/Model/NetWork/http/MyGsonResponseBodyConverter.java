@@ -15,7 +15,7 @@ import retrofit2.Converter;
  * Created by SJ on 2018/6/20.
  */
 
-public class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody,T> {
+public class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
     private final Gson gson;
     private final TypeAdapter<T> adapter;
 
@@ -24,30 +24,30 @@ public class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody,T>
         this.adapter = adapter;
     }
 
-    @Override public T convert(ResponseBody value) throws IOException {
+    @Override
+    public T convert(ResponseBody value) throws IOException {
         //注意：ResponseBody只能读取一次
-        final String str=value.string();
-        if (str==null||str.equals("")){
-            String msg="服务器返回结果为空";
+        final String str = value.string();
+        if (str == null || str.equals("")) {
+            String msg = "服务器返回结果为空";
             R_Result person = new R_Result();
             person.setResult(msg);
             throw person;
         }
         JsonReader jsonReader = gson.newJsonReader(new StringReader(str));
         try {
-           T result= adapter.read(jsonReader);
+            T result = adapter.read(jsonReader);
             return result;
-        }catch (Exception e){
+        } catch (Exception e) {
             try {
                 Gson gson = new Gson();
                 R_Result person = gson.fromJson(str, R_Result.class);
                 throw person;
-            }catch (Exception e2){
+            } catch (Exception e2) {
                 throw e2;
             }
 
-        }
-        finally {
+        } finally {
             value.close();
         }
     }

@@ -22,7 +22,7 @@ import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zbar.ZBarView;
 
-public class ScanActivity extends AppCompatActivity  implements QRCodeView.Delegate {
+public class ScanActivity extends AppCompatActivity implements QRCodeView.Delegate {
     private static final String TAG = ScanActivity.class.getSimpleName();
     private static final int REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY = 666;
 

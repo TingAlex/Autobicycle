@@ -7,10 +7,12 @@ package com.comsoftstar.autobicycle.Model.Bean;
 public class My_Listitem {
     private int image;
     private String title;
-    public My_Listitem(int image, String title){
-        this.image=image;
-        this.title=title;
+
+    public My_Listitem(int image, String title) {
+        this.image = image;
+        this.title = title;
     }
+
     public int getImage() {
         return image;
     }

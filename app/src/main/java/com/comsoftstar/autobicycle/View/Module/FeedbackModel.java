@@ -1,7 +1,6 @@
 package com.comsoftstar.autobicycle.View.Module;
 
 
-
 import com.comsoftstar.autobicycle.App.Single;
 import com.comsoftstar.autobicycle.Interface.API;
 import com.comsoftstar.autobicycle.Interface.CallBack;
@@ -21,24 +20,26 @@ import retrofit2.Call;
  */
 //用户反馈
 public class FeedbackModel {
-    HttpClient httpClient= Single.getInstance().httpClient;
-    public FeedbackModel(){
+    HttpClient httpClient = Single.getInstance().httpClient;
+
+    public FeedbackModel() {
 
     }
 
     /**
      * 用户反馈
+     *
      * @param loginName
      * @param callBack
      */
-    public void feedbackRecord(String loginName, final CallBack<List<FeedBackBean>> callBack){
-        String opType="FeedbackRecord";
-        Call<List<FeedBackBean>> call=httpClient.service(API.XYService).FeedbackRecord(opType,loginName);
+    public void feedbackRecord(String loginName, final CallBack<List<FeedBackBean>> callBack) {
+        String opType = "FeedbackRecord";
+        Call<List<FeedBackBean>> call = httpClient.service(API.XYService).FeedbackRecord(opType, loginName);
 
         httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-                callBack.success((List<FeedBackBean>)o);
+                callBack.success((List<FeedBackBean>) o);
             }
 
             @Override
@@ -53,17 +54,18 @@ public class FeedbackModel {
 
     /**
      * 反馈保存
+     *
      * @param params
      * @param callBack
      */
-    public void saveFeedback(Map<String,String> params,final CallBack<R_Result> callBack){
-        params.put("opType","saveFeedback");
-        Call<R_Result> call=httpClient.service(API.XYService).saveFeedback(params);
+    public void saveFeedback(Map<String, String> params, final CallBack<R_Result> callBack) {
+        params.put("opType", "saveFeedback");
+        Call<R_Result> call = httpClient.service(API.XYService).saveFeedback(params);
 
-        httpClient.request(call, new ResponseHandler(){
+        httpClient.request(call, new ResponseHandler() {
             @Override
             public void onSuccess(Object o) {
-                callBack.success((R_Result)o);
+                callBack.success((R_Result) o);
             }
 
             @Override

@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Created by apple on 16/8/20.
  */
-public class MyError extends IOException{
+public class MyError extends IOException {
 
     /**
      * code : un_caught_error
@@ -22,14 +22,15 @@ public class MyError extends IOException{
     public int getCode() {
         return code;
     }
-    public MyError()
-    {
-        code =400;
-        message ="未知异常";
+
+    public MyError() {
+        code = 400;
+        message = "未知异常";
     }
-    public MyError(String message){
-        code =400;
-        this.message=message;
+
+    public MyError(String message) {
+        code = 400;
+        this.message = message;
     }
 
     public MyError setCode(int code) {

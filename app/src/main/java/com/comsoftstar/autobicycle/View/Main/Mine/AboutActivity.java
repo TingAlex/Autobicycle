@@ -17,17 +17,17 @@ public class AboutActivity extends BaseActivity<ActivityAboutBinding> {
 
     @Override
     public void initView(ActivityAboutBinding binding) {
-       Toolbar toolbar= MyToolBar.newInstance()
-               .init(new Toolbar(this))
-               .addTitle(getString(R.string.About))
-               .addLogo()
-               .addHome(R.drawable.ic_chevron_left_black_24dp, new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       finish();
-                   }
-               });
-       addToolBar(binding.toolbarAbout,toolbar);
+        Toolbar toolbar = MyToolBar.newInstance()
+                .init(new Toolbar(this))
+                .addTitle(getString(R.string.About))
+                .addLogo()
+                .addHome(R.drawable.ic_chevron_left_black_24dp, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+        addToolBar(binding.toolbarAbout, toolbar);
     }
 
 }

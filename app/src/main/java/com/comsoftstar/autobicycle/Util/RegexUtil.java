@@ -9,23 +9,23 @@ import java.util.regex.Pattern;
  * 是否为车牌号（沪A88888）  checkVehicleNo
  * 验证身份证号码  checkIdCard
  * 验证固定电话号码 checkPhone
- *验证邮箱   checkEmail
+ * 验证邮箱   checkEmail
  * 验证整数（正整数和负整数）checkDigit
- *  验证整数和浮点数（正负整数和正负浮点数）  checkDecimals
- *  验证中文 checkChinese
- *   验证日期（年月日）        checkBirthday
- *   验证URL地址      checkURL
- *   匹配中国邮政编码     checkPostcode
- *   匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)   checkIpAddress
- *   用户名为4-16个字符(可包含中文,数字,字母和下划线) 长度没有判断      checkInputchart
- *   6-20位字母、数字，不能是纯数字 checkpassword6_20
- *   中文名字 checkname
- *   手机号码检测 checkmobilephone
+ * 验证整数和浮点数（正负整数和正负浮点数）  checkDecimals
+ * 验证中文 checkChinese
+ * 验证日期（年月日）        checkBirthday
+ * 验证URL地址      checkURL
+ * 匹配中国邮政编码     checkPostcode
+ * 匹配IP地址(简单匹配，格式，如：192.168.1.1，127.0.0.1，没有匹配IP段的大小)   checkIpAddress
+ * 用户名为4-16个字符(可包含中文,数字,字母和下划线) 长度没有判断      checkInputchart
+ * 6-20位字母、数字，不能是纯数字 checkpassword6_20
+ * 中文名字 checkname
+ * 手机号码检测 checkmobilephone
  * /
-
-import java.util.regex.Pattern;
-
-/**
+ * <p>
+ * import java.util.regex.Pattern;
+ * <p>
+ * /**
  * 正则工具类-http://blog.csdn.net/xyang81/article/details/7706408
  * 提供验证邮箱、手机号、电话号码、身份证号码、数字等方法
  */
@@ -219,41 +219,42 @@ public final class RegexUtil {
         String regex = "[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))";
         return Pattern.matches(regex, ipAddress);
     }
+
     /**
      * 用户名为4-16个字符(可包含中文,数字,字母和下划线) 长度没有判断      checkInputchart
-     * */
-    public static boolean checkInputchart(String inputtext){
-        String regex ="^[\\u4E00-\\u9FA5A-Za-z0-9_]{4,16}$";
+     */
+    public static boolean checkInputchart(String inputtext) {
+        String regex = "^[\\u4E00-\\u9FA5A-Za-z0-9_]{4,16}$";
         return Pattern.matches(regex, inputtext);
 
     }
+
     /**
      * 6-20位字母、数字，不能是纯数字 checkpassword6_20
-     * */
-    public static boolean checkpassword6_20(String password){
+     */
+    public static boolean checkpassword6_20(String password) {
         String regex = "^(?![0-9]*$)[a-zA-Z0-9]{6,20}$";
         return Pattern.matches(regex, password);
 
     }
+
     /**
      * 中文名字 checkname
-     * */
-    public static boolean checkname(String name){
+     */
+    public static boolean checkname(String name) {
         String regex = "^[\\u4e00-\\u9fa5]{2,7}$";
         return Pattern.matches(regex, name);
 
     }
+
     /**
      * 手机号码检测 checkmobilephone
-     * */
-    public static boolean checkmobilephone(String phone){
+     */
+    public static boolean checkmobilephone(String phone) {
         String regex = "^1\\d{10}$";
         return Pattern.matches(regex, phone);
 
     }
-
-
-
 
 
 }

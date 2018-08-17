@@ -66,13 +66,15 @@ public class CountDownButton extends AppCompatButton {
     private ICountDownButton iCountDownButton;
     //手机号码验证
     private EditText editText;
+
     public interface ICountDownButton {
         void message(String msg);
     }
 
-    public void setinterface(ICountDownButton iCountDownButton){
-        this.iCountDownButton=iCountDownButton;
+    public void setinterface(ICountDownButton iCountDownButton) {
+        this.iCountDownButton = iCountDownButton;
     }
+
     /**
      * 倒计时
      */
@@ -128,18 +130,17 @@ public class CountDownButton extends AppCompatButton {
     }
 
 
-
-    public void setOnClickListener(EditText editText,OnClickListener onClickListener) {
+    public void setOnClickListener(EditText editText, OnClickListener onClickListener) {
         //super.setOnClickListener(onClickListener);
-        this.editText=editText;
+        this.editText = editText;
         this.onClickListener = onClickListener;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!RegexUtil.checkmobilephone(editText.getText().toString())){
+        if (!RegexUtil.checkmobilephone(editText.getText().toString())) {
             iCountDownButton.message("手机号码格式不正确！");
-            return  super.onTouchEvent(event);
+            return super.onTouchEvent(event);
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_UP:

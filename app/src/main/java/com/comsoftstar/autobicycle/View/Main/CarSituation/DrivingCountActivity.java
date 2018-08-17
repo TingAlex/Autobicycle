@@ -37,14 +37,15 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
 
-public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBinding> implements IWorkBy,View.OnClickListener{
+public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBinding> implements IWorkBy, View.OnClickListener {
     ActivityDrivingCountBinding mbinding;
     private PagePresenter<IWorkBy> pagePresenter;
-//    public final static String[] months = new String[] { "Jan", "Feb", "Mar",
+    //    public final static String[] months = new String[] { "Jan", "Feb", "Mar",
 //            "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", };//X坐标标签
-    private List<Float> num=new ArrayList<>();
+    private List<Float> num = new ArrayList<>();
     public ColumnChartView columnChart;
     public ColumnChartData columnData;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_driving_count;
@@ -52,9 +53,9 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
 
     @Override
     public void initView(ActivityDrivingCountBinding binding) {
-        this.mbinding=binding;
-        MyToolBar myToolBar=MyToolBar.newInstance();
-        Toolbar toolbar=myToolBar.init(new Toolbar(this))
+        this.mbinding = binding;
+        MyToolBar myToolBar = MyToolBar.newInstance();
+        Toolbar toolbar = myToolBar.init(new Toolbar(this))
                 .addTitle(getString(R.string.DrivingCount))
                 .addHome(1, new View.OnClickListener() {
                     @Override
@@ -62,13 +63,13 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
                         finish();
                     }
                 });
-        addToolBar(binding.drivercountlinearlayout,toolbar);
-        pagePresenter=new PagePresenter<IWorkBy>(getApplication(),this);
+        addToolBar(binding.drivercountlinearlayout, toolbar);
+        pagePresenter = new PagePresenter<IWorkBy>(getApplication(), this);
         pagePresenter.getWorkStatisticsBy(0, StaticData.loginResults.get(0).getCfgID());
-        columnChart=binding.barchart;
+        columnChart = binding.barchart;
         binding.setOnclicklisteren(this);
-        String lc=getIntent().getStringExtra("lc");
-        String pb=getIntent().getStringExtra("pb");
+        String lc = getIntent().getStringExtra("lc");
+        String pb = getIntent().getStringExtra("pb");
         binding.grid.tvNumberlength.setText(lc);
         binding.drivingCount.tvNumberlength.setText(lc);
         binding.drivingCount.tvNumbertime.setText(pb);
@@ -78,7 +79,7 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
     /**
      * 初始化柱状图
      */
-    private void initbarchart(String xlabel,Float[] doubles,String[] labels){
+    private void initbarchart(String xlabel, Float[] doubles, String[] labels) {
         columnChart.setInteractive(true);
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
         int numColumns = labels.length;
@@ -88,7 +89,7 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
         List<Column> columns = new ArrayList<Column>();
         //value
         List<SubcolumnValue> values;
-       // Random random=new Random();
+        // Random random=new Random();
         for (int i = 0; i < numColumns; ++i) {
             values = new ArrayList<SubcolumnValue>();
             values.add(new SubcolumnValue(doubles[i].floatValue(), ChartUtils.pickColor()));
@@ -122,13 +123,13 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
         columnChart.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
         Viewport v = new Viewport(columnChart.getMaximumViewport());
         v.left = -1;
-        v.right= 16;//X轴显示的位置0-5 显示5个
+        v.right = 16;//X轴显示的位置0-5 显示5个
         columnChart.setCurrentViewport(v);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rbutton1:
                 pagePresenter.getWorkStatisticsBy(0, StaticData.loginResults.get(0).getCfgID());
                 break;
@@ -162,7 +163,6 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
     }
 
 
-
     @Override
     public void faileMsg(String msg) {
         Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show();
@@ -170,34 +170,34 @@ public class DrivingCountActivity extends BaseActivity<ActivityDrivingCountBindi
 
     @Override
     public void setWorkDays(List<WorkStatisticsByDay> workStatisticsByDays) {
-        List<String> list=new ArrayList<>();
-        List<Float> list2=new ArrayList<>();
+        List<String> list = new ArrayList<>();
+        List<Float> list2 = new ArrayList<>();
         for (int i = 0; i < workStatisticsByDays.size(); i++) {
             list.add(workStatisticsByDays.get(i).getWorkDate());
             list2.add(Float.valueOf(String.valueOf(workStatisticsByDays.get(i).getWorkMile())));
         }
-        initbarchart("日期",list2.toArray(new Float[list2.size()]),list.toArray(new String[list.size()]));
+        initbarchart("日期", list2.toArray(new Float[list2.size()]), list.toArray(new String[list.size()]));
     }
 
     @Override
     public void setWorkWeeks(List<WorkStatisticsByWeek> workStatisticsByWeeks) {
-        List<String> list=new ArrayList<>();
-        List<Float> list2=new ArrayList<>();
+        List<String> list = new ArrayList<>();
+        List<Float> list2 = new ArrayList<>();
         for (int i = 0; i < workStatisticsByWeeks.size(); i++) {
             list.add(String.valueOf(workStatisticsByWeeks.get(i).getWeekNo()));
             list2.add(Float.valueOf(String.valueOf(workStatisticsByWeeks.get(i).getWorkMile())));
         }
-        initbarchart("日期",list2.toArray(new Float[list2.size()]),list.toArray(new String[list.size()]));
+        initbarchart("日期", list2.toArray(new Float[list2.size()]), list.toArray(new String[list.size()]));
     }
 
     @Override
     public void setWorkMonths(List<WorkStatisticsByMonth> workStatisticsByMonths) {
-        List<String> list=new ArrayList<>();
-        List<Float> list2=new ArrayList<>();
+        List<String> list = new ArrayList<>();
+        List<Float> list2 = new ArrayList<>();
         for (int i = 0; i < workStatisticsByMonths.size(); i++) {
             list.add(String.valueOf(workStatisticsByMonths.get(i).getMonthNo()));
             list2.add(Float.valueOf(String.valueOf(workStatisticsByMonths.get(i).getWorkMile())));
         }
-        initbarchart("日期",list2.toArray(new Float[list2.size()]),list.toArray(new String[list.size()]));
+        initbarchart("日期", list2.toArray(new Float[list2.size()]), list.toArray(new String[list.size()]));
     }
 }

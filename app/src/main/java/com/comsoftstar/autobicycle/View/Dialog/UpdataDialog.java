@@ -41,72 +41,79 @@ import static android.content.ContentValues.TAG;
 
 public class UpdataDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
-    private boolean isOpenNotify=false,isprogressDialog=false;
+    private boolean isOpenNotify = false, isprogressDialog = false;
     private IntentFilter intentFilter;
     // private MyBroadcastReceiver localReceiver;
     private LocalBroadcastManager localBroadcastManager;
-    private NotificationManager mNotificationManager=null;
-    private Notification.Builder mBuilder=null;
+    private NotificationManager mNotificationManager = null;
+    private Notification.Builder mBuilder = null;
     private UpdataDialogCallBack updataDialogCallBack;
-    private String version,updataContent;//filepath
-    private TextView mTextView0,mTextView1;
-    public interface UpdataDialogCallBack{
-        void enter(NotificationManager mNotificationManager,Notification.Builder mBuilder,ProgressDialog progressDialog);
+    private String version, updataContent;//filepath
+    private TextView mTextView0, mTextView1;
+
+    public interface UpdataDialogCallBack {
+        void enter(NotificationManager mNotificationManager, Notification.Builder mBuilder, ProgressDialog progressDialog);
     }
-    public UpdataDialog(@NonNull Context context,UpdataDialogCallBack updataDialogCallBack) {
+
+    public UpdataDialog(@NonNull Context context, UpdataDialogCallBack updataDialogCallBack) {
         super(context);
         //this.filepath=filepath;
-        this.mContext=context;
-        this.updataDialogCallBack=updataDialogCallBack;
+        this.mContext = context;
+        this.updataDialogCallBack = updataDialogCallBack;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_updata);
         findViewById(R.id.tv_updata).setOnClickListener(this);
         findViewById(R.id.tv_cancelupdata).setOnClickListener(this);
-        mTextView0=(TextView) findViewById(R.id.tv_version);
-        mTextView1=(TextView) findViewById(R.id.tv_updatacontent);
+        mTextView0 = (TextView) findViewById(R.id.tv_version);
+        mTextView1 = (TextView) findViewById(R.id.tv_updatacontent);
         mTextView0.setText(version);
         mTextView1.setText(updataContent);
         setCancelable(false);
     }
+
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
 
             case R.id.tv_updata:
                 if (isOpenNotify) {
                     openNotify();
                 }
-                if (isprogressDialog){
+                if (isprogressDialog) {
                     progressDialog();
                 }
-                updataDialogCallBack.enter(isOpenNotify?mNotificationManager:null,isOpenNotify?mBuilder:null,isprogressDialog?progressDialog:null);
+                updataDialogCallBack.enter(isOpenNotify ? mNotificationManager : null, isOpenNotify ? mBuilder : null, isprogressDialog ? progressDialog : null);
                 break;
             case R.id.tv_cancelupdata:
                 dismiss();
                 break;
         }
     }
-    public UpdataDialog setVersion(String version){
-        Logs.d(TAG, "setVersion: 0" );
-        this.version=version;
+
+    public UpdataDialog setVersion(String version) {
+        Logs.d(TAG, "setVersion: 0");
+        this.version = version;
 
         return this;
     }
 
     /**
      * 设置更新内容
+     *
      * @param content
      * @return
      */
-    public UpdataDialog setUpdataContent(String content){
-        this.updataContent=content;
+    public UpdataDialog setUpdataContent(String content) {
+        this.updataContent = content;
         return this;
     }
+
     //打开通知
-    private void openNotify(){
+    private void openNotify() {
 //        localBroadcastManager = LocalBroadcastManager.getInstance(mContext);
 //        intentFilter = new IntentFilter();
 //        intentFilter.addAction("com.android.UPDATA");
@@ -120,7 +127,7 @@ public class UpdataDialog extends Dialog implements View.OnClickListener {
             String channelName = "channel_name";
             NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
             mNotificationManager.createNotificationChannel(channel);
-            mBuilder =new Notification.Builder(mContext.getApplicationContext())
+            mBuilder = new Notification.Builder(mContext.getApplicationContext())
                     .setSound(android.provider.Settings.System.DEFAULT_NOTIFICATION_URI)
                     .setSmallIcon(res)                                        //设置通知的图标
                     .setTicker("更新提醒")                                                      //设置状态栏的标题
@@ -133,9 +140,9 @@ public class UpdataDialog extends Dialog implements View.OnClickListener {
             //创建通知时指定channelID
 
             mBuilder.setChannelId(channelID);
-                                                     //打开程序后图标消失
-            mNotificationManager.notify(1001,mBuilder.build());
-        }else {
+            //打开程序后图标消失
+            mNotificationManager.notify(1001, mBuilder.build());
+        } else {
             mBuilder = new Notification.Builder(mContext.getApplicationContext())
                     .setSound(android.provider.Settings.System.DEFAULT_NOTIFICATION_URI)
                     .setSmallIcon(res)                                        //设置通知的图标
@@ -150,33 +157,37 @@ public class UpdataDialog extends Dialog implements View.OnClickListener {
         }
 //发送
     }
+
     private int res;
 
     /**
      * 是否开启通知进度
+     *
      * @param b
      * @return
      */
-    public UpdataDialog isopenNotify(boolean b){
-        isOpenNotify=b;
-        return this;
-    }
-    public UpdataDialog setImg(@DrawableRes int res){
-        this.res=res;
+    public UpdataDialog isopenNotify(boolean b) {
+        isOpenNotify = b;
         return this;
     }
 
-    public UpdataDialog isprogressDialog(boolean b){
-        isprogressDialog=b;
+    public UpdataDialog setImg(@DrawableRes int res) {
+        this.res = res;
         return this;
     }
-    ProgressDialog progressDialog=null;
+
+    public UpdataDialog isprogressDialog(boolean b) {
+        isprogressDialog = b;
+        return this;
+    }
+
+    ProgressDialog progressDialog = null;
 
     /**
      * 请求安装
      */
-    public void progressDialog(){
-        progressDialog=new ProgressDialog(mContext);
+    public void progressDialog() {
+        progressDialog = new ProgressDialog(mContext);
         progressDialog.setIcon(res);
         progressDialog.setTitle("正在下载文件。。。");
         progressDialog.setMessage("请稍后。。");

@@ -11,6 +11,6 @@ import java.util.List;
  * Description  : IFragment1View
  */
 
-public interface IFragment1View extends IBaseView{
+public interface IFragment1View extends IBaseView {
     void setHomePage(HomePage homePage);
 }

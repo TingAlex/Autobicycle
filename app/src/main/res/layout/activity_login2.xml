@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
         android:id="@+id/login_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusableInTouchMode="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/bk_main"/>
+            android:src="@drawable/bk_main" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:gravity="center"
             android:layout_marginTop="50dp"
-            android:textSize="35dp"
-            android:text="新 艺 电 动 车"/>
+            android:gravity="center"
+            android:text="新 艺 电 动 车"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,57 +41,61 @@
                     android:id="@+id/login_account"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingRight="5dp"
                     android:gravity="center_vertical"
                     android:inputType="phone"
+                    android:paddingRight="5dp"
                     android:singleLine="true"
+                    android:text=""
                     android:textColor="@color/white"
                     app:startclickicon="@drawable/ic_person_white_24dp"
-                    app:startunclickicon="@drawable/ic_person_gray_24dp"
-                    android:text=""/>
+                    app:startunclickicon="@drawable/ic_person_gray_24dp" />
             </android.support.design.widget.TextInputLayout>
+
             <LinearLayout
                 android:id="@+id/layout_vercode"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:textColor="@color/white"
                     android:layout_gravity="center_vertical"
-                    android:text="验证码"/>
+                    android:text="验证码"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
                 <EditText
                     android:id="@+id/edit_vercode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
                     android:hint="请输入验证码"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp" />
+
                 <com.comsoftstar.autobicycle.Control.CountDownButton
                     android:id="@+id/login_btn_send"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:padding="2dp"
-                    android:minWidth="45dp"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/black"
+                    android:gravity="center"
+                    android:minWidth="45dp"
+                    android:padding="2dp"
                     android:text="发 送"
                     android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@color/black"
-                    android:layout_height="match_parent"
+                    app:cdFinishText="重新获取"
                     app:countDown="60000"
                     app:countDownFormat="%ds后重试"
                     app:countDownInterval="1000"
-                    app:enableCountDown="true"
-                    app:cdFinishText="重新获取"
-                    />
+                    app:enableCountDown="true" />
 
             </LinearLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_password"
                 android:layout_width="300dp"
@@ -99,57 +106,58 @@
                     android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingRight="5dp"
                     android:gravity="center_vertical"
                     android:inputType="textPassword"
+                    android:paddingRight="5dp"
                     android:singleLine="true"
                     android:textColor="@color/white"
                     app:startclickicon="@drawable/ic_lock_white_24dp"
-                    app:startunclickicon="@drawable/ic_lock_gray_24dp"
-                    />
+                    app:startunclickicon="@drawable/ic_lock_gray_24dp" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal"
                 android:gravity="right"
-                >
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
+
                     <CheckBox
                         android:id="@+id/login_isvercode"
                         android:layout_width="25dp"
-                        android:layout_height="25dp"/>
+                        android:layout_height="25dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="验证码登录"/>
+                        android:text="验证码登录" />
                 </LinearLayout>
 
                 <CheckBox
                     android:id="@+id/login_ischeck"
                     android:layout_width="25dp"
-                    android:layout_height="25dp"/>
+                    android:layout_height="25dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="记住密码"/>
+                    android:text="记住密码" />
 
                 <TextView
                     android:id="@+id/register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/blue"
-                    android:text="注册账号"/>
+                    android:text="注册账号"
+                    android:textColor="@color/blue" />
             </LinearLayout>
 
             <Button
@@ -160,19 +168,18 @@
                 android:layout_margin="25dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/red_kuang"
-                android:textSize="16dp"
+                android:text="登 录"
                 android:textColor="@color/white"
-                android:text="登 录"/>
+                android:textSize="16dp" />
         </LinearLayout>
 
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/login_load"
-            android:visibility="gone"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
+            android:visibility="gone"
             app:indicator="BallPulse"
-            app:indicator_color="@color/blue"
-            />
+            app:indicator_color="@color/blue" />
     </FrameLayout>
 </layout>

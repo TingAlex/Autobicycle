@@ -1,83 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/container">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <com.comsoftstar.autobicycle.Control.MyViewPager
-            android:id="@+id/viewpager"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:orientation="vertical">
 
-        <com.yinglan.alphatabs.AlphaTabsIndicator
-            android:id="@+id/alphaIndicator"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@drawable/kuang"
-            >
-
-            <com.yinglan.alphatabs.AlphaTabView
-                android:layout_width="0dp"
+            <com.comsoftstar.autobicycle.Control.MyViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="2dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-                app:tabIconNormal="@drawable/raw_1504180220"
-                app:tabIconSelected="@drawable/raw_1504181718"
-                app:tabText="@string/CKTITLE"
-                app:tabTextSize="12dp"
-                app:textColorNormal="#ffa0a0a0"
-                app:textColorSelected="#ffcf0000"
-                />
+            <com.yinglan.alphatabs.AlphaTabsIndicator
+                android:id="@+id/alphaIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/kuang"
+                android:orientation="horizontal">
 
-            <com.yinglan.alphatabs.AlphaTabView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="2dp"
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
 
-                app:tabIconNormal="@drawable/raw_1504180593"
-                app:tabIconSelected="@drawable/raw_1504181692"
-                app:tabText="@string/SERVICETITLE"
-                app:tabTextSize="12dp"
-                app:textColorNormal="#ffa0a0a0"
-                app:textColorSelected="#ffcf0000"
-                />
+                    app:tabIconNormal="@drawable/raw_1504180220"
+                    app:tabIconSelected="@drawable/raw_1504181718"
+                    app:tabText="@string/CKTITLE"
+                    app:tabTextSize="12dp"
+                    app:textColorNormal="#ffa0a0a0"
+                    app:textColorSelected="#ffcf0000" />
 
-            <com.yinglan.alphatabs.AlphaTabView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="2dp"
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
 
-                app:tabIconNormal="@drawable/raw_1504180709"
-                app:tabIconSelected="@drawable/raw_1504182550"
-                app:tabText="@string/MYTITLE"
-                app:tabTextSize="12dp"
-                app:textColorNormal="#ffa0a0a0"
-                app:textColorSelected="#ffcf0000"
-                />
-        </com.yinglan.alphatabs.AlphaTabsIndicator>
+                    app:tabIconNormal="@drawable/raw_1504180593"
+                    app:tabIconSelected="@drawable/raw_1504181692"
+                    app:tabText="@string/SERVICETITLE"
+                    app:tabTextSize="12dp"
+                    app:textColorNormal="#ffa0a0a0"
+                    app:textColorSelected="#ffcf0000" />
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+
+                    app:tabIconNormal="@drawable/raw_1504180709"
+                    app:tabIconSelected="@drawable/raw_1504182550"
+                    app:tabText="@string/MYTITLE"
+                    app:tabTextSize="12dp"
+                    app:textColorNormal="#ffa0a0a0"
+                    app:textColorSelected="#ffcf0000" />
+            </com.yinglan.alphatabs.AlphaTabsIndicator>
 
 
-        <!--<com.fe.library.TabContainerView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/tab_ContainerView">-->
+            <!--<com.fe.library.TabContainerView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/tab_ContainerView">-->
 
-        <!--</com.fe.library.TabContainerView>-->
-</LinearLayout>
-</FrameLayout>
+            <!--</com.fe.library.TabContainerView>-->
+        </LinearLayout>
+    </FrameLayout>
 </layout>

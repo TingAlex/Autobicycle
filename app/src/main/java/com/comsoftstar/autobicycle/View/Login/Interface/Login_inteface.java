@@ -8,7 +8,10 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 
 public interface Login_inteface {
     void loginsuccess();
-    void autoaccount(String account,String password,boolean ischeck);
+
+    void autoaccount(String account, String password, boolean ischeck);
+
     void loginfaile(String result);
+
     void getVerCodeMsg(String msg);
 }

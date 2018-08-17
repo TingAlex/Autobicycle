@@ -20,25 +20,29 @@ import java.util.List;
 public class RepairRecordAdapter extends RecyclerView.Adapter<RepairRecordAdapter.ViewHolder> {
     private Context context;
     private List<RepairRecordBean> items;
-    public RepairRecordAdapter(Context context, List<RepairRecordBean> items){
-        this.context=context;
-        this.items=items;
+
+    public RepairRecordAdapter(Context context, List<RepairRecordBean> items) {
+        this.context = context;
+        this.items = items;
     }
-    public void setdata( List<RepairRecordBean> items){
-        this.items=items;
+
+    public void setdata(List<RepairRecordBean> items) {
+        this.items = items;
         notifyDataSetChanged();
     }
-    class ViewHolder extends RecyclerView.ViewHolder{
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_feedback;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_feedback=(TextView)itemView.findViewById(R.id.tv_feedback);
+            tv_feedback = (TextView) itemView.findViewById(R.id.tv_feedback);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(context).inflate(R.layout.item_feedback,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_feedback, parent, false);
         return new ViewHolder(v);
     }
 

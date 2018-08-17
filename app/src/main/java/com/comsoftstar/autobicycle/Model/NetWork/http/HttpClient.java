@@ -30,13 +30,15 @@ public class HttpClient<T> {
 
     private static Context mContext;
     public final int SET_TIME = 60;
-    private String tag="HttpClient";
+    private String tag = "HttpClient";
+
     public HttpClient(Context context) {
         mContext = context;
     }
 
     /**
      * 请求数据
+     *
      * @param responseHandler 接口回调
      */
     public void request(Call<T> call, final ResponseHandler responseHandler) {
@@ -53,7 +55,7 @@ public class HttpClient<T> {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if(errorString != null) {
+                    if (errorString != null) {
                         try {
                             error = new Gson().fromJson(errorString, MyError.class);
                         } catch (JsonSyntaxException e) {
@@ -62,45 +64,45 @@ public class HttpClient<T> {
                         }
                     }
                     if (error != null) {
-                            responseHandler.onFailure(error.setCode(response.code()));
+                        responseHandler.onFailure(error.setCode(response.code()));
                     } else {
-                            responseHandler.onFailure(new MyError().setCode(response.code()));
+                        responseHandler.onFailure(new MyError().setCode(response.code()));
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<T> call, Throwable t) {
-                if (t instanceof R_Result){
-                    MyError error=new MyError().setCode(0).setMessage(((R_Result) t).getResult());
+                if (t instanceof R_Result) {
+                    MyError error = new MyError().setCode(0).setMessage(((R_Result) t).getResult());
                     responseHandler.onFailure(error);
-                }else {
+                } else {
 
-                    responseHandler.onFailure( new MyError().setMessage(t.getCause().toString()));
+                    responseHandler.onFailure(new MyError().setMessage(t.getCause().toString()));
                 }
 
             }
         });
     }
 
-    public HttpService service(String baseUrl){
+    public HttpService service(String baseUrl) {
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLogger());
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client ;
+        OkHttpClient client;
         client = new OkHttpClient.Builder()
-                   // .addInterceptor(REWRITE_REQUEST_INTERCEPTOR)   //添加拦截器
-                    .addInterceptor(logInterceptor)
-                    .connectTimeout(SET_TIME, TimeUnit.SECONDS)    //连接超时设置
-                    .writeTimeout(SET_TIME, TimeUnit.SECONDS)      //读写超时设置
-                    .readTimeout(SET_TIME, TimeUnit.SECONDS)
-                    .build();
+                // .addInterceptor(REWRITE_REQUEST_INTERCEPTOR)   //添加拦截器
+                .addInterceptor(logInterceptor)
+                .connectTimeout(SET_TIME, TimeUnit.SECONDS)    //连接超时设置
+                .writeTimeout(SET_TIME, TimeUnit.SECONDS)      //读写超时设置
+                .readTimeout(SET_TIME, TimeUnit.SECONDS)
+                .build();
 
         Retrofit sRetrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(StringConverterFactory.create())
                 .addConverterFactory(MyGsonConverterFactory.create())  //json自动转换器
-               // .client(client)
+                // .client(client)
                 .build();
         return sRetrofit.create(HttpService.class);
     }
@@ -116,13 +118,12 @@ public class HttpClient<T> {
             Request original = chain.request();
             Request request;
             Request.Builder builder = original.newBuilder();
-                try{
-                  //  builder.addHeader("User-Token", PreferencesUtil.getUser(mContext).getToken());
-                   // Log.d(Constans.LOG, "Token:  " + PreferencesUtil.getUser(mContext).getToken());
-                }catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+            try {
+                //  builder.addHeader("User-Token", PreferencesUtil.getUser(mContext).getToken());
+                // Log.d(Constans.LOG, "Token:  " + PreferencesUtil.getUser(mContext).getToken());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             request = builder
                     .addHeader("Device", "android")
                     .addHeader("Version", HttpClient.getAppVersionName(mContext))
@@ -135,6 +136,7 @@ public class HttpClient<T> {
 
     /**
      * 获得app版本名字
+     *
      * @param context
      * @return
      */
@@ -150,7 +152,6 @@ public class HttpClient<T> {
         }
         return versionName;
     }
-
 
 
 }

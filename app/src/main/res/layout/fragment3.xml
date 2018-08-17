@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/fragment3"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@drawable/kuang"
-             android:clickable="true"
-    >
+    android:id="@+id/fragment3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kuang"
+    android:clickable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,43 +14,43 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"/>
+            android:background="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="2dp"
-                android:src="@drawable/raw_1504236898"/>
+                android:src="@drawable/raw_1504236898" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:text="我的"
                     android:textColor="@color/white"
-                    android:text="我的"/>
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/myphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textSize="12dp"
+                    android:text="18068261236"
                     android:textColor="@color/white"
-                    android:text="18068261236"/>
+                    android:textSize="12dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -60,14 +59,14 @@
             android:id="@+id/barchart"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <ListView
             android:id="@+id/my_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp" />
 
     </LinearLayout>
 </FrameLayout>

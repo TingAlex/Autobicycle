@@ -15,6 +15,8 @@ import java.util.List;
 
 public interface IWorkBy extends IBaseView {
     void setWorkDays(List<WorkStatisticsByDay> workStatisticsByDays);
+
     void setWorkWeeks(List<WorkStatisticsByWeek> workStatisticsByWeeks);
+
     void setWorkMonths(List<WorkStatisticsByMonth> workStatisticsByMonths);
 }

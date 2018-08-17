@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="onclicklisten"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <FrameLayout
@@ -18,8 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -38,16 +37,16 @@
                         android:layout_height="30dp"
                         android:layout_gravity="center_vertical"
                         android:onClick="@{onclicklisten}"
-                        android:src="@drawable/ic_chevron_left_black_24dp"/>
+                        android:src="@drawable/ic_chevron_left_black_24dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textSize="15dp"
+                        android:text="注册"
                         android:textColor="@color/white"
-                        android:text="注册"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
@@ -55,17 +54,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TableRow
-                    android:layout_width="match_parent">
+                <TableRow android:layout_width="match_parent">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:paddingLeft="20dp"
-                        android:gravity="center_vertical"
                         android:layout_span="3"
-                        android:textColor="#5f000000"
-                        android:text="请务必填写必要信息"/>
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:text="请务必填写必要信息"
+                        android:textColor="#5f000000" />
                 </TableRow>
 
                 <TableRow
@@ -78,19 +76,19 @@
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
 
-                        android:textColor="@color/black"
-                        android:text="手机号"/>
+                        android:text="手机号"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/login_phone"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:hint="常用手机号"
                         android:inputType="phone"
-                        android:textSize="15dp"
-                        android:hint="常用手机号"/>
+                        android:textSize="15dp" />
 
                 </TableRow>
 
@@ -98,45 +96,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/item_kuang">
+
                     <TextView
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="验证码"/>
+                        android:text="验证码"
+                        android:textColor="@color/black" />
+
                     <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_height="match_parent">
+                        android:orientation="horizontal">
+
                         <EditText
                             android:id="@+id/login_number"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="25dp"
+                            android:layout_weight="1"
                             android:background="@null"
+                            android:hint="请输入验证码"
                             android:inputType="text"
-                            android:textSize="15dp"
-                            android:hint="请输入验证码"/>
+                            android:textSize="15dp" />
+
                         <com.comsoftstar.autobicycle.Control.CountDownButton
                             android:id="@+id/btn_send"
-                            android:layout_margin="8dp"
-                            android:padding="5dp"
-                            android:minWidth="45dp"
                             android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:background="@color/black"
+                            android:gravity="center"
+                            android:minWidth="45dp"
+                            android:padding="5dp"
                             android:text="发 送"
                             android:textColor="@color/white"
-                            android:gravity="center"
-                            android:background="@color/black"
-                            android:layout_height="match_parent"
+                            app:cdFinishText="重新获取"
                             app:countDown="60000"
                             app:countDownFormat="%ds后重试"
                             app:countDownInterval="1000"
-                            app:enableCountDown="true"
-                            app:cdFinishText="重新获取"
-                            />
+                            app:enableCountDown="true" />
                     </LinearLayout>
 
 
@@ -152,19 +153,19 @@
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="密码"/>
+                        android:text="密码"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/login_password0"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:hint="6~20位数字或字母(不能为纯数字)"
                         android:inputType="textPassword"
-                        android:textSize="15dp"
-                        android:hint="6~20位数字或字母(不能为纯数字)"/>
+                        android:textSize="15dp" />
 
                 </TableRow>
 
@@ -177,19 +178,19 @@
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="确认密码"/>
+                        android:text="确认密码"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/login_password1"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:hint="请确保两次输入一致"
                         android:inputType="textPassword"
-                        android:textSize="15dp"
-                        android:hint="请确保两次输入一致"/>
+                        android:textSize="15dp" />
 
                 </TableRow>
 
@@ -203,35 +204,36 @@
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="PacbID"/>
+                        android:text="PacbID"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/login_name"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:hint="扫码"
                         android:inputType="text"
-                        android:textSize="15dp"
-                        android:hint="扫码"/>
+                        android:textSize="15dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right">
+
                         <ImageButton
                             android:id="@+id/scan1"
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
                             android:layout_gravity="center_vertical|right"
-                            android:onClick="@{onclicklisten}"
-                            android:textSize="13dp"
-                            android:src="@drawable/ic_scancode"
+                            android:layout_marginRight="8dp"
                             android:backgroundTint="@color/blackgray"
+                            android:onClick="@{onclicklisten}"
+                            android:src="@drawable/ic_scancode"
                             android:textColor="@color/white"
-                            />
+                            android:textSize="13dp" />
                     </LinearLayout>
 
 
@@ -246,34 +248,36 @@
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         android:gravity="center_vertical"
-                        android:textColor="@color/black"
-                        android:text="采集ID"/>
+                        android:text="采集ID"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/login_name2"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:hint="扫码"
                         android:inputType="text"
-                        android:textSize="15dp"
-                        android:hint="扫码"/>
+                        android:textSize="15dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right">
-                    <ImageButton
-                        android:id="@+id/scan2"
-                        android:layout_width="40dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:onClick="@{onclicklisten}"
-                        android:textSize="13dp"
-                        android:backgroundTint="@color/blackgray"
-                        android:textColor="@color/white"
-                        android:src="@drawable/ic_scancode"/>
+
+                        <ImageButton
+                            android:id="@+id/scan2"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="8dp"
+                            android:backgroundTint="@color/blackgray"
+                            android:onClick="@{onclicklisten}"
+                            android:src="@drawable/ic_scancode"
+                            android:textColor="@color/white"
+                            android:textSize="13dp" />
                     </LinearLayout>
                 </TableRow>
 
@@ -283,38 +287,39 @@
 
                     <LinearLayout
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
+                        android:layout_span="3"
                         android:gravity="center"
-                        android:layout_span="3">
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/enter"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="10dp"
                             android:layout_span="3"
-                            android:text="我确认并接受《软件许可及服务协议》"/>
+                            android:text="我确认并接受《软件许可及服务协议》"
+                            android:textSize="10dp" />
                     </LinearLayout>
 
                 </TableRow>
             </TableLayout>
         </LinearLayout>
+
         <Button
-            android:layout_gravity="bottom"
             android:id="@+id/next_register"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="bottom"
 
-            android:gravity="center"
             android:background="@drawable/red_kuang"
-            android:onClick="@{onclicklisten}"
-            android:textSize="20dp"
             android:enabled="false"
+            android:gravity="center"
+            android:onClick="@{onclicklisten}"
+            android:text="确  认"
             android:textColor="@color/gray"
-            android:text="确  认"/>
+            android:textSize="20dp" />
     </FrameLayout>
 </layout>

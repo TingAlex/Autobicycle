@@ -8,5 +8,6 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.MyError;
 
 public interface CallBack<T> {
     void success(T result);
+
     void faile(String s);
 }

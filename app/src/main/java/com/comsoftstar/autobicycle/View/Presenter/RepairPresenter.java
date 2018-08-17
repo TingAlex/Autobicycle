@@ -15,26 +15,31 @@ import java.util.Map;
  */
 
 public class RepairPresenter {
-    private RepairModel repairModel=new RepairModel();
+    private RepairModel repairModel = new RepairModel();
     private IRepairView iRepairView;
-    public interface IRepairView{
+
+    public interface IRepairView {
         void getSalePoints(List<SalePoint> salePoints);
+
         void getRepairRecord(List<RepairRecordBean> repairRecordBeans);
+
         void saveRepair(R_Result result);
+
         void faile(String s);
     }
-    public RepairPresenter(IRepairView iRepairView){
-        this.iRepairView=iRepairView;
+
+    public RepairPresenter(IRepairView iRepairView) {
+        this.iRepairView = iRepairView;
     }
 
     /**
      * 获取营业网点
      */
-    public void getSalePoints(){
+    public void getSalePoints() {
         repairModel.SalePoint(new CallBack<List<SalePoint>>() {
             @Override
             public void success(List<SalePoint> result) {
-                Value.SalePoint=result;
+                Value.SalePoint = result;
                 iRepairView.getSalePoints(result);
             }
 
@@ -48,7 +53,7 @@ public class RepairPresenter {
     /**
      * 获取在线报修记录
      */
-    public void getRepairRecord(String loginName){
+    public void getRepairRecord(String loginName) {
         repairModel.repairRecord(loginName, new CallBack<List<RepairRecordBean>>() {
             @Override
             public void success(List<RepairRecordBean> result) {
@@ -64,9 +69,10 @@ public class RepairPresenter {
 
     /**
      * 保存在线报修
+     *
      * @param params
      */
-    public void saveRepair(Map<String,String> params){
+    public void saveRepair(Map<String, String> params) {
         repairModel.saveRecord(params, new CallBack<R_Result>() {
             @Override
             public void success(R_Result result) {

@@ -30,7 +30,8 @@ final class MyGsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
         this.adapter = adapter;
     }
 
-    @Override public RequestBody convert(T value) throws IOException {
+    @Override
+    public RequestBody convert(T value) throws IOException {
         Buffer buffer = new Buffer();
         Writer writer = new OutputStreamWriter(buffer.outputStream(), UTF_8);
         JsonWriter jsonWriter = gson.newJsonWriter(writer);

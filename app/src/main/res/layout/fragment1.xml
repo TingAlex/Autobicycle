@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -8,11 +7,11 @@
 
         <variable
             name="fragment1item"
-            type="com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item"/>
+            type="com.comsoftstar.autobicycle.Model.Bean.Fragment1_Item" />
 
         <variable
             name="onclicklisten"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <FrameLayout
@@ -32,14 +31,14 @@
             <include
                 android:id="@+id/frag1_toolbar"
                 layout="@layout/fragment1_toolbar"
-                app:onclicklisten="@{onclicklisten}"/>
+                app:onclicklisten="@{onclicklisten}" />
 
 
             <include
                 android:id="@+id/fragment1context"
                 layout="@layout/fragment1_context"
-                app:onclicklisten="@{onclicklisten}"
-                app:fragment1item="@{fragment1item}"/>
+                app:fragment1item="@{fragment1item}"
+                app:onclicklisten="@{onclicklisten}" />
 
         </LinearLayout>
 

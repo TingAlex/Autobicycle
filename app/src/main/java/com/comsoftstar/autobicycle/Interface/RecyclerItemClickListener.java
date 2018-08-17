@@ -10,11 +10,12 @@ import android.view.View;
  * Created by Administrator on 2017/9/30.
  */
 
-public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener{
+public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     private View childView;
     private RecyclerView touchView;
+
     public RecyclerItemClickListener(Context context, final OnItemClickListener mListener) {
-        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
+        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onSingleTapUp(MotionEvent ev) {
                 if (childView != null && mListener != null) {
@@ -22,6 +23,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
                 }
                 return true;
             }
+
             @Override
             public void onLongPress(MotionEvent ev) {
                 if (childView != null && mListener != null) {
@@ -35,6 +37,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
+
         public void onLongClick(View view, int posotion);
     }
 
@@ -50,6 +53,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
     public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
 
     }
+
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 

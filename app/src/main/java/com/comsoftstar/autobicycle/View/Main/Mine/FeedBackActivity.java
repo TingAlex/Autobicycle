@@ -1,8 +1,6 @@
 package com.comsoftstar.autobicycle.View.Main.Mine;
 
 
-
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -29,10 +27,11 @@ import java.util.Map;
  * Created by SJ on 2018/6/22.
  */
 
-public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> implements View.OnClickListener,FeedBackPresenter.IFeedBackView{
+public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> implements View.OnClickListener, FeedBackPresenter.IFeedBackView {
     private ActivityFeedbackBinding binding;
-    private  FeedBackAdapter adapter;
+    private FeedBackAdapter adapter;
     private FeedBackPresenter feedBackPresenter;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_feedback;
@@ -40,12 +39,12 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
 
     @Override
     public void initView(ActivityFeedbackBinding binding) {
-        this.binding=binding;
+        this.binding = binding;
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         binding.recyFeedback.setLayoutManager(layoutManager);
         binding.setOnclicklisten(this);
-        Toolbar myToolBar=MyToolBar.newInstance().init(new Toolbar(this))
+        Toolbar myToolBar = MyToolBar.newInstance().init(new Toolbar(this))
                 .addLogo()
                 .addTitle("用户反馈")
                 .addHome(1, new View.OnClickListener() {
@@ -54,7 +53,7 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
                         finish();
                     }
                 });
-        addToolBar(binding.layoutFeedback,myToolBar);
+        addToolBar(binding.layoutFeedback, myToolBar);
 
 
         initdata();
@@ -63,9 +62,9 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
     /**
      * 初始化数据
      */
-    public void initdata(){
-        feedBackPresenter=new FeedBackPresenter(this);
-        adapter=new FeedBackAdapter(getApplicationContext(), new ArrayList<FeedBackBean>());
+    public void initdata() {
+        feedBackPresenter = new FeedBackPresenter(this);
+        adapter = new FeedBackAdapter(getApplicationContext(), new ArrayList<FeedBackBean>());
         binding.recyFeedback.setAdapter(adapter);
         feedBackPresenter.getFeedBack(Value.UserName);
 
@@ -73,18 +72,18 @@ public class FeedBackActivity extends BaseActivity<ActivityFeedbackBinding> impl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             //提交
             case R.id.btn_submit:
-                String feed=binding.editFeed.getText().toString();
-                if (feed==null||TextUtils.isEmpty(feed)){
+                String feed = binding.editFeed.getText().toString();
+                if (feed == null || TextUtils.isEmpty(feed)) {
                     Toast.makeText(this, "请填写反馈内容！", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Map<String,String> params=new HashMap<>();
+                Map<String, String> params = new HashMap<>();
                 params.put("loginName", Value.UserName);
-                params.put("Guid","");
-                params.put("Suggestion",feed);
+                params.put("Guid", "");
+                params.put("Suggestion", feed);
                 feedBackPresenter.saveFeed(params);
                 break;
         }

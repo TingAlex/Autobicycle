@@ -10,17 +10,20 @@ import java.util.List;
  */
 
 public class ActivityManage {
-    public static List<AppCompatActivity> activities=new ArrayList<AppCompatActivity>();
-    public static void addactivity(AppCompatActivity activity){
-            activities.add(activity);
+    public static List<AppCompatActivity> activities = new ArrayList<AppCompatActivity>();
+
+    public static void addactivity(AppCompatActivity activity) {
+        activities.add(activity);
     }
-    public  static void finishthis(AppCompatActivity activity){
+
+    public static void finishthis(AppCompatActivity activity) {
         activities.remove(activity);
     }
-    public static void finishall(){
-        for (AppCompatActivity activity:activities) {
+
+    public static void finishall() {
+        for (AppCompatActivity activity : activities) {
             if (!activity.isFinishing())
-            activity.finish();
+                activity.finish();
         }
     }
 }

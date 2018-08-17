@@ -25,24 +25,27 @@ import java.util.Map;
  * Description  : PagePresenter
  */
 
-public class PagePresenter<T extends IBaseView> implements IPagePresenter{
+public class PagePresenter<T extends IBaseView> implements IPagePresenter {
     private Context context;
     private PageModal pageModal;
     private T iView;
-    public PagePresenter(Context context, T iView){
-        this.context=context;
-        pageModal=new PageModal(context,this);
-        this.iView=iView;
+
+    public PagePresenter(Context context, T iView) {
+        this.context = context;
+        pageModal = new PageModal(context, this);
+        this.iView = iView;
     }
-    public void getHomePage(Map maps){
+
+    public void getHomePage(Map maps) {
         pageModal.getHomePage(maps);
     }
-    public void getWorkRecords(String cfgID){
+
+    public void getWorkRecords(String cfgID) {
         pageModal.getWorkRecords(cfgID);
     }
 
-    public void getWorkStatisticsBy(int n,String cfgID){
-        switch (n){
+    public void getWorkStatisticsBy(int n, String cfgID) {
+        switch (n) {
             case 0:
                 pageModal.getWorkStatisticsByDay(cfgID);
                 break;
@@ -58,30 +61,30 @@ public class PagePresenter<T extends IBaseView> implements IPagePresenter{
 
     @Override
     public void BackHomePage(List<HomePage> homePages) {
-        ((IFragment1View)iView).setHomePage(homePages.get(0));
+        ((IFragment1View) iView).setHomePage(homePages.get(0));
     }
 
     @Override
     public void BackWorkRecord(List<WorkRecords> workRecords) {
-        ((IDrivingHistory)iView).setWorkRecords(workRecords);
+        ((IDrivingHistory) iView).setWorkRecords(workRecords);
     }
 
     @Override
     public void BackworkStatisticsByDays(List<WorkStatisticsByDay> workStatisticsByDays) {
-        ((IWorkBy)iView).setWorkDays(workStatisticsByDays);
+        ((IWorkBy) iView).setWorkDays(workStatisticsByDays);
     }
 
     @Override
     public void BackworkStatisticsByWeek(List<WorkStatisticsByWeek> workStatisticsByWeeks) {
-        ((IWorkBy)iView).setWorkWeeks(workStatisticsByWeeks);
+        ((IWorkBy) iView).setWorkWeeks(workStatisticsByWeeks);
     }
 
     @Override
     public void BackworkStatisticsByMonth(List<WorkStatisticsByMonth> workStatisticsByMonths) {
-        if (iView instanceof IWorkBy){
-            ((IWorkBy)iView).setWorkMonths(workStatisticsByMonths);
-        }else  if (iView instanceof IFragment3View){
-            ((IFragment3View)iView).setWorkMonths(workStatisticsByMonths);
+        if (iView instanceof IWorkBy) {
+            ((IWorkBy) iView).setWorkMonths(workStatisticsByMonths);
+        } else if (iView instanceof IFragment3View) {
+            ((IFragment3View) iView).setWorkMonths(workStatisticsByMonths);
         }
 
     }

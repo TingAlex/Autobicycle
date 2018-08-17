@@ -28,13 +28,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RepairRecordActivity extends BaseActivity<ActivityRepairrecordBinding> implements RepairPresenter.IRepairView,View.OnClickListener{
-private ActivityRepairrecordBinding binding;
-private RepairPresenter repairPresenter;
-private RepairRecordAdapter adapter;
-private String salePoint;
-private String salePointValue;
-private boolean isslect=false;
+public class RepairRecordActivity extends BaseActivity<ActivityRepairrecordBinding> implements RepairPresenter.IRepairView, View.OnClickListener {
+    private ActivityRepairrecordBinding binding;
+    private RepairPresenter repairPresenter;
+    private RepairRecordAdapter adapter;
+    private String salePoint;
+    private String salePointValue;
+    private boolean isslect = false;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_repairrecord;
@@ -42,11 +43,11 @@ private boolean isslect=false;
 
     @Override
     public void initView(ActivityRepairrecordBinding binding) {
-        this.binding=binding;
+        this.binding = binding;
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         binding.recyRepair.setLayoutManager(layoutManager);
-        Toolbar toolbar= MyToolBar.newInstance()
+        Toolbar toolbar = MyToolBar.newInstance()
                 .init(new Toolbar(this))
                 .addTitle(getString(R.string.Setting))
                 .addLogo()
@@ -56,7 +57,7 @@ private boolean isslect=false;
                         finish();
                     }
                 });
-        addToolBar(binding.layoutRepair,toolbar);
+        addToolBar(binding.layoutRepair, toolbar);
         binding.setOnclicklisten(this);
         initData();
     }
@@ -64,10 +65,10 @@ private boolean isslect=false;
     /**
      * 初始化数据
      */
-    private void initData(){
-        adapter=new RepairRecordAdapter(getApplicationContext(),new ArrayList<RepairRecordBean>());
+    private void initData() {
+        adapter = new RepairRecordAdapter(getApplicationContext(), new ArrayList<RepairRecordBean>());
         binding.recyRepair.setAdapter(adapter);
-        repairPresenter=new RepairPresenter(this);
+        repairPresenter = new RepairPresenter(this);
         repairPresenter.getSalePoints();
         repairPresenter.getRepairRecord(Value.UserName);
         binding.spinnerRepair.setOnItemSelectedListener(itemselect);
@@ -78,12 +79,13 @@ private boolean isslect=false;
 
     /**
      * 营业网点信息
+     *
      * @param salePoints
      */
     @Override
     public void getSalePoints(List<SalePoint> salePoints) {
-        Value.SalePoint=salePoints;
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,objTranList(salePoints));
+        Value.SalePoint = salePoints;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, objTranList(salePoints));
         binding.spinnerRepair.setAdapter(adapter);
     }
 
@@ -105,11 +107,12 @@ private boolean isslect=false;
 
     /**
      * 营业网点转化为spinner列表集合
+     *
      * @param salePoints
      * @return
      */
-    private List<String> objTranList(List<SalePoint> salePoints){
-        List<String> list=new ArrayList<>();
+    private List<String> objTranList(List<SalePoint> salePoints) {
+        List<String> list = new ArrayList<>();
         list.add("选择网点");
         for (SalePoint item :
                 salePoints) {
@@ -119,15 +122,15 @@ private boolean isslect=false;
     }
 
     //spinner 监听
-    private  AdapterView.OnItemSelectedListener itemselect=new AdapterView.OnItemSelectedListener() {
+    private AdapterView.OnItemSelectedListener itemselect = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            if (position!=0){
-                isslect=true;
-                salePoint=binding.spinnerRepair.getSelectedItem().toString();
-                salePointValue=Value.SalePoint.get(position-1).getValue();
-            }else{
-                isslect=false;
+            if (position != 0) {
+                isslect = true;
+                salePoint = binding.spinnerRepair.getSelectedItem().toString();
+                salePointValue = Value.SalePoint.get(position - 1).getValue();
+            } else {
+                isslect = false;
             }
             //Toast.makeText(RepairRecordActivity.this, ""+position, Toast.LENGTH_SHORT).show();
         }
@@ -140,22 +143,22 @@ private boolean isslect=false;
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_repairsubmit:
-                if (TextUtils.isEmpty(binding.editRepair.getText())){
+                if (TextUtils.isEmpty(binding.editRepair.getText())) {
                     Toast.makeText(this, "请输入信息", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!isslect){
+                if (!isslect) {
                     Toast.makeText(RepairRecordActivity.this, "请选择营业网点！", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Map<String,String> params=new HashMap<>();
-                params.put("loginName",Value.UserName);
-                params.put("Guid","");
-                params.put("UserProblem",binding.editRepair.getText().toString());
-                params.put("PointNo",salePointValue);
-                params.put("PointName",salePoint);
+                Map<String, String> params = new HashMap<>();
+                params.put("loginName", Value.UserName);
+                params.put("Guid", "");
+                params.put("UserProblem", binding.editRepair.getText().toString());
+                params.put("PointNo", salePointValue);
+                params.put("PointName", salePoint);
                 repairPresenter.saveRepair(params);
                 break;
         }

@@ -17,9 +17,14 @@ import java.util.List;
 
 public interface IPagePresenter {
     void BackHomePage(List<HomePage> homePages);
+
     void BackWorkRecord(List<WorkRecords> workRecords);
+
     void BackworkStatisticsByDays(List<WorkStatisticsByDay> workStatisticsByDays);
+
     void BackworkStatisticsByWeek(List<WorkStatisticsByWeek> workStatisticsByWeeks);
+
     void BackworkStatisticsByMonth(List<WorkStatisticsByMonth> workStatisticsByMonths);
+
     void BackFaile(MyError error);
 }

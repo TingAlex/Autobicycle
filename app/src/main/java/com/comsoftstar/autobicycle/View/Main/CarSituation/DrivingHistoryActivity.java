@@ -23,10 +23,10 @@ import com.comsoftstar.autobicycle.databinding.ActivityDrivinghistoryBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryBinding> implements IDrivingHistory{
+public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryBinding> implements IDrivingHistory {
     private Historyitem historyitem;
     private HistoryAdapter historyAdapter;
-    private ArrayList<Historyitem> listt=new ArrayList<>();
+    private ArrayList<Historyitem> listt = new ArrayList<>();
     private RecyclerView recyclerView;
     private PagePresenter<IDrivingHistory> pagePresenter;
 
@@ -37,24 +37,24 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
 
     @Override
     public void initView(ActivityDrivinghistoryBinding binding) {
-        final Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.DrivingHistory);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar!=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_chevron_left_black_24dp);
             actionBar.setHomeButtonEnabled(true);
         }
         initUI();
-        pagePresenter=new PagePresenter<IDrivingHistory>(getApplicationContext(),this);
+        pagePresenter = new PagePresenter<IDrivingHistory>(getApplicationContext(), this);
         pagePresenter.getWorkRecords(StaticData.loginResults.get(0).getCfgID());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
@@ -62,10 +62,10 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
         return super.onOptionsItemSelected(item);
     }
 
-    private void initUI(){
+    private void initUI() {
         listt.clear();
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
-        GridLayoutManager layoutManager=new GridLayoutManager(this,1);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -90,14 +90,14 @@ public class DrivingHistoryActivity extends BaseActivity<ActivityDrivinghistoryB
     public void setWorkRecords(List<WorkRecords> workRecords) {
         listt.clear();
         for (int i = 0; i < workRecords.size(); i++) {
-            String[] arr=workRecords.get(i).getWorkDate().split(" ");
-            String date=arr[0];
-            String time=arr[1];
-            historyitem=new Historyitem(date,time,workRecords.get(i).getStartAddress(),workRecords.get(i).getEndAddress(),String.valueOf(workRecords.get(i).getWorkMiles()));
+            String[] arr = workRecords.get(i).getWorkDate().split(" ");
+            String date = arr[0];
+            String time = arr[1];
+            historyitem = new Historyitem(date, time, workRecords.get(i).getStartAddress(), workRecords.get(i).getEndAddress(), String.valueOf(workRecords.get(i).getWorkMiles()));
             listt.add(historyitem);
         }
 
-        historyAdapter=new HistoryAdapter(listt);
+        historyAdapter = new HistoryAdapter(listt);
         recyclerView.setAdapter(historyAdapter);
 
     }

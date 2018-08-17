@@ -12,8 +12,8 @@ import com.comsoftstar.autobicycle.R;
 import com.comsoftstar.autobicycle.View.Login.View.LoginActivity;
 import com.comsoftstar.autobicycle.databinding.ActivitySettingBinding;
 
-public class SettingActivity extends BaseActivity<ActivitySettingBinding> implements View.OnClickListener{
-private Button exitlogin;
+public class SettingActivity extends BaseActivity<ActivitySettingBinding> implements View.OnClickListener {
+    private Button exitlogin;
 
     @Override
     public int setLayoutId() {
@@ -22,7 +22,7 @@ private Button exitlogin;
 
     @Override
     public void initView(ActivitySettingBinding binding) {
-        Toolbar toolbar=MyToolBar.newInstance()
+        Toolbar toolbar = MyToolBar.newInstance()
                 .init(new Toolbar(this))
                 .addTitle(getString(R.string.Setting))
                 .addLogo()
@@ -32,17 +32,17 @@ private Button exitlogin;
                         finish();
                     }
                 });
-        addToolBar(binding.toolbarSetting,toolbar);
-        exitlogin=(Button)findViewById(R.id.exitlogin);
+        addToolBar(binding.toolbarSetting, toolbar);
+        exitlogin = (Button) findViewById(R.id.exitlogin);
         exitlogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.exitlogin:
                 ActivityManage.finishall();
-                Intent intent=new Intent(this,LoginActivity.class);
+                Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
         }

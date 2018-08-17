@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,9 +14,9 @@
         tools:context="com.comsoftstar.autobicycle.View.Login.View.ScanActivity">
 
         <cn.bingoogolapple.qrcode.zbar.ZBarView
+            android:id="@+id/zbarview"
             style="@style/MatchMatch"
             android:layout_weight="1"
-            android:id="@+id/zbarview"
             app:qrcv_animTime="1000"
             app:qrcv_barCodeTipText="将条码放入框内，即可自动扫描"
             app:qrcv_barcodeRectHeight="120dp"
@@ -39,6 +39,6 @@
             app:qrcv_rectWidth="350dp"
             app:qrcv_scanLineColor="@color/colorPrimaryDark"
             app:qrcv_toolbarHeight="56dp"
-            app:qrcv_topOffset="20dp"/>
+            app:qrcv_topOffset="20dp" />
     </LinearLayout>
 </layout>

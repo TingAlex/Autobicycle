@@ -4,7 +4,9 @@
     <!-- 填充颜色 -->
     <solid android:color="#6fb0b0b0"></solid>
     <!-- 线的宽度，颜色灰色 -->
-    <stroke android:width="0.1dp" android:color="#6f000000"></stroke>
+    <stroke
+        android:width="0.1dp"
+        android:color="#6f000000"></stroke>
     <corners android:radius="6dp" />
 
 </shape>

@@ -7,14 +7,16 @@ import android.util.Log;
 
 public class NetService extends Service {
     private int count = 0;
-    private boolean threadDisable=false;
+    private boolean threadDisable = false;
 
     public NetService() {
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,13 +27,13 @@ public class NetService extends Service {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                         e.printStackTrace();
+                        e.printStackTrace();
                     }
                     count++;
                     Log.v("CountService", "Count is " + count);
 
                     //发送广播
-                    Intent intent=new Intent();
+                    Intent intent = new Intent();
                     intent.putExtra("count", count);
                     intent.setAction("com.ljq.activity.CountService");//
                     sendBroadcast(intent);
@@ -43,7 +45,7 @@ public class NetService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        count=0;
+        count = 0;
         threadDisable = true;
         Log.v("CountService", "on destroy");
     }

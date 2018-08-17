@@ -17,9 +17,10 @@ import com.comsoftstar.autobicycle.View.Dialog.UpdataDialog;
 public class UpdataDownLoad {
     private static UpdataDownLoad mInstance;
 
-    public  Context mContext;
+    public Context mContext;
+
     private UpdataDownLoad(Context mContext) {
-        this.mContext=mContext;
+        this.mContext = mContext;
     }
 
     public static synchronized UpdataDownLoad getInstance(Context mContext) {
@@ -29,7 +30,7 @@ public class UpdataDownLoad {
         return mInstance;
     }
 
-    public void dowmload(final String fileurl,final String filepath){
+    public void dowmload(final String fileurl, final String filepath) {
         new UpdataDialog(mContext, new UpdataDialog.UpdataDialogCallBack() {
             @Override
             public void enter(final NotificationManager mNotificationManager, final Notification.Builder mBuilder, final ProgressDialog progressDialog) {
@@ -40,6 +41,7 @@ public class UpdataDownLoad {
 
                         //positiveButton.setEnabled(false);
                     }
+
                     @Override
                     public void complete(boolean b) {
                         //结束广播
@@ -48,13 +50,15 @@ public class UpdataDownLoad {
                             if (mNotificationManager != null) {
                                 mNotificationManager.cancel(1001);
                             }
-                           // positiveButton.setEnabled(true);
+                            // positiveButton.setEnabled(true);
                         }
                     }
+
                     @Override
                     public void falie(String msg) {
                         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                     }
+
                     @Override
                     public void progress(final long progress, long max) {
                         int len = (int) (((double) progress / (double) max) * 100.0f);
@@ -70,10 +74,10 @@ public class UpdataDownLoad {
                     }
                 }).moni();//.updatafile(fileurl,filepath);
             }
-    }).isprogressDialog(true).isopenNotify(true)//通知
-        .setImg(R.mipmap.ic_launcher_round)
-        .setVersion("V1.1.1")
-        .setUpdataContent("").show();
+        }).isprogressDialog(true).isopenNotify(true)//通知
+                .setImg(R.mipmap.ic_launcher_round)
+                .setVersion("V1.1.1")
+                .setUpdataContent("").show();
     }
 
 }

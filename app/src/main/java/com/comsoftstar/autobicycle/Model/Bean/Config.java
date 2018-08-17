@@ -5,9 +5,9 @@ package com.comsoftstar.autobicycle.Model.Bean;
  */
 
 public class Config {
-    private  String CKTITLE;
-    private  String SERVICETITLE;
-    private  String MYTITLE;
+    private String CKTITLE;
+    private String SERVICETITLE;
+    private String MYTITLE;
 
     public Config(String CKTITLE, String SERVICETITLE, String MYTITLE) {
         this.CKTITLE = CKTITLE;

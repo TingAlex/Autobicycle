@@ -5,7 +5,7 @@ package com.comsoftstar.autobicycle.Model.Bean;
  */
 
 public class Historyitem {
-    private String date,time,start,end,tv_length;
+    private String date, time, start, end, tv_length;
 
     public String getTv_length() {
         return tv_length;
@@ -20,7 +20,7 @@ public class Historyitem {
         this.time = time;
         this.start = start;
         this.end = end;
-        this.tv_length=tv_length;
+        this.tv_length = tv_length;
     }
 
     public String getDate() {

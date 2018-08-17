@@ -21,12 +21,13 @@ public class GridViewAdapter extends BaseAdapter {
     public ArrayList<String> name;
     public ArrayList<Integer> image;
 
-    public GridViewAdapter(Context context,ArrayList<String> name,ArrayList<Integer> image) {
+    public GridViewAdapter(Context context, ArrayList<String> name, ArrayList<Integer> image) {
         inflater = LayoutInflater.from(context);
         this.name = name;
-        this.image=image;
+        this.image = image;
 
     }
+
     @Override
     public int getCount() {
         return name.size();
@@ -46,28 +47,25 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
         ViewHolder holder;
-        if(convertView == null)
-        {
+        if (convertView == null) {
             view = inflater.inflate(R.layout.item_fuwu, null);
             holder = new ViewHolder();
             holder.imageView = (ImageView) view.findViewById(R.id.item_image);
             holder.textView = (TextView) view.findViewById(R.id.item_text);
-            holder.line=(View)view.findViewById(R.id.bottomline);
+            holder.line = (View) view.findViewById(R.id.bottomline);
             view.setTag(holder);
-        }else
-        {
+        } else {
             view = convertView;
             holder = (ViewHolder) view.getTag();
         }
-        if (position>name.size()-1-name.size()%3)
+        if (position > name.size() - 1 - name.size() % 3)
             holder.line.setVisibility(View.INVISIBLE);
         holder.textView.setText(name.get(position).toString());
         holder.imageView.setImageResource(image.get(position));
         return view;
     }
 
-    static class ViewHolder
-    {
+    static class ViewHolder {
         ImageView imageView;
         TextView textView;
         View line;

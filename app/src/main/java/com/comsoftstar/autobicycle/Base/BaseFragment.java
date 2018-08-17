@@ -27,27 +27,32 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     private Toolbar toolbar;
     protected View view;
     public Context baseContext;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        baseContext= App.context;
+        baseContext = App.context;
         binding = DataBindingUtil.inflate(inflater, setLayoutId(), container, false);
         initView(binding);
-       // Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
         return binding.getRoot();
     }
+
     public abstract int setLayoutId();
+
     public abstract void initView(T binding);
-    public void toast(Object o){
-        Toast.makeText(getContext(),String.valueOf(o), Toast.LENGTH_SHORT).show();
+
+    public void toast(Object o) {
+        Toast.makeText(getContext(), String.valueOf(o), Toast.LENGTH_SHORT).show();
     }
-    public void addToolBar(final LinearLayout linearLayout, Toolbar toolbar){
+
+    public void addToolBar(final LinearLayout linearLayout, Toolbar toolbar) {
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(Toolbar.LayoutParams.MATCH_PARENT,
                 Toolbar.LayoutParams.WRAP_CONTENT);
         // 取控件aaa当前的布局参数
         params.height = 150;        // 当控件的高强制设成150象素
-        params.width=Toolbar.LayoutParams.MATCH_PARENT;
+        params.width = Toolbar.LayoutParams.MATCH_PARENT;
         toolbar.setBackgroundColor(Color.BLACK);
-        linearLayout.addView(toolbar,0,params);
+        linearLayout.addView(toolbar, 0, params);
     }
 }

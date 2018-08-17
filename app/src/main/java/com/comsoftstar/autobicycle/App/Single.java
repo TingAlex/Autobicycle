@@ -7,7 +7,8 @@ import com.comsoftstar.autobicycle.Model.NetWork.http.HttpClient;
  */
 
 public class Single {
-    public HttpClient httpClient=new HttpClient(App.context);
+    public HttpClient httpClient = new HttpClient(App.context);
+
     private Single() {
     }
 
